@@ -7,23 +7,42 @@ sample_length = 5;
 result_length = 1;
 samples_div = 1;
 test_step = 1;
+snr = 5;
 
 start_time = 0;
 end_time = 10;
 time_step = 0.1;
 
-% Generate training data
-t = start_time:time_step:end_time; % Time
+rnd_seed = 12345;
+
+% Some (not all) training functions:
+% 'trainlm'	Levenberg-Marquardt
+% 'trainrp'	Resilient Backpropagation
+% 'traingd'	Gradient Descent
+trainFcn = 'trainlm';
+hiddenSizes = 10;
+
+% Print options
+fprintf("Time: [%f:%f:%f]\n", start_time, time_step, end_time);
+fprintf("Samples: [%f:%f] Train sample div: %f\n", sample_length, result_length, samples_div);
+fprintf("SNR: %f\n", snr);
+fprintf("Network: Hidden: %f Train: '%s'\n", hiddenSizes, trainFcn);
+
+% Generate training data (real target position)
+t = start_time:time_step:end_time;
 
 w = 1 * pi;
 phi = 0;
 A = floor(t);
-
 x = A.*sin(w * t + phi);
 
-% Generate test data
+% Generate test data ( noised measurements)
 tn = t;
-xn = awgn(x, 40);
+xn = awgn(x, snr);
+
+fprintf("Measurements Max error: %f\n", max(abs(x - xn)));
+fprintf("Measurements MSE:       %f\n", mean(x - xn).^2);
+fprintf("Measurements RMSE:      %f\n", sqrt(mean(x - xn).^2));
 
 % Setup plot layout
 tiledlayout(3, 1);
@@ -40,16 +59,10 @@ hold off;
 %waitforbuttonpress;
 
 % Initial weights are random unless we initialize random number generator
-rng(12345, 'combRecursive');
+rng(rnd_seed, 'combRecursive');
 
 % Create neural network
-%
-% Some (not all) training functions:
-% 'trainlm'	Levenberg-Marquardt
-% 'trainrp'	Resilient Backpropagation
-% 'traingd'	Gradient Descent
-trainFcn = 'trainlm';
-net = feedforwardnet(10, trainFcn);
+net = feedforwardnet(hiddenSizes, trainFcn);
 
 % Prepare train data set
 samples_num = round(length(x) / samples_div) - (sample_length + result_length - 1);
@@ -129,9 +142,9 @@ mse = mean(error.^2);
 rmse = sqrt(mse);
 
 fprintf("Network performance (MSE by defaults): "); disp(perf);
-fprintf("Max error: "); disp(max_error);
-fprintf("MSE: "); disp(mse);
-fprintf("RMSE: "); disp(rmse);
+fprintf("Max error: %f\n", max_error);
+fprintf("MSE:       %f\n", mse);
+fprintf("RMSE:      %f\n", rmse);
 
 % Plot absolute error
 nexttile;
