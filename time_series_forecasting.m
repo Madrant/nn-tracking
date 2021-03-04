@@ -16,6 +16,8 @@ function [max_error, mse, rmse, tr] = time_series_forecasting(t, x, xn, sample_l
     plot(t, x);
     plot(t, xn, 'x'); % Plot measurements
     title('Measurements');
+    xlabel('Time');
+    ylabel('Measurements');
     legend('Training sample', 'Test sample');
     hold off;
 
@@ -91,6 +93,8 @@ function [max_error, mse, rmse, tr] = time_series_forecasting(t, x, xn, sample_l
     plot(t(sample_length + 1:length(t)), measurements);
     plot(t(sample_length + 1:length(t)), net_outputs, 'o');
     title('Network output');
+    xlabel('Time');
+    ylabel('Data');
     legend('Test sample', 'Network output');
     hold off;
 
@@ -115,4 +119,6 @@ function [max_error, mse, rmse, tr] = time_series_forecasting(t, x, xn, sample_l
     nexttile;
     plot(t(sample_length + 1:length(t)), abs_error);
     title('Absolute error');
+    xlabel('Time');
+    ylabel('Error');
 end

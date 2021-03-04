@@ -19,7 +19,7 @@ time_step = 0.1;
 % 'trainlm'	Levenberg-Marquardt
 % 'trainrp'	Resilient Backpropagation
 % 'traingd'	Gradient Descent
-trainFcn = 'trainlm';
+trainFcn = 'trainrp';
 hiddenSizes = 10;
 
 % Generate training data (real target position)
@@ -38,7 +38,7 @@ fprintf("Time: [%f:%f:%f]\n", start_time, time_step, end_time);
 fprintf("SNR: %f\n", snr);
 
 % Calculate Mean Max Error, MSE, RMSE for hiddenSizes
-hs = 1:3:20;
+hs = 10;
 
 mean_me_array = zeros(length(hs), 1);
 mean_mse_array = zeros(length(hs), 1);
@@ -80,11 +80,16 @@ plot(hs, mean_me_array, '-x');
 plot(hs, mean_mse_array, '-x');
 plot(hs, mean_rmse_array, '-x');
 
+xlabel('Hidden layer size');
+ylabel('Error');
 legend('Max Error', 'MSE', 'RMSE');
 hold off;
 
 nexttile;
 plot(hs, mean_epochs_array, '-x');
+
+xlabel('Training epochs');
+ylabel('Error');
 legend('Train epochs');
 
 % Save figure to file
