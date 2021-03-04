@@ -5,7 +5,7 @@ clc;       % Clear command window
 % Model options
 sample_length = 5;
 result_length = 1;
-samples_div = 2;
+samples_div = 1;
 test_step = 1;
 
 start_time = 0;
@@ -34,6 +34,7 @@ hold on;
 plot(t, x);
 plot(t, xn, 'x'); % Plot measurements
 title('Measurements');
+legend('Training sample', 'Test sample');
 hold off;
 
 %waitforbuttonpress;
@@ -112,6 +113,7 @@ hold on;
 plot(t(1:length(measurements)), measurements);
 plot(t(1:length(net_outputs)), net_outputs, 'o');
 title('Network output');
+legend('Test sample', 'Network output');
 hold off;
 
 % Assess the performance of the trained network.
