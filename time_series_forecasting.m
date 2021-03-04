@@ -49,7 +49,7 @@ rng(12345, 'combRecursive');
 % 'trainrp'	Resilient Backpropagation
 % 'traingd'	Gradient Descent
 trainFcn = 'trainlm';
-net = feedforwardnet(5, trainFcn);
+net = feedforwardnet(10, trainFcn);
 
 % Prepare train data set
 samples_num = round(length(x) / samples_div) - (sample_length + result_length - 1);
@@ -110,8 +110,8 @@ end
 % Plot network output
 nexttile;
 hold on;
-plot(t(1:length(measurements)), measurements);
-plot(t(1:length(net_outputs)), net_outputs, 'o');
+plot(t(sample_length + 1:length(t)), measurements);
+plot(t(sample_length + 1:length(t)), net_outputs, 'o');
 title('Network output');
 legend('Test sample', 'Network output');
 hold off;
@@ -135,5 +135,5 @@ fprintf("RMSE: "); disp(rmse);
 
 % Plot absolute error
 nexttile;
-plot(t(1:length(abs_error)), abs_error);
+plot(t(sample_length + 1:length(t)), abs_error);
 title('Absolute error');
