@@ -6,13 +6,13 @@ clc;       % Clear command window
 sample_length = 5;
 result_length = 1;
 samples_div = 2;
-test_step = 10;
+test_step = 1;
 
 start_time = 0;
 end_time = 10;
-time_step = 0.01;
+time_step = 0.1;
 
-% Generate train data
+% Generate training data
 t = start_time:time_step:end_time; % Time
 
 w = 1 * pi;
@@ -23,12 +23,18 @@ x = A.*sin(w * t + phi);
 
 % Generate test data
 tn = t;
-xn = awgn(x, 30);
+xn = awgn(x, 40);
+
+% Setup plot layout
+tiledlayout(3, 1);
 
 % Plot input data
+nexttile;
 hold on;
 plot(t, x);
-plot(t, xn); % Plot measurements
+plot(t, xn, 'x'); % Plot measurements
+title('Measurements');
+hold off;
 
 %waitforbuttonpress;
 
@@ -36,55 +42,96 @@ plot(t, xn); % Plot measurements
 rng(12345, 'combRecursive');
 
 % Create neural network
-net = feedforwardnet(5, 'trainlm');
+%
+% Some (not all) training functions:
+% 'trainlm'	Levenberg-Marquardt
+% 'trainrp'	Resilient Backpropagation
+% 'traingd'	Gradient Descent
+trainFcn = 'trainlm';
+net = feedforwardnet(5, trainFcn);
 
 % Prepare train data set
 samples_num = round(length(x) / samples_div) - (sample_length + result_length - 1);
 
-sample = zeros(samples_num, sample_length);
-result = zeros(samples_num, result_length);
+samples = zeros(samples_num, sample_length);
+results = zeros(samples_num, result_length);
 
 for n = 1 : samples_num
-    sample(n,:) = x(n:n + sample_length - 1);
-    result(n,:) = x(n + sample_length:n + sample_length + result_length - 1);
+    samples(n,:) = x(n:n + sample_length - 1);
+    results(n,:) = x(n + sample_length:n + sample_length + result_length - 1);
 end
 
 % Plot training sample length
-plot(t(1:n), x(1:n));
+% plot(t(1:n), x(1:n));
 
 % Print generated test data
-% fprintf("sample: "); disp(sample);
-% fprintf("result: "); disp(result);
+% fprintf("samples: "); disp(samples);
+% fprintf("results: "); disp(results);
 
 % Transpose test arrays to fit network inputs
-sample = sample.';
-result = result.';
+samples = samples.';
+results = results.';
 
 % Configure network inputs:
-net = configure(net, sample, result);
+net = configure(net, samples, results);
 fprintf("net.inputs: %d\n", net.inputs{1}.size);
 
 % Train network
-net = train(net, sample, result);
+net = train(net, samples, results);
 
 % Test network
+samples_num = round(length(x) / test_step) - (sample_length + result_length - 1);
+
+measurements = zeros(samples_num, result_length);
+net_outputs = zeros(samples_num, result_length);
+
 for n = 1 : test_step: length(xn) - (sample_length + result_length - 1)
     test_sample = xn(n:n + sample_length - 1);
-    test_result = net(test_sample.').';
+    measurement = xn(n + sample_length:n + sample_length + result_length - 1);
+
+    net_output = net(test_sample.').';
+
+    measurements(n,:) = measurement;
+    net_outputs(n,:) = net_output;
 
     % fprintf("test_sample: "); disp(test_sample);
-    % fprintf("test_result: "); disp(test_result);
+    % fprintf("net_output: "); disp(net_output);
+    % fprintf("measurement: "); disp(measurement);
 
     % Plot network result
-    sample_time = t(n):time_step:t(n + length(test_sample) - 1);
-    result_time = t(n + sample_length):time_step:t(n + sample_length + length(test_result) - 1);
+    % sample_time = t(n):time_step:t(n + length(test_sample) - 1);
+    % result_time = t(n + sample_length):time_step:t(n + sample_length + length(net_output) - 1);
 
-    plot(sample_time, test_sample, 'x'); waitforbuttonpress;
-    plot(result_time, test_result, 'o'); waitforbuttonpress;
+    % plot(sample_time, test_sample, 'x'); waitforbuttonpress;
+    % plot(result_time, net_output, 'o'); waitforbuttonpress;
 end
 
-% Assess the performance of the trained network.
-% The default performance function is mean squared error.
-% perf = perform(net, x, x);
-
+% Plot network output
+nexttile;
+hold on;
+plot(t(1:length(measurements)), measurements);
+plot(t(1:length(net_outputs)), net_outputs, 'o');
+title('Network output');
 hold off;
+
+% Assess the performance of the trained network.
+%
+% The default performance function is mean squared error.
+perf = perform(net, measurements, net_outputs);
+
+% Calculate absolute errors
+error = (measurements - net_outputs);
+abs_error = abs(error);
+max_error = max(abs_error);
+mse = mean(error.^2);
+rmse = sqrt(mse);
+
+fprintf("Network performance (MSE by defaults): "); disp(perf);
+fprintf("Max error: "); disp(max_error);
+fprintf("MSE: "); disp(mse);
+fprintf("RMSE: "); disp(rmse);
+
+% Plot absolute error
+nexttile;
+plot(t(1:length(abs_error)), abs_error);
+title('Absolute error');
