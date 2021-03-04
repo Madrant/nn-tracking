@@ -1,4 +1,4 @@
-function [max_error, mse, rmse] = time_series_forecasting(t, x, xn, sample_length, result_length, samples_div, hiddenSizes, trainFcn)
+function [max_error, mse, rmse, tr] = time_series_forecasting(t, x, xn, sample_length, result_length, samples_div, hiddenSizes, trainFcn)
     % Print options
     fprintf("Samples: [%f:%f] Train sample div: %f\n", sample_length, result_length, samples_div);
     fprintf("Network: Hidden: %f Train: '%s'\n", hiddenSizes, trainFcn);
@@ -54,11 +54,11 @@ function [max_error, mse, rmse] = time_series_forecasting(t, x, xn, sample_lengt
     fprintf("net.inputs: %d\n", net.inputs{1}.size);
 
     % Train network
-    net = train(net, samples, results);
+    [net, tr] = train(net, samples, results);
 
     % Test network
     test_step = 1;
-    
+
     samples_num = round(length(x) / test_step) - (sample_length + result_length - 1);
 
     measurements = zeros(samples_num, result_length);

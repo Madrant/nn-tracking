@@ -38,11 +38,12 @@ fprintf("Time: [%f:%f:%f]\n", start_time, time_step, end_time);
 fprintf("SNR: %f\n", snr);
 
 % Calculate Mean Max Error, MSE, RMSE for hiddenSizes
-hs = 1:2:30;
+hs = 1:3:20;
 
 mean_me_array = zeros(length(hs), 1);
 mean_mse_array = zeros(length(hs), 1);
 mean_rmse_array = zeros(length(hs), 1);
+mean_epochs_array = zeros(length(hs), 1);
 
 for n = 1:length(hs)
     loops = 10;
@@ -50,29 +51,41 @@ for n = 1:length(hs)
     me_array = zeros(loops, 1);
     mse_array = zeros(loops, 1);
     rmse_array = zeros(loops, 1);
+    epochs_array = zeros(loops, 1);
 
     for l = 1:loops
-        [max_error, mse, rmse] = time_series_forecasting(t, x, xn, sample_length, result_length, samples_div, hs(n), trainFcn);
+        [max_error, mse, rmse, tr] = time_series_forecasting(t, x, xn, sample_length, result_length, samples_div, hs(n), trainFcn);
 
         me_array(l) = max_error;
         mse_array(l) = mse;
         rmse_array(l) = rmse;
+        epochs_array(l) = tr.num_epochs;
     end
 
     mean_me_array(n) = mean(me_array);
     mean_mse_array(n) = mean(mse_array);
     mean_rmse_array(n) = mean(rmse_array);
+    mean_epochs_array(n) = mean(epochs_array);
 
     %waitforbuttonpress;
 end
 
-hs_mean_error = figure('name', ['Error dependencies from hiddenSize for trainFcn: ', trainFcn]);
+% Plot Error and Epochs dependencies from hiddenSize
+hs_mean_error = figure('name', ['Error and Epochs dependencies from hiddenSize for trainFcn: ', trainFcn]);
+tiledlayout(2, 1);
+
+nexttile;
 hold on;
 plot(hs, mean_me_array, '-x');
 plot(hs, mean_mse_array, '-x');
 plot(hs, mean_rmse_array, '-x');
+
 legend('Max Error', 'MSE', 'RMSE');
 hold off;
+
+nexttile;
+plot(hs, mean_epochs_array, '-x');
+legend('Train epochs');
 
 % Save figure to file
 date_str = datestr(datetime(), 'yyyymmdd_HHMMSS');
