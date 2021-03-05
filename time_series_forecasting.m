@@ -1,4 +1,4 @@
-function [max_error, mse, rmse, tr] = time_series_forecasting(t, x, xn, sample_length, result_length, samples_div, hiddenSizes, trainFcn)
+function [max_error, mse, rmse, tr] = time_series_forecasting(t, x, xn, sample_length, result_length, samples_div, hiddenSizes, trainFcn, saveFigure)
     % Print options
     fprintf("Samples: [%f:%f] Train sample div: %f\n", sample_length, result_length, samples_div);
     fprintf("Network: Hidden: %f Train: '%s'\n", hiddenSizes, trainFcn);
@@ -8,7 +8,8 @@ function [max_error, mse, rmse, tr] = time_series_forecasting(t, x, xn, sample_l
     fprintf("Measurements RMSE:      %f\n", sqrt(mean(x - xn).^2));
 
     % Setup plot layout
-    tiledlayout(3, 1);
+    fig_nn = figure('name', sprintf('NN Tracking: trainFcn: %s', trainFcn));
+    tiledlayout(4, 1);
 
     % Plot input data
     nexttile;
@@ -110,6 +111,14 @@ function [max_error, mse, rmse, tr] = time_series_forecasting(t, x, xn, sample_l
     mse = mean(error.^2);
     rmse = sqrt(mse);
 
+    % Calculate MSE for time series
+    mse_array = zeros(length(error));
+    
+    for n=1:length(error)
+        mse = mean(error(1:n).^2);
+        mse_array(n) = mse;
+    end
+
     fprintf("Network performance (MSE by defaults): "); disp(perf);
     fprintf("Max error: %f\n", max_error);
     fprintf("MSE:       %f\n", mse);
@@ -118,7 +127,21 @@ function [max_error, mse, rmse, tr] = time_series_forecasting(t, x, xn, sample_l
     % Plot absolute error
     nexttile;
     plot(t(sample_length + 1:length(t)), abs_error);
-    title('Absolute error');
+    title(sprintf('Absolute error, maximum: %f', max_error));
     xlabel('Time');
-    ylabel('Error');
+    ylabel('Absolute error');
+
+    % Plot MSE
+    nexttile;
+    plot(t(sample_length + 1:length(t)), mse_array);
+    title(sprintf('Final MSE: %f', mse));
+    xlabel('Time');
+    ylabel('MSE');
+    
+    % Save plot image
+    if saveFigure
+        date_str = datestr(datetime(), 'yyyymmdd_HHMMSS');
+        str_name = sprintf('nn_tracking_func_%s_hs_%u_date_%s', trainFcn, hiddenSizes, date_str);
+        saveas(fig_nn, str_name + ".png");
+    end
 end
