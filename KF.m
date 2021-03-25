@@ -12,7 +12,7 @@ C = 1;
 % Covariance matrices
 % Processing noise
 W = 0.01;
-Q = 0.01; % A degree of trust to measurements
+Q = 0.05; % A degree of trust to measurements
 
 % Measurement noise
 V = 1;
@@ -53,7 +53,7 @@ for i = 1:length(t)
 
     % Noise measurements
     %Y(i) = x(i) + normrnd(0, sqrt(V));
-    Y(i) = awgn(x(i), snr);
+    Y = awgn(x, snr);
 
     if i > 1
         % Prediction
@@ -77,6 +77,7 @@ end
 error = (x - X);
 abs_error = abs(error);
 max_error = max(abs_error);
+mean_error = mean(abs_error);
 mse = mean(error.^2);
 rmse = sqrt(mse);
 
@@ -90,9 +91,10 @@ for n=1:length(error)
     rmse_array(n) = sqrt(mse);
 end
 
-fprintf("Max error: %f\n", max_error);
-fprintf("MSE:       %f\n", mse);
-fprintf("RMSE:      %f\n", rmse);
+fprintf("Max error:  %f\n", max_error);
+fprintf("Mean error: %f\n", mean_error);
+fprintf("MSE:        %f\n", mse);
+fprintf("RMSE:       %f\n", rmse);
 
 fig_nn = figure('name', sprintf('KF Tracking'));
 tiledlayout(5, 1);
@@ -123,7 +125,7 @@ hold off;
 % Plot absolute error
 nexttile;
 plot(t, abs_error);
-title(sprintf('Absolute error, maximum: %f', max_error));
+title(sprintf('Absolute error, maximum: %.2f, mean: %.2f', max_error, mean_error));
 xlabel('Time');
 ylabel('Absolute error');
 

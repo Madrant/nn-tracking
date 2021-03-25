@@ -113,6 +113,7 @@ function [max_error, mse, rmse, tr] = time_series_forecasting(t, x, xn, sample_l
     error = (measurements - net_outputs);
     abs_error = abs(error);
     max_error = max(abs_error);
+    mean_error = mean(abs_error);
     mse = mean(error.^2);
     rmse = sqrt(mse);
 
@@ -128,13 +129,14 @@ function [max_error, mse, rmse, tr] = time_series_forecasting(t, x, xn, sample_l
 
     fprintf("Network performance (MSE by defaults): "); disp(perf);
     fprintf("Max error: %f\n", max_error);
+    fprintf("Mean error: %f\n", mean_error);
     fprintf("MSE:       %f\n", mse);
     fprintf("RMSE:      %f\n", rmse);
 
     % Plot absolute error
     nexttile;
     plot(t(sample_length + 1:length(t)), abs_error);
-    title(sprintf('Absolute error, maximum: %f', max_error));
+    title(sprintf('Absolute error, maximum: %.2f, mean: %.2f', max_error, mean_error));
     xlabel('Time');
     ylabel('Absolute error');
 
