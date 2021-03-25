@@ -13,7 +13,7 @@ end_time = 10;
 time_step = 0.1;
 
 % Initialize random number generator
-% rng(12345, 'combRecursive');
+rng(12345, 'combRecursive');
 
 % Generate training data (real target position)
 t = start_time:time_step:end_time;
@@ -21,11 +21,12 @@ t = start_time:time_step:end_time;
 w = 1 * pi;
 phi = 0;
 A = floor(t);
-x = A.*sin(w * t + phi);
+x = A .* sin(w * t + phi);
 
 % Generate test data ( noised measurements)
 tn = t;
-xn = awgn(x, snr);
+xn = A .* (1 + normrnd(0, 0.01)) .* sin(w * (1 + normrnd(0, 0.01)) * t + phi*(1 + normrnd(0, 0.01)));
+xn = awgn(xn, snr);
 
 fprintf("Time: [%f:%f:%f]\n", start_time, time_step, end_time);
 fprintf("SNR: %f\n", snr);

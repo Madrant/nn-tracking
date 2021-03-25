@@ -44,10 +44,12 @@ phi = 0;
 Amp = floor(t);
 snr = 5;
 
+rng(12345, 'combRecursive');
+
 for i = 1:length(t)
     % Generate real data
     %x(i) = C*sin((i-1) * 0.1);
-    x(i) = Amp(i) * sin(w * t(i) + phi);
+    x(i) = Amp(i) * (1 + normrnd(0, 0.01)) * sin(w * (1 + normrnd(0, 0.01)) * t(i) + phi * (1 + normrnd(0, 0.01)));
 
     % Noise measurements
     %Y(i) = x(i) + normrnd(0, sqrt(V));

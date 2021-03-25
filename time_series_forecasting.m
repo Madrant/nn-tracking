@@ -110,7 +110,7 @@ function [max_error, mse, rmse, tr] = time_series_forecasting(t, x, xn, sample_l
     perf = perform(net, x, net_outputs);
 
     % Calculate absolute errors
-    error = (real_data - net_outputs);
+    error = (measurements - net_outputs);
     abs_error = abs(error);
     max_error = max(abs_error);
     mse = mean(error.^2);
