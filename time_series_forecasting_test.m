@@ -67,7 +67,7 @@ for f = 1:length(tf)
         %waitforbuttonpress;
     end % hs
 
-    if 1
+    if 0
     % Plot Error and Epochs dependencies from hiddenSize
     hs_mean_error = figure('name', 'Error and Epochs dependencies from hiddenSize for trainFcn: ' + tf(f));
     tiledlayout(2, 1);
