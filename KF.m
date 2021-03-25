@@ -47,7 +47,7 @@ snr = 5;
 for i = 1:length(t)
     % Generate real data
     %x(i) = C*sin((i-1) * 0.1);
-    x(i) = 1.2 * Amp(i) * sin(w * t(i) + phi);
+    x(i) = Amp(i) * sin(w * t(i) + phi);
 
     % Noise measurements
     %Y(i) = x(i) + normrnd(0, sqrt(V));
@@ -71,7 +71,8 @@ for i = 1:length(t)
 end
 
 % Calculate absolute errors
-error = (Y - X);
+%error = (x(1:end - 1) - X(2:end));
+error = (x - X);
 abs_error = abs(error);
 max_error = max(abs_error);
 mse = mean(error.^2);
@@ -91,8 +92,50 @@ fprintf("Max error: %f\n", max_error);
 fprintf("MSE:       %f\n", mse);
 fprintf("RMSE:      %f\n", rmse);
 
-plot(t, x, 'gx', t, Y, 'b', t, X, 'r')
-title('Kalman Filter')
-xlabel('Time')
-ylabel('Value')
-legend('Real value', 'Measured value', 'Estimated value')
+fig_nn = figure('name', sprintf('KF Tracking'));
+tiledlayout(5, 1);
+
+% Plot input data
+nexttile;
+hold on;
+plot(t, x);
+plot(t, Y, 'x'); % Plot measurements
+title('Measurements');
+xlabel('Time');
+ylabel('Data');
+legend('Real data', 'Measurements');
+hold off;
+
+% Plot network output
+nexttile;
+hold on;
+plot(t, Y);
+plot(t, X, 'o');
+plot(t, x, 'x');
+title('Filter output');
+xlabel('Time');
+ylabel('Data');
+legend('Measurements', 'Filter output', 'Real data');
+hold off;
+
+% Plot absolute error
+nexttile;
+plot(t, abs_error);
+title(sprintf('Absolute error, maximum: %f', max_error));
+xlabel('Time');
+ylabel('Absolute error');
+
+% Plot MSE
+nexttile;
+plot(t, mse_array);
+title(sprintf('Final MSE: %f', mse));
+xlabel('Time');
+ylabel('MSE');
+
+% Plot RMSE
+nexttile;
+plot(t, rmse_array);
+title(sprintf('Final RMSE: %f', rmse));
+xlabel('Time');
+ylabel('RMSE');
+
