@@ -9,7 +9,7 @@ function [max_error, mse, rmse, tr] = time_series_forecasting(t, x, xn, sample_l
 
     % Setup plot layout
     fig_nn = figure('name', sprintf('NN Tracking: trainFcn: %s', trainFcn));
-    tiledlayout(4, 1);
+    tiledlayout(5, 1);
 
     % Plot input data
     nexttile;
@@ -64,15 +64,19 @@ function [max_error, mse, rmse, tr] = time_series_forecasting(t, x, xn, sample_l
 
     samples_num = round(length(x) / test_step) - (sample_length + result_length - 1);
 
+    real_data = zeros(samples_num, result_length);
     measurements = zeros(samples_num, result_length);
     net_outputs = zeros(samples_num, result_length);
 
     for n = 1 : test_step: length(xn) - (sample_length + result_length - 1)
         test_sample = xn(n:n + sample_length - 1);
+
+        real = x(n + sample_length:n + sample_length + result_length - 1);
         measurement = xn(n + sample_length:n + sample_length + result_length - 1);
 
         net_output = net(test_sample.').';
 
+        real_data(n,:) = real;
         measurements(n,:) = measurement;
         net_outputs(n,:) = net_output;
 
@@ -102,10 +106,10 @@ function [max_error, mse, rmse, tr] = time_series_forecasting(t, x, xn, sample_l
     % Assess the performance of the trained network.
     %
     % The default performance function is mean squared error.
-    perf = perform(net, measurements, net_outputs);
+    perf = perform(net, x, net_outputs);
 
     % Calculate absolute errors
-    error = (measurements - net_outputs);
+    error = (real_data - net_outputs);
     abs_error = abs(error);
     max_error = max(abs_error);
     mse = mean(error.^2);
@@ -113,10 +117,12 @@ function [max_error, mse, rmse, tr] = time_series_forecasting(t, x, xn, sample_l
 
     % Calculate MSE for time series
     mse_array = zeros(length(error));
+    rmse_array = zeros(length(error));
     
     for n=1:length(error)
         mse = mean(error(1:n).^2);
         mse_array(n) = mse;
+        rmse_array(n) = sqrt(mse);
     end
 
     fprintf("Network performance (MSE by defaults): "); disp(perf);
@@ -137,6 +143,13 @@ function [max_error, mse, rmse, tr] = time_series_forecasting(t, x, xn, sample_l
     title(sprintf('Final MSE: %f', mse));
     xlabel('Time');
     ylabel('MSE');
+    
+    % Plot RMSE
+    nexttile;
+    plot(t(sample_length + 1:length(t)), rmse_array);
+    title(sprintf('Final RMSE: %f', rmse));
+    xlabel('Time');
+    ylabel('RMSE');
     
     % Save plot image
     if saveFigure
