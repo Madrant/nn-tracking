@@ -1,7 +1,7 @@
-function plot_results(name, t, x, Y, X, save_figure, t_skip)
+function plot_results(name, t, xt, xr, xn, X, save_figure, t_skip)
     % Skip some values from the start according to time skip value
     ts = t(t_skip + 1:length(t));
-    xs = x(t_skip + 1: length(x));
+    xrs = xr(t_skip + 1: length(xr));
 
     fig_nn = figure('name', name);
     tiledlayout(5, 1);
@@ -9,28 +9,29 @@ function plot_results(name, t, x, Y, X, save_figure, t_skip)
     % Plot input data
     nexttile;
     hold on;
-    plot(t, x);
-    plot(t, Y, '-x'); % Plot measurements
-    title('Measurements');
+    plot(t, xt);
+    plot(t, xr);
+    plot(t, xn, '-x'); % Plot measurements
+    title('Model and Measurements');
     xlabel('Time');
     ylabel('Data');
-    legend('Real data', 'Measurements');
+    legend('Model', 'Real data', 'Measurements');
     hold off;
-       
+
     % Plot network output
     nexttile;
     hold on;
-    plot(t, Y);
-    plot(t, x, 'x');
-    plot(ts, X, 'o');
+    plot(t, xr);
+    plot(t, xn, '-x');
+    plot(ts, X, '-o');
     title('Filter output');
     xlabel('Time');
     ylabel('Data');
-    legend('Measurements', 'Filter output', 'Real data');
+    legend('Real data', 'Measurements', 'Filter output');
     hold off;
 
     % Calculate error for each time step
-    [error, abs_error, mse_array, rmse_array] = calc_errors(xs, X);
+    [error, abs_error, mse_array, rmse_array] = calc_errors(xrs, X);
 
     % Calculate error values
     max_error = max(abs_error);
