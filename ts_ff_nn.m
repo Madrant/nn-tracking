@@ -1,13 +1,7 @@
-function net_outputs = time_series_forecasting(t, x, xn, sample_length, result_length, samples_div, hiddenSizes, trainFcn)
+function net_outputs = ff_nn(t, x, xn, sample_length, result_length, samples_div, hiddenSizes, trainFcn)
     % Print options
     fprintf("Samples: [%f:%f] Train sample div: %f\n", sample_length, result_length, samples_div);
     fprintf("Network: Hidden: %f Train: '%s'\n", hiddenSizes, trainFcn);
-
-    fprintf("Measurements Max error: %f\n", max(abs(x - xn)));
-    fprintf("Measurements MSE:       %f\n", mean(x - xn).^2);
-    fprintf("Measurements RMSE:      %f\n", sqrt(mean(x - xn).^2));
-
-    %waitforbuttonpress;
 
     % Initial weights are random unless we initialize random number generator
     % rng(rnd_seed, 'combRecursive');
