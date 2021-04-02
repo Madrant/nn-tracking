@@ -6,10 +6,10 @@ clc;       % Clear command window
 sample_length = 5;
 result_length = 1;
 samples_div = 1;
-snr = 5;
+snr = 20;
 
 start_time = 0;
-end_time = 10;
+end_time = 40;
 time_step = 0.1;
 
 % Initialize random number generator
@@ -25,8 +25,9 @@ x = A .* sin(w * t + phi);
 
 % Generate test data ( noised measurements)
 tn = t;
-xn = A .* (1 + normrnd(0, 0.01)) .* sin(w * (1 + normrnd(0, 0.01)) * t + phi*(1 + normrnd(0, 0.01)));
-xn = awgn(xn, snr);
+r = 0.01;
+xn = A .* (1 + normrnd(0, r)) .* sin(w * (1 + normrnd(0, r)) * t + phi*(1 + normrnd(0, r)));
+xn = awgn(xn, snr, 'measured');
 
 fprintf("Time: [%f:%f:%f]\n", start_time, time_step, end_time);
 fprintf("SNR: %f\n", snr);
@@ -34,66 +35,13 @@ fprintf("SNR: %f\n", snr);
 % Calculate Mean Max Error, MSE, RMSE for various hiddenSizes 
 % and train functions
 hs = 10;
-%tf = ["trainlm", "trainrp", "traingd"];
 tf = ["trainlm"];
 loops = 1;
-saveFigure = 0;
+save_figure = 0;
 
-mean_me_array = zeros(length(hs), 1);
-mean_mse_array = zeros(length(hs), 1);
-mean_rmse_array = zeros(length(hs), 1);
-mean_epochs_array = zeros(length(hs), 1);
+outputs = time_series_forecasting(t, x, xn, sample_length, result_length, samples_div, hs, tf);
 
-for f = 1:length(tf)
-    for n = 1:length(hs)
-        me_array = zeros(loops, 1);
-        mse_array = zeros(loops, 1);
-        rmse_array = zeros(loops, 1);
-        epochs_array = zeros(loops, 1);
+% t(sample_length + 1:length(t))
+plot_results("FF NN", t, x, xn, outputs, save_figure, sample_length);
 
-        for l = 1:loops
-            [max_error, mse, rmse, tr] = time_series_forecasting(t, x, xn, sample_length, result_length, samples_div, hs(n), tf(f), saveFigure);
 
-            me_array(l) = max_error;
-            mse_array(l) = mse;
-            rmse_array(l) = rmse;
-            epochs_array(l) = tr.num_epochs;
-        end % loops
-
-        mean_me_array(n) = mean(me_array);
-        mean_mse_array(n) = mean(mse_array);
-        mean_rmse_array(n) = mean(rmse_array);
-        mean_epochs_array(n) = mean(epochs_array);
-
-        %waitforbuttonpress;
-    end % hs
-
-    if 0
-    % Plot Error and Epochs dependencies from hiddenSize
-    hs_mean_error = figure('name', 'Error and Epochs dependencies from hiddenSize for trainFcn: ' + tf(f));
-    tiledlayout(2, 1);
-
-    nexttile;
-    hold on;
-    plot(hs, mean_me_array, '-x');
-    plot(hs, mean_mse_array, '-x');
-    plot(hs, mean_rmse_array, '-x');
-
-    xlabel('Hidden layer size');
-    ylabel('Error');
-    legend('Max Error', 'MSE', 'RMSE');
-    hold off;
-
-    nexttile;
-    plot(hs, mean_epochs_array, '-x');
-
-    xlabel('Hidden layer size');
-    ylabel('Training epochs');
-    legend('Train epochs');
-
-    % Save figure to file
-    date_str = datestr(datetime(), 'yyyymmdd_HHMMSS');
-    str_name = sprintf('hs_mean_error_func_%s_hs_%u_%u_loops_%u_date_%s', tf(f), hs(1), hs(end), loops, date_str);
-    saveas(hs_mean_error, str_name + ".png");
-    end
-end % tf

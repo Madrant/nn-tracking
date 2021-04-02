@@ -1,4 +1,4 @@
-function [max_error, mse, rmse, tr] = time_series_forecasting(t, x, xn, sample_length, result_length, samples_div, hiddenSizes, trainFcn, saveFigure)
+function net_outputs = time_series_forecasting(t, x, xn, sample_length, result_length, samples_div, hiddenSizes, trainFcn)
     % Print options
     fprintf("Samples: [%f:%f] Train sample div: %f\n", sample_length, result_length, samples_div);
     fprintf("Network: Hidden: %f Train: '%s'\n", hiddenSizes, trainFcn);
@@ -6,21 +6,6 @@ function [max_error, mse, rmse, tr] = time_series_forecasting(t, x, xn, sample_l
     fprintf("Measurements Max error: %f\n", max(abs(x - xn)));
     fprintf("Measurements MSE:       %f\n", mean(x - xn).^2);
     fprintf("Measurements RMSE:      %f\n", sqrt(mean(x - xn).^2));
-
-    % Setup plot layout
-    fig_nn = figure('name', sprintf('NN Tracking: trainFcn: %s', trainFcn));
-    tiledlayout(5, 1);
-
-    % Plot input data
-    nexttile;
-    hold on;
-    plot(t, x);
-    plot(t, xn, 'x'); % Plot measurements
-    title('Measurements');
-    xlabel('Time');
-    ylabel('Data');
-    legend('Training sample', 'Test sample');
-    hold off;
 
     %waitforbuttonpress;
 
@@ -92,72 +77,11 @@ function [max_error, mse, rmse, tr] = time_series_forecasting(t, x, xn, sample_l
         % plot(result_time, net_output, 'o'); waitforbuttonpress;
     end
 
-    % Plot network output
-    nexttile;
-    hold on;
-    plot(t(sample_length + 1:length(t)), measurements);
-    plot(t(sample_length + 1:length(t)), net_outputs, 'o');
-    plot(t(sample_length + 1:length(t)), real_data, 'x');
-    title('Network output');
-    xlabel('Time');
-    ylabel('Data');
-    legend('Test sample', 'Network output', 'Real data');
-    hold off;
-
     % Assess the performance of the trained network.
     %
     % The default performance function is mean squared error.
     perf = perform(net, x, net_outputs);
 
-    % Calculate absolute errors
-    error = (measurements - net_outputs);
-    abs_error = abs(error);
-    max_error = max(abs_error);
-    mean_error = mean(abs_error);
-    mse = mean(error.^2);
-    rmse = sqrt(mse);
-
-    % Calculate MSE for time series
-    mse_array = zeros(length(error));
-    rmse_array = zeros(length(error));
-    
-    for n=1:length(error)
-        mse = mean(error(1:n).^2);
-        mse_array(n) = mse;
-        rmse_array(n) = sqrt(mse);
-    end
-
-    fprintf("Network performance (MSE by defaults): "); disp(perf);
-    fprintf("Max error: %f\n", max_error);
-    fprintf("Mean error: %f\n", mean_error);
-    fprintf("MSE:       %f\n", mse);
-    fprintf("RMSE:      %f\n", rmse);
-
-    % Plot absolute error
-    nexttile;
-    plot(t(sample_length + 1:length(t)), abs_error);
-    title(sprintf('Absolute error, maximum: %.2f, mean: %.2f', max_error, mean_error));
-    xlabel('Time');
-    ylabel('Absolute error');
-
-    % Plot MSE
-    nexttile;
-    plot(t(sample_length + 1:length(t)), mse_array);
-    title(sprintf('Final MSE: %f', mse));
-    xlabel('Time');
-    ylabel('MSE');
-    
-    % Plot RMSE
-    nexttile;
-    plot(t(sample_length + 1:length(t)), rmse_array);
-    title(sprintf('Final RMSE: %f', rmse));
-    xlabel('Time');
-    ylabel('RMSE');
-    
-    % Save plot image
-    if saveFigure
-        date_str = datestr(datetime(), 'yyyymmdd_HHMMSS');
-        str_name = sprintf('nn_tracking_func_%s_hs_%u_date_%s', trainFcn, hiddenSizes, date_str);
-        saveas(fig_nn, str_name + ".png");
-    end
+    % Convert column to row
+    net_outputs = net_outputs.';
 end

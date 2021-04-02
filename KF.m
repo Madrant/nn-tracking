@@ -32,7 +32,9 @@ Ppost = P0;
 x = zeros(1, length(t));
 Y = zeros(1, length(t));
 X = Y;
+Xpri = Y;
 X(1) = x0;
+Xpri(1) = x0;
 
 % xpri - x priori
 % xpost - x posteriori
@@ -42,18 +44,22 @@ X(1) = x0;
 w = 1 * pi;
 phi = 0;
 Amp = floor(t);
-snr = 5;
+snr = 20;
 
 rng(12345, 'combRecursive');
+r = 0.01;
+x = Amp .* (1 + normrnd(0, r)) .* sin(w * (1 + normrnd(0, r)) * t + 1.2 * phi*(1 + normrnd(0, r)));
+%x = Amp .* sin(w * t + phi);
+Y = awgn(x, snr, 'measured');
 
 for i = 1:length(t)
     % Generate real data
     %x(i) = C*sin((i-1) * 0.1);
-    x(i) = Amp(i) * (1 + normrnd(0, 0.01)) * sin(w * (1 + normrnd(0, 0.01)) * t(i) + phi * (1 + normrnd(0, 0.01)));
+    %x(i) = Amp(i) * (1 + normrnd(0, 0.01)) * sin(w * (1 + normrnd(0, 0.01)) * t(i) + phi * (1 + normrnd(0, 0.01)));
 
     % Noise measurements
     %Y(i) = x(i) + normrnd(0, sqrt(V));
-    Y = awgn(x, snr);
+    %Y = awgn(x, snr);
 
     if i > 1
         % Prediction
@@ -67,79 +73,13 @@ for i = 1:length(t)
 
         xpost = xpri + K * eps;
         Ppost = Ppri - K * S * K';
-
+        
+        Xpri(i) = xpri;
         X(i) = xpost;
     end
 end
 
 % Calculate absolute errors
 %error = (x(1:end - 1) - X(2:end));
-error = (x - X);
-abs_error = abs(error);
-max_error = max(abs_error);
-mean_error = mean(abs_error);
-mse = mean(error.^2);
-rmse = sqrt(mse);
 
-% Calculate MSE for time series
-mse_array = zeros(length(error));
-rmse_array = zeros(length(error));
-
-for n=1:length(error)
-    mse = mean(error(1:n).^2);
-    mse_array(n) = mse;
-    rmse_array(n) = sqrt(mse);
-end
-
-fprintf("Max error:  %f\n", max_error);
-fprintf("Mean error: %f\n", mean_error);
-fprintf("MSE:        %f\n", mse);
-fprintf("RMSE:       %f\n", rmse);
-
-fig_nn = figure('name', sprintf('KF Tracking'));
-tiledlayout(5, 1);
-
-% Plot input data
-nexttile;
-hold on;
-plot(t, x);
-plot(t, Y, 'x'); % Plot measurements
-title('Measurements');
-xlabel('Time');
-ylabel('Data');
-legend('Real data', 'Measurements');
-hold off;
-
-% Plot network output
-nexttile;
-hold on;
-plot(t, Y);
-plot(t, X, 'o');
-plot(t, x, 'x');
-title('Filter output');
-xlabel('Time');
-ylabel('Data');
-legend('Measurements', 'Filter output', 'Real data');
-hold off;
-
-% Plot absolute error
-nexttile;
-plot(t, abs_error);
-title(sprintf('Absolute error, maximum: %.2f, mean: %.2f', max_error, mean_error));
-xlabel('Time');
-ylabel('Absolute error');
-
-% Plot MSE
-nexttile;
-plot(t, mse_array);
-title(sprintf('Final MSE: %f', mse));
-xlabel('Time');
-ylabel('MSE');
-
-% Plot RMSE
-nexttile;
-plot(t, rmse_array);
-title(sprintf('Final RMSE: %f', rmse));
-xlabel('Time');
-ylabel('RMSE');
-
+plot_results("KF", t, x, Y, Xpri, false, 0);
