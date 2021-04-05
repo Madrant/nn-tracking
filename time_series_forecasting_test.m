@@ -44,20 +44,16 @@ sample_length = 3;
 result_length = 1;
 samples_div = 1;
 
-hs = 10;
-tf = ["trainlm"];
-loops = 1;
-
 % Plot options
 save_figure = 0;
 
 % Feedforward NN
-outputs = ts_ff_nn(t, xt, xn, sample_length, result_length, samples_div, hs, tf);
+outputs = ts_ff_nn(t, xt, xn, sample_length, result_length, samples_div, 10, 'trainlm');
 plot_results("FF NN", t, xt, xr, xn, outputs, save_figure, sample_length);
 
 % LSTM NN
 outputs = ts_lstm_nn(t, xt, xn, sample_length, result_length, samples_div);
-plot_results("FF NN", t, xt, xr, xn, outputs, save_figure, sample_length);
+plot_results("LSTM NN", t, xt, xr, xn, outputs, save_figure, sample_length);
 
 % Kalman filter
 outputs = ts_kf(t, xt, xn);
