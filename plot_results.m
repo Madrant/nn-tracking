@@ -39,6 +39,7 @@ function plot_results(name, t, xt, xr, xn, X, save_figure, t_skip)
     mse = mean(error.^2);
     rmse = sqrt(mse);
 
+    fprintf("%s\n", name);
     fprintf("Max error:  %f\n", max_error);
     fprintf("Mean error: %f\n", mean_error);
     fprintf("MSE:        %f\n", mse);

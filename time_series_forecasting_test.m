@@ -21,7 +21,7 @@ xt = A .* sin(w * t + phi);
 % Generate test data (real target position)
 w = 1 * pi;
 phi = 0;
-A = 1;%floor(t);
+A = floor(t);
 
 xr = A .* sin(w * t + phi);
 
@@ -58,3 +58,13 @@ plot_results("FF NN", t, xt, xr, xn, outputs, save_figure, sample_length);
 % Kalman filter
 outputs = ts_kf(t, xt, xn);
 plot_results("KF", t, xt, xr, xn, outputs, save_figure, 0);
+
+% Extrapolation
+outputs = ts_extrap(t, xr, xn, 'linear', 3);
+plot_results("Extrapolation: Linear Points: 3", t, xt, xr, xn, outputs, save_figure, 3);
+
+outputs = ts_extrap(t, xr, xn, 'spline', 3);
+plot_results("Extrapolation: Spline Points: 3", t, xt, xr, xn, outputs, save_figure, 3);
+
+outputs = ts_extrap(t, xr, xn, 'spline', 5);
+plot_results("Extrapolation: Spline Points: 5", t, xt, xr, xn, outputs, save_figure, 5);
