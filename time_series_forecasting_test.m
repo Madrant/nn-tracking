@@ -21,7 +21,7 @@ xt = normalize(xt, 'range');
 
 % Generate test data (real target position)
 r = 0.01;
-snr = 5;
+snr = 10;
 
 w = 1 * pi;
 phi = 0;
@@ -70,7 +70,7 @@ fprintf("Measurements RMSE:       %f\n", sqrt(mean(xr - xn).^2));
 % NN options
 sample_length = 3;
 result_length = 1;
-samples_div = 1;
+samples_div = 1.5;
 
 % Plot options
 save_figure = 0;
@@ -86,7 +86,7 @@ save_figure = 0;
 % plot_results("FF NN - Prediction", t, xt, xr, un_outputs, nn_outputs, save_figure, sample_length);
 
 % LSTM NN
-un_outputs = noise_lstm_nn(t, xr, xn, xn, sample_length, result_length);
+un_outputs = noise_lstm_nn(t, xr, xn, xn, sample_length, result_length, samples_div);
 plot_results("FF NN - Noise", t, xt, xr, xn, un_outputs, save_figure, sample_length);
 
 %outputs = ts_lstm_nn(t, xt, xn, sample_length, result_length, samples_div);
