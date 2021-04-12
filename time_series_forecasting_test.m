@@ -17,25 +17,34 @@ w = 1 * pi;
 phi = 0;
 A = floor(t);
 xt = A .* sin(w * t + phi);
+xt = normalize(xt, 'range');
 
 % Generate test data (real target position)
+r = 0.01;
+snr = 5;
+
 w = 1 * pi;
 phi = 0;
 A = floor(t);
 
-r = 0.01;
-snr = 1;
-
 xr1 = A .* sin(w * t + phi);
 xn1 = A .* (1 + normrnd(0, r)) .* sin(w * (1 + normrnd(0, r)) * t + phi*(1 + normrnd(0, r)));
+
+xr1 = normalize(xr1, 'range');
+xn1 = normalize(xn1, 'range');
+
 xn1 = awgn(xn1, snr, 'measured');
 
 w = 2 * pi;
 phi = 0;
 A = 2;
-xr2 = A .* sin(w * t + phi);
 
+xr2 = A .* sin(w * t + phi);
 xn2 = A .* (1 + normrnd(0, r)) .* sin(w * (1 + normrnd(0, r)) * t + phi*(1 + normrnd(0, r)));
+
+xr2 = normalize(xr2, 'range');
+xn2 = normalize(xn2, 'range');
+
 xn2 = awgn(xn2, snr, 'measured');
 
 % Plot input data:
@@ -65,7 +74,6 @@ samples_div = 1;
 
 % Plot options
 save_figure = 0;
-
 
 % Feedforward NN
 %un_outputs = noise_ff_nn(t, xr, xn, sample_length, result_length, samples_div, 7, 'trainlm');
