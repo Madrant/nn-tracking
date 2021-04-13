@@ -96,6 +96,9 @@ en_nn_lstm_ts = 1;
 en_nn_gru_ns = 1;
 en_nn_gru_ts = 1;
 
+for sample_length = [sample_length] %[1 3 5]
+for hiddenSize = [hiddenSize] %[4, 5, 7, 10]
+
 % Feedforward NN
 if en_nn_ff_ns
     name = sprintf("FF NN - Noise Hs %u Samples %u Div %.2f", hiddenSize, sample_length, samples_div);
@@ -134,6 +137,9 @@ if en_nn_gru_ts
     outputs = ts_lstm_nn(t, xt, xn, sample_length, result_length, samples_div, hiddenSize, maxEpochs, "gru");
     plot_results(name, t, xt, xr, xn, outputs, save_figure, sample_length);
 end
+
+end % hiddenSize
+end % sample_length
 
 % Kalman filter
 % kf_outputs = ts_kf(t, xt, xn);
