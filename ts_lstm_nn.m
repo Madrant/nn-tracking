@@ -2,7 +2,7 @@
 %
 % See also:
 % https://www.mathworks.com/help/deeplearning/ug/time-series-forecasting-using-deep-learning.html
-function net_outputs = ts_lstm_nn(t, x, xn, sample_length, result_length, samples_div, hiddenSizes)
+function net_outputs = ts_lstm_nn(t, x, xn, sample_length, result_length, samples_div, hiddenSizes, maxEpochs)
     % Print options
     fprintf("Samples: [%.2f:%.2f] Train sample div: %.2f\n", sample_length, result_length, samples_div);
 
@@ -24,7 +24,7 @@ function net_outputs = ts_lstm_nn(t, x, xn, sample_length, result_length, sample
 
     % Create neural network
     numHiddenUnits = hiddenSizes;
-    maxEpochs = 100;
+    maxEpochs = maxEpochs;
 
     layers = [ ...
         sequenceInputLayer(sample_length)

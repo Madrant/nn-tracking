@@ -1,4 +1,4 @@
-function net_outputs = noise_lstm_nn(t, x, xn_train, xn_test, sample_length, result_length, samples_div, hiddenSizes)
+function net_outputs = noise_lstm_nn(t, x, xn_train, xn_test, sample_length, result_length, samples_div, hiddenSizes, maxEpochs)
     % Print options
     fprintf("Samples: [%.2f:%.2f] Train sample div: %.2f\n", sample_length, result_length, samples_div);
 
@@ -30,16 +30,13 @@ function net_outputs = noise_lstm_nn(t, x, xn_train, xn_test, sample_length, res
         end
     end
 
-    disp(size(samples));
-    disp(size(results));
-    
     % Transpose test arrays to fit network inputs
     samples = samples.';
     results = results.';
 
         % Create neural network
     numHiddenUnits = hiddenSizes;
-    maxEpochs = 100;
+    maxEpochs = maxEpochs;
 
     layers = [ ...
         sequenceInputLayer(sample_length)

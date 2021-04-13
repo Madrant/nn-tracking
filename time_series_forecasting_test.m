@@ -82,27 +82,28 @@ sample_length = 3;
 result_length = 1;
 samples_div = 1.5;
 
-hiddenSize = 10;
+hiddenSize = 5;
+maxEpochs = 10;
 
 % Plot options
 save_figure = 0;
 
 % Feedforward NN
-name = sprintf("FF NN - Noise: Hs: %u Samples: %u", hiddenSize, sample_length);
-un_outputs = noise_ff_nn(t, xr, xn, sample_length, result_length, samples_div, hiddenSize, 'trainrp');
+name = sprintf("FF NN - Noise: Hs: %u Samples: %u Div: %.2f", hiddenSize, sample_length, samples_div);
+un_outputs = noise_ff_nn(t, xr, xn, sample_length, result_length, samples_div, hiddenSize, maxEpochs, 'trainrp');
 plot_results(name, t, xt, xr, xn, un_outputs, save_figure, sample_length);
 
-name = sprintf("FF NN - Prediction: Hs: %u Samples: %u", hiddenSize, sample_length);
-nn_outputs = ts_ff_nn(t, xt, xn, sample_length, result_length, samples_div, hiddenSize, 'trainrp');
+name = sprintf("FF NN - Prediction: Hs: %u Samples: %u Div: %.2f", hiddenSize, sample_length, samples_div);
+nn_outputs = ts_ff_nn(t, xt, xn, sample_length, result_length, samples_div, hiddenSize, maxEpochs, 'trainrp');
 plot_results(name, t, xt, xr, xn, nn_outputs, save_figure, sample_length);
 
 % LSTM NN
-name = sprintf("LSTM NN - Noise: Hs: %u Samples: %u", hiddenSize, sample_length);
-un_outputs = noise_lstm_nn(t, xr, xn, xn, sample_length, result_length, samples_div, hiddenSize);
+name = sprintf("LSTM NN - Noise: Hs: %u Samples: %u Div: %.2f", hiddenSize, sample_length, samples_div);
+un_outputs = noise_lstm_nn(t, xr, xn, xn, sample_length, result_length, samples_div, hiddenSize, maxEpochs);
 plot_results(name, t, xt, xr, xn, un_outputs, save_figure, sample_length);
 
-name = sprintf("LSTM NN - Prediction: Hs: %u Samples: %u", hiddenSize, sample_length);
-outputs = ts_lstm_nn(t, xt, xn, sample_length, result_length, samples_div, hiddenSize);
+name = sprintf("LSTM NN - Prediction: Hs: %u Samples: %u Div: %.2f", hiddenSize, sample_length, samples_div);
+outputs = ts_lstm_nn(t, xt, xn, sample_length, result_length, samples_div, hiddenSize, maxEpochs);
 plot_results(name, t, xt, xr, xn, outputs, save_figure, sample_length);
 
 % Kalman filter

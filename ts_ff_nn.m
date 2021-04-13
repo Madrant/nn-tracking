@@ -1,4 +1,4 @@
-function net_outputs = ff_nn(t, x, xn, sample_length, result_length, samples_div, hiddenSizes, trainFcn)
+function net_outputs = ff_nn(t, x, xn, sample_length, result_length, samples_div, hiddenSizes, maxEpochs, trainFcn)
     % Print options
     fprintf("Samples: [%.2f:%.2f] Train sample div: %.2f\n", sample_length, result_length, samples_div);
     fprintf("Network: Hidden: %f Train: '%s'\n", hiddenSizes, trainFcn);
