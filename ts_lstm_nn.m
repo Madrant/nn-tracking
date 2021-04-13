@@ -2,10 +2,13 @@
 %
 % See also:
 % https://www.mathworks.com/help/deeplearning/ug/time-series-forecasting-using-deep-learning.html
-function net_outputs = ts_lstm_nn(t, x, xn, sample_length, result_length, samples_div, hiddenSizes, maxEpochs)
+function net_outputs = ts_lstm_nn(t, x, xn, sample_length, result_length, samples_div, hiddenSizes, maxEpochs, hiddenType)
     % Print options
     fprintf("Samples: [%.2f:%.2f] Train sample div: %.2f\n", sample_length, result_length, samples_div);
+    fprintf("Network: Hidden: %u Epochs: %u Type: '%s'\n", hiddenSizes, maxEpochs, hiddenType);
 
+    assert(hiddenType == "lstm" || hiddenType == "gru");
+    
     % Prepare train data set
     samples_num = length(x) - (sample_length + result_length - 1);
     train_samples_num = round(length(x) / samples_div) - (sample_length + result_length - 1);
@@ -26,9 +29,17 @@ function net_outputs = ts_lstm_nn(t, x, xn, sample_length, result_length, sample
     numHiddenUnits = hiddenSizes;
     maxEpochs = maxEpochs;
 
+    % Select hidden layer type
+    if hiddenType == "lstm"
+        mainLayer = lstmLayer(numHiddenUnits);
+    end
+    if hiddenType == "gru"
+        mainLayer = gruLayer(numHiddenUnits);
+    end
+
     layers = [ ...
         sequenceInputLayer(sample_length)
-        lstmLayer(numHiddenUnits, 'OutputMode', 'sequence') % sequence, last
+        mainLayer
         fullyConnectedLayer(1)
         regressionLayer
     ];

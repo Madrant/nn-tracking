@@ -1,6 +1,9 @@
-function net_outputs = noise_lstm_nn(t, x, xn_train, xn_test, sample_length, result_length, samples_div, hiddenSizes, maxEpochs)
+function net_outputs = noise_lstm_nn(t, x, xn_train, xn_test, sample_length, result_length, samples_div, hiddenSizes, maxEpochs, hiddenType)
     % Print options
     fprintf("Samples: [%.2f:%.2f] Train sample div: %.2f\n", sample_length, result_length, samples_div);
+    fprintf("Network: Hidden: %u Epochs: %u Type: '%s'\n", hiddenSizes, maxEpochs, hiddenType);
+
+    assert(hiddenType == "lstm" || hiddenType == "gru");
 
     % Prepare train data set
     samples_num = length(x) - (sample_length + result_length - 1);
@@ -34,16 +37,21 @@ function net_outputs = noise_lstm_nn(t, x, xn_train, xn_test, sample_length, res
     samples = samples.';
     results = results.';
 
-        % Create neural network
+    % Create neural network
     numHiddenUnits = hiddenSizes;
     maxEpochs = maxEpochs;
 
+    % Select hidden layer type
+    if hiddenType == "lstm"
+        mainLayer = lstmLayer(numHiddenUnits);
+    end
+    if hiddenType == "gru"
+        mainLayer = gruLayer(numHiddenUnits);
+    end
+
     layers = [ ...
         sequenceInputLayer(sample_length)
-        gruLayer(numHiddenUnits)
-        %lstmLayer(numHiddenUnits)
-        %lstmLayer(numHiddenUnits, 'OutputMode', 'sequence') % sequence, last
-        %bilstmLayer(numHiddenUnits)
+        mainLayer
         fullyConnectedLayer(1)
         regressionLayer
     ];
