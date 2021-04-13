@@ -1,6 +1,6 @@
 function net_outputs = noise_lstm_nn(t, x, xn_train, xn_test, sample_length, result_length, samples_div, hiddenSizes)
     % Print options
-    fprintf("Samples: [%u:%u]\n", sample_length, result_length);
+    fprintf("Samples: [%.2f:%.2f] Train sample div: %.2f\n", sample_length, result_length, samples_div);
 
     % Prepare train data set
     samples_num = length(x) - (sample_length + result_length - 1);

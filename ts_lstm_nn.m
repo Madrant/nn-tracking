@@ -2,39 +2,30 @@
 %
 % See also:
 % https://www.mathworks.com/help/deeplearning/ug/time-series-forecasting-using-deep-learning.html
-function net_outputs = ts_lstm_nn(t, x, xn, sample_length, result_length, samples_div)
+function net_outputs = ts_lstm_nn(t, x, xn, sample_length, result_length, samples_div, hiddenSizes)
     % Print options
-    fprintf("Samples: [%f:%f] Train sample div: %f\n", sample_length, result_length, samples_div);
-
-    % Initial weights are random unless we initialize random number generator
-    % rng(rnd_seed, 'combRecursive');
+    fprintf("Samples: [%.2f:%.2f] Train sample div: %.2f\n", sample_length, result_length, samples_div);
 
     % Prepare train data set
-    samples_num = round(length(x) / samples_div) - (sample_length + result_length - 1);
+    samples_num = length(x) - (sample_length + result_length - 1);
+    train_samples_num = round(length(x) / samples_div) - (sample_length + result_length - 1);
 
-    samples = zeros(samples_num, sample_length);
-    results = zeros(samples_num, result_length);
+    samples = zeros(train_samples_num, sample_length);
+    results = zeros(train_samples_num, result_length);
 
-    for n = 1 : samples_num
+    for n = 1 : train_samples_num
         samples(n,:) = x(n:n + sample_length - 1);
         results(n,:) = x(n + sample_length:n + sample_length + result_length - 1);
     end
-
-    % Plot training sample length
-    % plot(t(1:n), x(1:n));
-
-    % Print generated test data
-    % fprintf("samples: "); disp(samples);
-    % fprintf("results: "); disp(results);
 
     % Transpose test arrays to fit network inputs
     samples = samples.';
     results = results.';
 
     % Create neural network
-    numHiddenUnits = 10;
+    numHiddenUnits = hiddenSizes;
     maxEpochs = 100;
-    
+
     layers = [ ...
         sequenceInputLayer(sample_length)
         lstmLayer(numHiddenUnits, 'OutputMode', 'sequence') % sequence, last
@@ -63,13 +54,11 @@ function net_outputs = ts_lstm_nn(t, x, xn, sample_length, result_length, sample
     % Test network
     test_step = 1;
 
-    samples_num = round(length(x) / test_step) - (sample_length + result_length - 1);
-
     real_data = zeros(samples_num, result_length);
     measurements = zeros(samples_num, result_length);
     net_outputs = zeros(samples_num, result_length);
 
-    for n = 1 : test_step: length(xn) - (sample_length + result_length - 1)
+    for n = 1 : test_step: samples_num
         test_sample = xn(n:n + sample_length - 1);
 
         real = x(n + sample_length:n + sample_length + result_length - 1);

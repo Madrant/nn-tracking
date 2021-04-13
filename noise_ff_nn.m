@@ -1,19 +1,20 @@
 function net_outputs = noise_ff_nn(t, x, xn, sample_length, result_length, samples_div, hiddenSizes, trainFcn)
     % Print options
-    fprintf("Samples: [%u:%u] Train sample div: %u\n", sample_length, result_length, samples_div);
+    fprintf("Samples: [%.2f:%.2f] Train sample div: %.2f\n", sample_length, result_length, samples_div);
     fprintf("Network: Hidden: %u Train: '%s'\n", hiddenSizes, trainFcn);
 
     % Create neural network
     net = feedforwardnet(hiddenSizes, trainFcn);
 
     % Prepare train data set
-    samples_num = round(length(x) / samples_div) - (sample_length + result_length - 1);
+    samples_num = length(x) - (sample_length + result_length - 1);
+    train_samples_num = round(length(x) / samples_div) - (sample_length + result_length - 1);
 
     snr_values = [];
     loops = length(snr_values) + 1;
 
-    samples = zeros(samples_num * loops, sample_length);
-    results = zeros(samples_num * loops, result_length);
+    samples = zeros(train_samples_num * loops, sample_length);
+    results = zeros(train_samples_num * loops, result_length);
 
     for loop = 1: loops
         if loop > length(snr_values)
@@ -23,9 +24,9 @@ function net_outputs = noise_ff_nn(t, x, xn, sample_length, result_length, sampl
             xnt = awgn(x, snr, 'measured');
         end
 
-        for n = 1 : samples_num
-            samples(n + (samples_num * (loop - 1)),:) = xnt(n: n + sample_length - 1);
-            results(n + (samples_num * (loop - 1)),:) = x(n + sample_length - 1:  n + sample_length + result_length - 2);
+        for n = 1 : train_samples_num
+            samples(n + (train_samples_num * (loop - 1)),:) = xnt(n: n + sample_length - 1);
+            results(n + (train_samples_num * (loop - 1)),:) = x(n + sample_length - 1:  n + sample_length + result_length - 2);
         end
     end
 
@@ -47,7 +48,7 @@ function net_outputs = noise_ff_nn(t, x, xn, sample_length, result_length, sampl
     measurements = zeros(samples_num, sample_length);
     net_outputs = zeros(samples_num, result_length);
 
-    for n = 1 : test_step: samples_num - sample_length
+    for n = 1 : test_step: samples_num
         real = x(n: n + sample_length - 1);
         measurement = xn(n: n + sample_length - 1);
 

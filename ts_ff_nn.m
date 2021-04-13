@@ -1,6 +1,6 @@
 function net_outputs = ff_nn(t, x, xn, sample_length, result_length, samples_div, hiddenSizes, trainFcn)
     % Print options
-    fprintf("Samples: [%f:%f] Train sample div: %f\n", sample_length, result_length, samples_div);
+    fprintf("Samples: [%.2f:%.2f] Train sample div: %.2f\n", sample_length, result_length, samples_div);
     fprintf("Network: Hidden: %f Train: '%s'\n", hiddenSizes, trainFcn);
 
     % Initial weights are random unless we initialize random number generator
@@ -10,12 +10,13 @@ function net_outputs = ff_nn(t, x, xn, sample_length, result_length, samples_div
     net = feedforwardnet(hiddenSizes, trainFcn);
 
     % Prepare train data set
-    samples_num = round(length(x) / samples_div) - (sample_length + result_length - 1);
+    samples_num = length(x) - (sample_length + result_length - 1);
+    train_samples_num = round(length(x) / samples_div) - (sample_length + result_length - 1);
 
-    samples = zeros(samples_num, sample_length);
-    results = zeros(samples_num, result_length);
+    samples = zeros(train_samples_num, sample_length);
+    results = zeros(train_samples_num, result_length);
 
-    for n = 1 : samples_num
+    for n = 1 : train_samples_num
         samples(n,:) = x(n:n + sample_length - 1);
         results(n,:) = x(n + sample_length:n + sample_length + result_length - 1);
     end
@@ -41,13 +42,11 @@ function net_outputs = ff_nn(t, x, xn, sample_length, result_length, samples_div
     % Test network
     test_step = 1;
 
-    samples_num = round(length(x) / test_step) - (sample_length + result_length - 1);
-
     real_data = zeros(samples_num, result_length);
     measurements = zeros(samples_num, result_length);
     net_outputs = zeros(samples_num, result_length);
 
-    for n = 1 : test_step: length(xn) - (sample_length + result_length - 1)
+    for n = 1 : test_step: samples_num
         test_sample = xn(n:n + sample_length - 1);
 
         real = x(n + sample_length:n + sample_length + result_length - 1);
@@ -58,17 +57,6 @@ function net_outputs = ff_nn(t, x, xn, sample_length, result_length, samples_div
         real_data(n,:) = real;
         measurements(n,:) = measurement;
         net_outputs(n,:) = net_output;
-
-        % fprintf("test_sample: "); disp(test_sample);
-        % fprintf("net_output: "); disp(net_output);
-        % fprintf("measurement: "); disp(measurement);
-
-        % Plot network result
-        % sample_time = t(n):time_step:t(n + length(test_sample) - 1);
-        % result_time = t(n + sample_length):time_step:t(n + sample_length + length(net_output) - 1);
-
-        % plot(sample_time, test_sample, 'x'); waitforbuttonpress;
-        % plot(result_time, net_output, 'o'); waitforbuttonpress;
     end
 
     % Assess the performance of the trained network.

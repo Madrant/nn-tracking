@@ -80,7 +80,7 @@ fprintf("Measurements RMSE:       %f\n", sqrt(mean(xr - xn).^2));
 % NN options
 sample_length = 3;
 result_length = 1;
-samples_div = 1;
+samples_div = 1.5;
 
 hiddenSize = 10;
 
@@ -88,21 +88,22 @@ hiddenSize = 10;
 save_figure = 0;
 
 % Feedforward NN
-%un_outputs = noise_ff_nn(t, xr, xn, sample_length, result_length, samples_div, 7, 'trainrp');
-%plot_results("FF NN - Noise", t, xt, xr, xn, un_outputs, save_figure, sample_length);
+name = sprintf("FF NN - Noise: Hs: %u Samples: %u", hiddenSize, sample_length);
+un_outputs = noise_ff_nn(t, xr, xn, sample_length, result_length, samples_div, hiddenSize, 'trainrp');
+plot_results(name, t, xt, xr, xn, un_outputs, save_figure, sample_length);
 
-% sample_length = 5;
-% result_length = 1;
-
+name = sprintf("FF NN - Prediction: Hs: %u Samples: %u", hiddenSize, sample_length);
 nn_outputs = ts_ff_nn(t, xt, xn, sample_length, result_length, samples_div, hiddenSize, 'trainrp');
-plot_results("FF NN - Prediction", t, xt, xr, xn, nn_outputs, save_figure, sample_length);
+plot_results(name, t, xt, xr, xn, nn_outputs, save_figure, sample_length);
 
 % LSTM NN
-%un_outputs = noise_lstm_nn(t, xr, xn, xn, sample_length, result_length, samples_div);
-%plot_results("FF NN - Noise", t, xt, xr, xn, un_outputs, save_figure, sample_length);
+name = sprintf("LSTM NN - Noise: Hs: %u Samples: %u", hiddenSize, sample_length);
+un_outputs = noise_lstm_nn(t, xr, xn, xn, sample_length, result_length, samples_div, hiddenSize);
+plot_results(name, t, xt, xr, xn, un_outputs, save_figure, sample_length);
 
-%outputs = ts_lstm_nn(t, xt, xn, sample_length, result_length, samples_div);
-%plot_results("LSTM NN", t, xt, xr, xn, outputs, save_figure, sample_length);
+name = sprintf("LSTM NN - Prediction: Hs: %u Samples: %u", hiddenSize, sample_length);
+outputs = ts_lstm_nn(t, xt, xn, sample_length, result_length, samples_div, hiddenSize);
+plot_results(name, t, xt, xr, xn, outputs, save_figure, sample_length);
 
 % Kalman filter
 % kf_outputs = ts_kf(t, xt, xn);
