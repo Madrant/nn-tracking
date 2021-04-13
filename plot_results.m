@@ -3,6 +3,12 @@ function plot_results(name, t, xt, xr, xn, X, save_figure, t_skip)
     ts = t(t_skip + 1:length(t));
     xrs = xr(t_skip + 1: length(xr));
 
+    if length(ts) ~= length(X)
+        fprintf("Filter output array size incorrect: %u must be: %u\n", length(X), length(ts));
+        fprintf("ts: "); disp(size(ts));
+        fprintf("X : "); disp(size(X));
+    end
+
     assert(length(ts) == length(X));
 
     fig_nn = figure('name', name);
