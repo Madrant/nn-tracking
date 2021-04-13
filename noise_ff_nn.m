@@ -36,7 +36,7 @@ function net_outputs = noise_ff_nn(t, x, xn, sample_length, result_length, sampl
 
     % Configure network inputs:
     net = configure(net, samples, results);
-    fprintf("net.inputs: %d\n", net.inputs{1}.size);
+    %fprintf("net.inputs: %d\n", net.inputs{1}.size);
 
     % Train network
     [net, tr] = train(net, samples, results);
