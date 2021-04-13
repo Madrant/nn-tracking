@@ -3,6 +3,8 @@ function plot_results(name, t, xt, xr, xn, X, save_figure, t_skip)
     ts = t(t_skip + 1:length(t));
     xrs = xr(t_skip + 1: length(xr));
 
+    assert(length(ts) == length(X));
+
     fig_nn = figure('name', name);
     tiledlayout(5, 1);
 
