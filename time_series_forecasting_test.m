@@ -4,7 +4,7 @@ clc;       % Clear command window
 
 % Model options
 start_time = 0;
-time_step = 0.1;
+time_step = 0.05;
 end_time = 10;
 
 % Initialize random number generator
@@ -13,7 +13,7 @@ rng(12345, 'combRecursive');
 % Generate training data (filter model)
 t = start_time:time_step:end_time;
 
-w = 1 * pi;
+w = 2 * pi;
 phi = 0;
 A = floor(t);
 xt = A .* sin(w * t + phi);
@@ -21,38 +21,48 @@ xt = normalize(xt, 'range');
 
 % Generate test data (real target position)
 r = 0.01;
-snr = 10;
+snr = 5;
 
-w = 1 * pi;
+% Data set 1
+w = 2 * pi;
 phi = 0;
 A = floor(t);
 
 xr1 = A .* sin(w * t + phi);
 xn1 = A .* (1 + normrnd(0, r)) .* sin(w * (1 + normrnd(0, r)) * t + phi*(1 + normrnd(0, r)));
+xn1 = awgn(xn1, snr, 'measured');
 
 xr1 = normalize(xr1, 'range');
 xn1 = normalize(xn1, 'range');
 
-xn1 = awgn(xn1, snr, 'measured');
-
+% Data set 2
 w = 2 * pi;
 phi = 0;
 A = 2;
 
 xr2 = A .* sin(w * t + phi);
 xn2 = A .* (1 + normrnd(0, r)) .* sin(w * (1 + normrnd(0, r)) * t + phi*(1 + normrnd(0, r)));
+xn2 = awgn(xn2, snr, 'measured');
 
 xr2 = normalize(xr2, 'range');
 xn2 = normalize(xn2, 'range');
 
-xn2 = awgn(xn2, snr, 'measured');
-
 % Plot input data:
 fig_input = figure('Name', "Input data");
+tiledlayout(2, 1);
+
+nexttile;
 hold on;
-plot(t, xr1, '-d');
+plot(t, xr1, '-');
 plot(t, xn1, '-x');
 legend("Data 1", "Measurements 1");
+hold off;
+
+nexttile;
+hold on;
+plot(t, xr2, '-d');
+plot(t, xn2, '-x');
+legend("Data 2", "Measurements 2");
 hold off;
 
 % Select input data
@@ -70,24 +80,26 @@ fprintf("Measurements RMSE:       %f\n", sqrt(mean(xr - xn).^2));
 % NN options
 sample_length = 3;
 result_length = 1;
-samples_div = 1.5;
+samples_div = 1;
+
+hiddenSize = 10;
 
 % Plot options
 save_figure = 0;
 
 % Feedforward NN
-%un_outputs = noise_ff_nn(t, xr, xn, sample_length, result_length, samples_div, 7, 'trainlm');
+%un_outputs = noise_ff_nn(t, xr, xn, sample_length, result_length, samples_div, 7, 'trainrp');
 %plot_results("FF NN - Noise", t, xt, xr, xn, un_outputs, save_figure, sample_length);
 
 % sample_length = 5;
 % result_length = 1;
 
-% nn_outputs = ts_ff_nn(t, xt, un_outputs, sample_length, result_length, samples_div, 7, 'trainrp');
-% plot_results("FF NN - Prediction", t, xt, xr, un_outputs, nn_outputs, save_figure, sample_length);
+nn_outputs = ts_ff_nn(t, xt, xn, sample_length, result_length, samples_div, hiddenSize, 'trainrp');
+plot_results("FF NN - Prediction", t, xt, xr, xn, nn_outputs, save_figure, sample_length);
 
 % LSTM NN
-un_outputs = noise_lstm_nn(t, xr, xn, xn, sample_length, result_length, samples_div);
-plot_results("FF NN - Noise", t, xt, xr, xn, un_outputs, save_figure, sample_length);
+%un_outputs = noise_lstm_nn(t, xr, xn, xn, sample_length, result_length, samples_div);
+%plot_results("FF NN - Noise", t, xt, xr, xn, un_outputs, save_figure, sample_length);
 
 %outputs = ts_lstm_nn(t, xt, xn, sample_length, result_length, samples_div);
 %plot_results("LSTM NN", t, xt, xr, xn, outputs, save_figure, sample_length);
