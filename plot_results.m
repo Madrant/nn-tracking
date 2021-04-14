@@ -24,6 +24,7 @@ function plot_results(name, t, xt, xr, xn, X, save_figure, t_skip)
     xlabel('Time');
     ylabel('Data');
     legend('Model', 'Real data', 'Measurements');
+    ylim([0 1]);
     hold off;
 
     % Plot network output
@@ -36,6 +37,7 @@ function plot_results(name, t, xt, xr, xn, X, save_figure, t_skip)
     xlabel('Time');
     ylabel('Data');
     legend('Real data', 'Measurements', 'Filter output');
+    ylim([0 1]);
     hold off;
 
     % Calculate error for each time step
@@ -59,6 +61,7 @@ function plot_results(name, t, xt, xr, xn, X, save_figure, t_skip)
     title(sprintf('Absolute error, maximum: %.2f, mean: %.2f', max_error, mean_error));
     xlabel('Time');
     ylabel('Absolute error');
+    ylim([0 1]);
 
     % Plot MSE
     nexttile;
