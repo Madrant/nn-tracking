@@ -7,7 +7,7 @@ function outputs = ts_kf(t, x, Y)
     % Covariance matrices
     % Processing noise
     W = 0.01;
-    Q = 0.1; % A degree of trust to measurements
+    Q = 0.5; % A degree of trust to measurements
 
     % Measurement noise
     V = 1;
@@ -63,6 +63,6 @@ function outputs = ts_kf(t, x, Y)
         end
     end
 
-    outputs = Xpri;
+    outputs = X;
 end
 
