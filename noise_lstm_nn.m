@@ -60,7 +60,7 @@ function net_outputs = noise_lstm_nn(t, x, xn_train, xn_test, sample_length, res
         'MaxEpochs', maxEpochs, ...
         'GradientThreshold', 1, ...
         'Verbose', 0, ...
-        'Plots', 'training-progress', ...
+        'Plots', 'none', ... % 'training-progress', 'none'
         'InitialLearnRate',0.005, ...
         'LearnRateSchedule','piecewise', ...
         'LearnRateDropPeriod',125, ...
@@ -87,7 +87,7 @@ function net_outputs = noise_lstm_nn(t, x, xn_train, xn_test, sample_length, res
     measurements = zeros(samples_num, sample_length);
     net_outputs = zeros(samples_num, result_length);
 
-    for n = 1 : test_step: samples_num
+    for n = 1 : test_step: samples_num + 1
         real = x(n: n + sample_length - 1);
         measurement = xn_test(n: n + sample_length - 1);
 
@@ -103,9 +103,15 @@ function net_outputs = noise_lstm_nn(t, x, xn_train, xn_test, sample_length, res
             continue;
         end
 
+        %disp(measurement);
+        %disp(net_output);
+
         net_outputs(n - 1,:) = net_output(1);
     end
 
+    %fprintf("xn_test: "); disp(size(xn_test));
+    %fprintf("outputs: "); disp(size(net_outputs));
+    
     % Convert column to row
     net_outputs = net_outputs.';
 end
