@@ -4,7 +4,7 @@ clc;       % Clear command window
 
 % Model options
 start_time = 0;
-time_step = 0.05;
+time_step = 0.01;
 end_time = 10;
 
 % Initialize random number generator
@@ -16,6 +16,7 @@ t = start_time:time_step:end_time;
 w = 2 * pi;
 phi = 0;
 A = floor(t);
+
 xt = A .* sin(w * t + phi);
 xt = normalize(xt, 'range');
 
@@ -23,7 +24,7 @@ xt = normalize(xt, 'range');
 r = 0.01;
 snr = 5;
 
-% Data set 1
+% Data set 1 (xr1, xr2)
 w = 2 * pi;
 phi = 0;
 A = floor(t);
@@ -32,20 +33,22 @@ xr1 = A .* sin(w * t + phi);
 xn1 = A .* (1 + normrnd(0, r)) .* sin(w * (1 + normrnd(0, r)) * t + phi*(1 + normrnd(0, r)));
 xn1 = awgn(xn1, snr, 'measured');
 
-xr1 = normalize(xr1, 'range');
-xn1 = normalize(xn1, 'range');
+rescale_array = rescale([xr1; xn1], 0, 1);
+xr1 = rescale_array(1,:);
+xn1 = rescale_array(2,:);
 
-% Data set 2
-w = 2 * pi;
+% Data set 2 (xr2, xn2)
+w = 1 * pi;
 phi = 0;
-A = 2;
+A = 1;
 
 xr2 = A .* sin(w * t + phi);
 xn2 = A .* (1 + normrnd(0, r)) .* sin(w * (1 + normrnd(0, r)) * t + phi*(1 + normrnd(0, r)));
 xn2 = awgn(xn2, snr, 'measured');
 
-xr2 = normalize(xr2, 'range');
-xn2 = normalize(xn2, 'range');
+rescale_array = rescale([xr2; xn2], 0, 1);
+xr2 = rescale_array(1,:);
+xn2 = rescale_array(2,:);
 
 % Plot input data:
 fig_input = figure('Name', "Input data");
@@ -60,7 +63,7 @@ hold off;
 
 nexttile;
 hold on;
-plot(t, xr2, '-d');
+plot(t, xr2, '-');
 plot(t, xn2, '-x');
 legend("Data 2", "Measurements 2");
 hold off;
@@ -138,7 +141,7 @@ if en_nn_gru_ns
     name = sprintf("GRU NN - Noise Hs %u Samples %u Div %.2f", hiddenSize, sample_length, samples_div);
     un_outputs = noise_lstm_nn(t, xr, xn, xn, sample_length, result_length, samples_div, hiddenSize, maxEpochs, "gru");
     plot_results(name, t, xt, xr, xn, un_outputs, save_figure, sample_length);
-    
+
     res_nn_gru_ns = un_outputs;
 end
 
@@ -154,8 +157,8 @@ end % hiddenSize
 end % sample_length
 
 % Kalman filter
-% kf_outputs = ts_kf(t, xt, xn);
-% plot_results("KF", t, xt, xr, xn, kf_outputs, save_figure, 0);
+kf_outputs = ts_kf(t, xt, xn);
+plot_results("KF", t, xt, xr, xn, kf_outputs, save_figure, 0);
 
 % Extrapolation
 % outputs = ts_extrap(t, xr, xn, 'linear', 3);
@@ -170,14 +173,16 @@ end % sample_length
 % Compare filter outputs
 
 % Plot input data:
-fig_outputs = figure('Name', "Filter outputs");
-hold on;
-plot(t, xr, '-');
-plot(t, xn, '-x');
+if false
+    fig_outputs = figure('Name', "Filter outputs");
+    hold on;
+    plot(t, xr, '-');
+    plot(t, xn, '-x');
 
-if en_nn_ff_ts,   plot(t(sample_length + 1:length(t)), res_nn_ff_ts), end
-if en_nn_lstm_ts, plot(t(sample_length + 1:length(t)), res_nn_lstm_ts), end
-if en_nn_gru_ts,  plot(t(sample_length + 1:length(t)), res_nn_gru_ts), end
+    if en_nn_ff_ts,   plot(t(sample_length + 1:length(t)), res_nn_ff_ts), end
+    if en_nn_lstm_ts, plot(t(sample_length + 1:length(t)), res_nn_lstm_ts), end
+    if en_nn_gru_ts,  plot(t(sample_length + 1:length(t)), res_nn_gru_ts), end
 
-legend("Data", "Measurements", "FF NN", "LSTM", "GRU");
-hold off;
+    legend("Data", "Measurements", "FF NN", "LSTM", "GRU");
+    hold off;
+end
