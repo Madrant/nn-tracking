@@ -47,8 +47,8 @@ function net_outputs = ts_lstm_nn(t, x, xn, sample_length, result_length, sample
     options = trainingOptions('sgdm', ... % sgdm, rmsprop, adam
         'MaxEpochs', maxEpochs, ...
         'GradientThreshold', 1, ...
-        'Verbose', 0, ...
-        'Plots', 'training-progress');
+        'Plots', 'none', ... % 'training-progress', 'none'
+        'Verbose', 0);
 
     % Additional training options:
     %
