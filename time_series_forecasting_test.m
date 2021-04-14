@@ -72,10 +72,11 @@ hold off;
 xr = xr1;
 xn = xn1;
 
-xr_train = xr;
-xn_train = xn;
-xr_test = xr;
-xn_test = xn;
+xr_train = xr1;
+xn_train = xn1;
+
+xr_test = xr1;
+xn_test = xn1;
 
 fprintf("Time: [%f:%f:%f]\n", start_time, time_step, end_time);
 fprintf("SNR: %f\n", snr);
@@ -97,12 +98,12 @@ maxEpochs = 100;
 save_figure = 0;
 
 % Enable/disable some various networks in test
-en_nn_ff_ns = 1;
-en_nn_ff_ts = 1;
-en_nn_lstm_ns = 1;
-en_nn_lstm_ts = 1;
+en_nn_ff_ns = 0;
+en_nn_ff_ts = 0;
+en_nn_lstm_ns = 0;
+en_nn_lstm_ts = 0;
 en_nn_gru_ns = 1;
-en_nn_gru_ts = 1;
+en_nn_gru_ts = 0;
 
 for sample_length = [sample_length] %[1 3 5]
 for hiddenSize = [hiddenSize] %[4, 5, 7, 10]
@@ -110,7 +111,7 @@ for hiddenSize = [hiddenSize] %[4, 5, 7, 10]
 % Feedforward NN
 if en_nn_ff_ns
     name = sprintf("FF NN - Noise Hs %u Samples %u Div %.2f", hiddenSize, sample_length, samples_div);
-    nn_outputs = noise_ff_nn(t, xr_train, xn_test, sample_length, result_length, samples_div, hiddenSize, maxEpochs, 'trainrp');
+    nn_outputs = noise_ff_nn(t, xr_train, xn_train, xn_test, sample_length, result_length, samples_div, hiddenSize, maxEpochs, 'trainrp');
     plot_results(name, t, xr_train, xr_test, xn_test, nn_outputs, save_figure, sample_length);
 
     res_nn_ff_ns = nn_outputs;

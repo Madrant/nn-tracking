@@ -1,4 +1,4 @@
-function net_outputs = noise_ff_nn(t, x, xn, sample_length, result_length, samples_div, hiddenSizes, maxEpochs, trainFcn)
+function net_outputs = noise_ff_nn(t, x, xn_train, xn_test, sample_length, result_length, samples_div, hiddenSizes, maxEpochs, trainFcn)
     % Print options
     fprintf("Samples: [%.2f:%.2f] Train sample div: %.2f\n", sample_length, result_length, samples_div);
     fprintf("Network: Hidden: %u Train: '%s'\n", hiddenSizes, trainFcn);
@@ -18,7 +18,7 @@ function net_outputs = noise_ff_nn(t, x, xn, sample_length, result_length, sampl
 
     for loop = 1: loops
         if loop > length(snr_values)
-            xnt = xn;
+            xnt = xn_train;
         else
             snr = snr_values(loop);
             xnt = awgn(x, snr, 'measured');
@@ -50,7 +50,7 @@ function net_outputs = noise_ff_nn(t, x, xn, sample_length, result_length, sampl
 
     for n = 1 : test_step: samples_num
         real = x(n: n + sample_length - 1);
-        measurement = xn(n: n + sample_length - 1);
+        measurement = xn_test(n: n + sample_length - 1);
 
         net_output = net(measurement.').';
 
