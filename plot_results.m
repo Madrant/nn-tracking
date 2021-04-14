@@ -12,7 +12,7 @@ function plot_results(name, t, xt, xr, xn, X, save_figure, t_skip)
     assert(length(ts) == length(X));
 
     fig_nn = figure('name', name);
-    tiledlayout(5, 1);
+    tiledlayout(4, 1);
 
     % Plot input data
     nexttile;
@@ -63,19 +63,15 @@ function plot_results(name, t, xt, xr, xn, X, save_figure, t_skip)
     ylabel('Absolute error');
     ylim([0 1]);
 
-    % Plot MSE
+    % Plot MSE and RMSE on a single plot
     nexttile;
+    hold on;
     plot(ts, mse_array);
-    title(sprintf('Final MSE: %f', mse));
-    xlabel('Time');
-    ylabel('MSE');
-
-    % Plot RMSE
-    nexttile;
     plot(ts, rmse_array);
-    title(sprintf('Final RMSE: %f', rmse));
+    title(sprintf('Final MSE: %f RMSE: %f', mse, rmse));
     xlabel('Time');
-    ylabel('RMSE');
+    ylabel('MSE/RMSE');
+    hold off;
 
     % Save plot image
     if save_figure
