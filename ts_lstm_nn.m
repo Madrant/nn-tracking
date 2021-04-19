@@ -73,13 +73,13 @@ function net_outputs = ts_lstm_nn(t, x, xn, sample_length, result_length, sample
         test_sample = xn(n:n + sample_length - 1);
 
         real = x(n + sample_length:n + sample_length + result_length - 1);
-        measurement = xn(n + sample_length:n + sample_length + result_length - 1);
+        %measurement = xn(n + sample_length:n + sample_length + result_length - 1);
 
         %net_output = predict(net, test_sample.').';
         [net, net_output] = predictAndUpdateState(net, test_sample.');
 
         real_data(n,:) = real;
-        measurements(n,:) = measurement;
+        %measurements(n,:) = measurement;
         net_outputs(n,:) = net_output.';
     end
 
