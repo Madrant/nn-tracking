@@ -35,11 +35,13 @@ function [samples, results] = prepare_train_data(xr, xn, sample_length, result_l
 
     % Calculate a number of elements in output array
     if sample_length >= result_length
-        train_samples_num = round(length(xr) - predict_offset - (sample_length - 1)) / samples_div;
+        train_samples_num = round((length(xr) - predict_offset - (sample_length - 1)) / samples_div);
     else
-        train_samples_num = round(length(xr) - predict_offset - (result_length - 1)) / samples_div;
+        train_samples_num = round((length(xr) - predict_offset - (result_length - 1)) / samples_div);
     end
 
+    fprintf("train_samples_num: %u\n", train_samples_num);
+    
     loops = length(snr_values) + 1;
 
     samples = zeros(train_samples_num * loops, sample_length);
