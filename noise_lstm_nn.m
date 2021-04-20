@@ -61,37 +61,6 @@ function net_outputs = noise_lstm_nn(t, x, xn_train, xn_test, sample_length, res
     net = trainNetwork(samples, results, layers, options);
 
     % Test network
-    test_step = 1;
-
-    real_data = zeros(samples_num, sample_length);
-    measurements = zeros(samples_num, sample_length);
-    net_outputs = zeros(samples_num, result_length);
-
-    for n = 1 : test_step: samples_num
-        real = x(n: n + sample_length - 1);
-        measurement = xn_test(n: n + sample_length - 1);
-
-        %net_output = predict(net, measurement.');
-        [net, net_output] = predictAndUpdateState(net, measurement.');
-
-        real_data(n,:) = real;
-        measurements(n,:) = measurement;
-
-        % Skip first network output to align input data
-        % with network prediction
-        if n == 1
-            %continue;
-        end
-
-        %disp(measurement);
-        %disp(net_output);
-
-        net_outputs(n,:) = net_output(1);
-    end
-
-    %fprintf("xn_test: "); disp(size(xn_test));
-    %fprintf("outputs: "); disp(size(net_outputs));
-    
-    % Convert column to row
-    net_outputs = net_outputs.';
+    [test_samples, test_results] = prepare_train_data(x, xn_test, sample_length, result_length, 0);
+    net_outputs = test_network(net, test_samples, result_length, hiddenType);
 end

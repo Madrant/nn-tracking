@@ -22,7 +22,7 @@ function net_outputs = noise_ff_nn(t, x, xn_train, xn_test, sample_length, resul
     [net, tr] = train(net, samples, results);
 
     % Test network
-    [test_samples, test_results] = prepare_train_data(x, xn_test, sample_length, result_length, 0, samples_div);
+    [test_samples, test_results] = prepare_train_data(x, xn_test, sample_length, result_length, 0);
     net_outputs = test_network(net, test_samples, result_length);
 
     % Assess the performance of the trained network.

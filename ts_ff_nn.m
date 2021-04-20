@@ -20,7 +20,7 @@ function net_outputs = ff_nn(t, x, xn, sample_length, result_length, samples_div
     [net, tr] = train(net, samples, results);
 
     % Test network
-    [test_samples, test_results] = prepare_train_data(x, xn, sample_length, result_length, 1, samples_div);
+    [test_samples, test_results] = prepare_train_data(x, xn, sample_length, result_length, 1);
     net_outputs = test_network(net, test_samples, result_length);
 
     % Assess the performance of the trained network.

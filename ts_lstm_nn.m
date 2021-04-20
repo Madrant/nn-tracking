@@ -55,26 +55,6 @@ function net_outputs = ts_lstm_nn(t, x, xn, sample_length, result_length, sample
     net = trainNetwork(samples, results, layers, options);
 
     % Test network
-    test_step = 1;
-
-    real_data = zeros(samples_num, result_length);
-    measurements = zeros(samples_num, result_length);
-    net_outputs = zeros(samples_num, result_length);
-
-    for n = 1 : test_step: samples_num
-        test_sample = xn(n:n + sample_length - 1);
-
-        real = x(n + sample_length:n + sample_length + result_length - 1);
-        %measurement = xn(n + sample_length:n + sample_length + result_length - 1);
-
-        %net_output = predict(net, test_sample.').';
-        [net, net_output] = predictAndUpdateState(net, test_sample.');
-
-        real_data(n,:) = real;
-        %measurements(n,:) = measurement;
-        net_outputs(n,:) = net_output.';
-    end
-
-    % Convert column to row
-    net_outputs = net_outputs.';
+    [test_samples, test_results] = prepare_train_data(x, xn, sample_length, result_length, 1);
+    net_outputs = test_network(net, test_samples, result_length, hiddenType);
 end
