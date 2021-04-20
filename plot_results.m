@@ -7,20 +7,21 @@ function plot_results(name, t, xt, xr, xn, X, save_figure, t_skip)
         t_skip = 0;
     end
 
-    %fprintf("plot_results: t_skip: %u\n", t_skip);
-    %fprintf("t: "); disp(size(t));
-    %fprintf("X: "); disp(size(X));
+    fprintf("plot_results: t_skip: %u\n", t_skip);
+    fprintf("t: "); disp(size(t));
+    fprintf("X: "); disp(size(X));
 
     ts = t;
     xrs = xr;
 
     % Skip some values from the end according to time skip value
-    ts = ts(1:length(ts) - t_skip);
-    xrs = xrs(1:length(xrs) - t_skip);
+    ts = ts(1 + t_skip:length(ts));
+    xrs = xrs(1 + t_skip:length(xrs));
 
     % Align ts and xrs to X
     if length(ts) > length(X)
         diff = length(ts) - length(X) + 1;
+        fprintf("Skip ts: %u\n", diff);
 
         ts = t(diff:length(ts));
         xrs = xr(diff:length(xrs));
