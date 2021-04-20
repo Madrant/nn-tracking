@@ -1,15 +1,33 @@
 function plot_results(name, t, xt, xr, xn, X, save_figure, t_skip)
-    % Skip some values from the start according to time skip value
-    ts = t(t_skip + 1:length(t));
-    xrs = xr(t_skip + 1: length(xr));
+    if ~exist('save_figure', 'var')
+        save_figure = false;
+    end
 
-    if length(ts) ~= length(X)
-        fprintf("Filter output array size incorrect: %u must be: %u\n", length(X), length(ts));
-        fprintf("ts: "); disp(size(ts));
-        fprintf("X : "); disp(size(X));
+    if ~exist('t_skip', 'var')
+        t_skip = 0;
+    end
+
+    %fprintf("plot_results: t_skip: %u\n", t_skip);
+    %fprintf("t: "); disp(size(t));
+    %fprintf("X: "); disp(size(X));
+
+    ts = t;
+    xrs = xr;
+
+    % Skip some values from the end according to time skip value
+    ts = ts(1:length(ts) - t_skip);
+    xrs = xrs(1:length(xrs) - t_skip);
+
+    % Align ts and xrs to X
+    if length(ts) > length(X)
+        diff = length(ts) - length(X) + 1;
+
+        ts = t(diff:length(ts));
+        xrs = xr(diff:length(xrs));
     end
 
     assert(length(ts) == length(X));
+    assert(length(xrs) == length(X));
 
     fig_nn = figure('name', name);
     tiledlayout(4, 1);
@@ -50,15 +68,15 @@ function plot_results(name, t, xt, xr, xn, X, save_figure, t_skip)
     rmse = sqrt(mse);
 
     fprintf("%s\n", name);
-    fprintf("Max error:  %f\n", max_error);
     fprintf("Mean error: %f\n", mean_error);
+    fprintf("Max error:  %f\n", max_error);
     fprintf("MSE:        %f\n", mse);
     fprintf("RMSE:       %f\n", rmse);
     
     % Plot absolute error
     nexttile;
     plot(ts, abs_error);
-    title(sprintf('Absolute error, maximum: %.2f, mean: %.2f', max_error, mean_error));
+    title(sprintf('Absolute error, mean: %.2f, max: %.2f', mean_error, max_error));
     xlabel('Time');
     ylabel('Absolute error');
     ylim([0 1]);
