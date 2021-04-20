@@ -7,10 +7,10 @@ function plot_results(name, t, xt, xr, xn, X, save_figure, t_skip)
         t_skip = 0;
     end
 
-    fprintf("plot_results: t_skip: %u\n", t_skip);
-    fprintf("t: "); disp(size(t));
-    fprintf("X: "); disp(size(X));
-
+    %fprintf("plot_results: t_skip: %u\n", t_skip);
+    %fprintf("t: "); disp(size(t));
+    %fprintf("X: "); disp(size(X));
+    
     ts = t;
     xrs = xr;
 

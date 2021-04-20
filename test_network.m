@@ -29,7 +29,7 @@ function net_outputs = test_network(net, inputs, result_length, nn_type)
 
         net_outputs(n,:) = output;
     end
-    
+
     net_outputs = net_outputs.';
 end
 
