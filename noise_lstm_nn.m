@@ -6,7 +6,7 @@ function net_outputs = noise_lstm_nn(t, x, xn_train, xn_test, sample_length, res
     assert(hiddenType == "lstm" || hiddenType == "gru");
 
     % Prepare train data set
-    [samples, results] = prepare_train_data(x, xn_train, sample_length, result_length, 0, samples_div);
+    [samples, results] = prepare_train_data(x, xn_train, sample_length, result_length, 0, samples_div, snr_array);
     samples_num = length(samples);
 
     %fprintf("train samples:\n");

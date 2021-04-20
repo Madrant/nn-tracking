@@ -4,7 +4,7 @@ clc;       % Clear command window
 
 % Model options
 start_time = 1;
-time_step = 0.1;
+time_step = 0.05;
 end_time = 10;
 
 % Initialize random number generator
@@ -17,9 +17,9 @@ snr = 5;
 t = start_time:time_step:end_time;
 
 % Data set 1 (xr1, xr2)
-w = 2 * pi;
+w = 3 * pi;
 phi = 0;
-A = floor(t);
+A = 0.5 + floor(t);
 
 xr1 = A .* sin(w * t + phi);
 xn1 = A .* (1 + normrnd(0, r)) .* sin(w * (1 + normrnd(0, r)) * t + phi*(1 + normrnd(0, r)));
@@ -69,8 +69,8 @@ xn_test = xn1;
 fprintf("Time: [%f:%f:%f]\n", start_time, time_step, end_time);
 fprintf("SNR: %f\n", snr);
 
-fprintf("Measurements Max error:  %f\n", max(abs(xr - xn)));
 fprintf("Measurements Mean error: %f\n", mean(abs(xr - xn)));
+fprintf("Measurements Max error:  %f\n", max(abs(xr - xn)));
 fprintf("Measurements MSE:        %f\n", mean(xr - xn).^2);
 fprintf("Measurements RMSE:       %f\n", sqrt(mean(xr - xn).^2));
 
@@ -82,13 +82,15 @@ samples_div = 1.5;
 hiddenSize = 7;
 maxEpochs = 100;
 
+snr_array = [snr snr snr];
+
 % Plot options
 save_figure = 0;
 
 % Enable/disable some various networks in test
 en_nn_ff_ns = 0;
 en_nn_ff_ts = 0;
-en_nn_lstm_ns = 0;
+en_nn_lstm_ns = 1;
 en_nn_lstm_ts = 0;
 en_nn_gru_ns = 0;
 en_nn_gru_ts = 0;
@@ -101,7 +103,7 @@ for hiddenSize = [hiddenSize] %[4, 5, 7, 10]
 if en_nn_ff_ns
     name = sprintf("FF NN - Noise Hs %u Samples %u Div %.2f", hiddenSize, sample_length, samples_div);
 
-    nn_outputs = noise_ff_nn(t, xr_train, xn_train, xn_test, sample_length, result_length, samples_div, hiddenSize, maxEpochs, 'trainrp');
+    nn_outputs = noise_ff_nn(t, xr_train, xn_train, xn_test, sample_length, result_length, samples_div, hiddenSize, maxEpochs, 'trainrp', snr_array);
     plot_results(name, t, xr_train, xr_test, xn_test, nn_outputs, save_figure);
 
     res_nn_ff_ns = nn_outputs;
@@ -120,7 +122,7 @@ end
 if en_nn_lstm_ns
     name = sprintf("LSTM NN - Noise Hs %u Samples %u Div %.2f", hiddenSize, sample_length, samples_div);
 
-    nn_outputs = noise_lstm_nn(t, xr_train, xn_train, xn_test, sample_length, result_length, samples_div, hiddenSize, maxEpochs, "lstm");
+    nn_outputs = noise_lstm_nn(t, xr_train, xn_train, xn_test, sample_length, result_length, samples_div, hiddenSize, maxEpochs, "lstm", snr_array);
     plot_results(name, t, xr_train, xr_test, xn_test, nn_outputs, save_figure);
 
     res_nn_lstm_ns = nn_outputs;
@@ -138,7 +140,7 @@ end
 % GRU NN
 if en_nn_gru_ns
     name = sprintf("GRU NN - Noise Hs %u Samples %u Div %.2f", hiddenSize, sample_length, samples_div);
-    nn_outputs = noise_lstm_nn(t, xr_train, xn_train, xn_test, sample_length, result_length, samples_div, hiddenSize, maxEpochs, "gru");
+    nn_outputs = noise_lstm_nn(t, xr_train, xn_train, xn_test, sample_length, result_length, samples_div, hiddenSize, maxEpochs, "gru", snr_array);
     plot_results(name, t, xr_train, xr_test, xn_test, nn_outputs, save_figure, sample_length);
 
     res_nn_gru_ns = nn_outputs;
@@ -153,11 +155,11 @@ if en_nn_gru_ts
 end
 
 if en_nn_hybrid
-    sl_array = [1 5]; t_skip = abs(sl_array(1) - sl_array(2));
+    sl_array = [3 5]; t_skip = abs(sl_array(1) - sl_array(2));
     rl_array = [1 1];
-    hs_array = [5 11];
+    hs_array = [7 11];
     snr_array = [5 5 5];
-    samples_div = 1;
+    samples_div = 1.5;
 
     name = sprintf("Hybrid LSTM NN - Noise Hs %u Samples %u Div %.2f", hiddenSize, sample_length, samples_div);
 
@@ -166,7 +168,8 @@ if en_nn_hybrid
         sl_array, rl_array, samples_div, ...
         hs_array, maxEpochs, "lstm", snr_array);
 
-    plot_results(name, t, xr_train, xr_test, xn_test, net2_outputs, save_figure, t_skip);
+    %plot_results(name, t, xr_train, xr_test, xn_test, net1_outputs, save_figure, 0);
+    plot_results(name, t, xr_train, xr_test, xn_test, net2_outputs, save_figure, 0);
 end
 
 end % hiddenSize
