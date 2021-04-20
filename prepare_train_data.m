@@ -23,6 +23,21 @@ function [samples, results] = prepare_train_data(xr, xn, sample_length, result_l
     end
 
     % Check input data
+    if length(xr) ~= length(xn)
+        fprintf("xr and xn length mismatch:\n");
+        fprintf("xr: "); disp(size(xr));
+        fprintf("xn: "); disp(size(xn));
+
+        diff = abs(length(xr) - length(xn));
+        if length(xr) > length(xn)
+            xr = (diff + 1:length(xr));
+        end
+
+        if length(xn) > length(xr)
+            xn = (diff + 1:length(xn));
+        end
+    end
+
     assert(length(xr) == length(xn));
 
     assert(sample_length > 0);
@@ -40,8 +55,6 @@ function [samples, results] = prepare_train_data(xr, xn, sample_length, result_l
         train_samples_num = round((length(xr) - predict_offset - (result_length - 1)) / samples_div);
     end
 
-    fprintf("train_samples_num: %u\n", train_samples_num);
-    
     loops = length(snr_values) + 1;
 
     samples = zeros(train_samples_num * loops, sample_length);
