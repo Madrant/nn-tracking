@@ -95,13 +95,22 @@ function [net1_outputs, net2_outputs] = hybrid_lstm_nn(t, x, xn_train, xn_test, 
 
     net2_test_samples = [];
     net2_test_results = [];
-    
+
     for n = 1:loops
-        from = length(x) * (n - 1) + 1;
-        to = length(x) * n;
+        from = length(net1_outputs) / loops * (n - 1) + 1;
+        to = length(net1_outputs) / loops * n;
 
         [test_samples, test_results] = prepare_train_data(...
-            x, net1_outputs(from:to), net2_sample_length, net2_result_length);
+            x, net1_outputs(from:to).', net2_sample_length, net2_result_length);
+
+        net2_test_samples = [net2_test_samples; test_samples];
+        net2_test_results = [net2_test_results; test_results];
+    end
+
+    % Add reference signal to net2 train data
+    if false
+        [test_samples, test_results] = prepare_train_data(...
+                x, x, net2_sample_length, net2_result_length, 0);
 
         net2_test_samples = [net2_test_samples; test_samples];
         net2_test_results = [net2_test_results; test_results];
