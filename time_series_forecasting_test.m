@@ -3,8 +3,8 @@ close all; % Close plots
 clc;       % Clear command window
 
 % Model options
-start_time = 0;
-time_step = 0.01;
+start_time = 1;
+time_step = 0.1;
 end_time = 10;
 
 % Initialize random number generator
@@ -33,9 +33,7 @@ xr1 = A .* sin(w * t + phi);
 xn1 = A .* (1 + normrnd(0, r)) .* sin(w * (1 + normrnd(0, r)) * t + phi*(1 + normrnd(0, r)));
 xn1 = awgn(xn1, snr, 'measured');
 
-rescale_array = rescale([xr1; xn1], 0, 1);
-xr1 = rescale_array(1,:);
-xn1 = rescale_array(2,:);
+[xr1, xn1] = rescale_data(xr1, xn1, 0, 1);
 
 % Data set 2 (xr2, xn2)
 w = 1 * pi;
@@ -46,9 +44,7 @@ xr2 = A .* sin(w * t + phi);
 xn2 = A .* (1 + normrnd(0, r)) .* sin(w * (1 + normrnd(0, r)) * t + phi*(1 + normrnd(0, r)));
 xn2 = awgn(xn2, snr, 'measured');
 
-rescale_array = rescale([xr2; xn2], 0, 1);
-xr2 = rescale_array(1,:);
-xn2 = rescale_array(2,:);
+[xr2, xn2] = rescale_data(xr2, xn2, 0, 1);
 
 % Plot input data:
 fig_input = figure('Name', "Input data");
@@ -87,9 +83,9 @@ fprintf("Measurements MSE:        %f\n", mean(xr - xn).^2);
 fprintf("Measurements RMSE:       %f\n", sqrt(mean(xr - xn).^2));
 
 % NN options
-sample_length = 5;
+sample_length = 3;
 result_length = 1;
-samples_div = 1.5;
+samples_div = 1;
 
 hiddenSize = 7;
 maxEpochs = 100;
@@ -100,9 +96,9 @@ save_figure = 0;
 % Enable/disable some various networks in test
 en_nn_ff_ns = 0;
 en_nn_ff_ts = 0;
-en_nn_lstm_ns = 0;
-en_nn_lstm_ts = 0;
-en_nn_gru_ns = 1;
+en_nn_lstm_ns = 1;
+en_nn_lstm_ts = 1;
+en_nn_gru_ns = 0;
 en_nn_gru_ts = 0;
 
 for sample_length = [sample_length] %[1 3 5]
@@ -111,16 +107,18 @@ for hiddenSize = [hiddenSize] %[4, 5, 7, 10]
 % Feedforward NN
 if en_nn_ff_ns
     name = sprintf("FF NN - Noise Hs %u Samples %u Div %.2f", hiddenSize, sample_length, samples_div);
+
     nn_outputs = noise_ff_nn(t, xr_train, xn_train, xn_test, sample_length, result_length, samples_div, hiddenSize, maxEpochs, 'trainrp');
-    plot_results(name, t, xr_train, xr_test, xn_test, nn_outputs, save_figure, sample_length);
+    plot_results(name, t, xr_train, xr_test, xn_test, nn_outputs, save_figure);
 
     res_nn_ff_ns = nn_outputs;
 end
 
 if en_nn_ff_ts
     name = sprintf("FF NN - Prediction Hs %u Samples %u Div %.2f", hiddenSize, sample_length, samples_div);
+
     nn_outputs = ts_ff_nn(t, xr_train, xn_test, sample_length, result_length, samples_div, hiddenSize, maxEpochs, 'trainrp');
-    plot_results(name, t, xr_train, xr_test, xn_test, nn_outputs, save_figure, sample_length);
+    plot_results(name, t, xr_train, xr_test, xn_test, nn_outputs, save_figure);
 
     res_nn_ff_ts = nn_outputs;
 end
@@ -128,16 +126,18 @@ end
 % LSTM NN
 if en_nn_lstm_ns
     name = sprintf("LSTM NN - Noise Hs %u Samples %u Div %.2f", hiddenSize, sample_length, samples_div);
+
     nn_outputs = noise_lstm_nn(t, xr_train, xn_train, xn_test, sample_length, result_length, samples_div, hiddenSize, maxEpochs, "lstm");
-    plot_results(name, t, xr_train, xr_test, xn_test, nn_outputs, save_figure, sample_length);
+    plot_results(name, t, xr_train, xr_test, xn_test, nn_outputs, save_figure);
 
     res_nn_lstm_ns = nn_outputs;
 end
 
 if en_nn_lstm_ts
     name = sprintf("LSTM NN - Prediction Hs %u Samples %u Div %.2f", hiddenSize, sample_length, samples_div);
+
     nn_outputs = ts_lstm_nn(t, xr_train, xn_test, sample_length, result_length, samples_div, hiddenSize, maxEpochs, "lstm");
-    plot_results(name, t, xr_train, xr_test, xn_test, nn_outputs, save_figure, sample_length);
+    plot_results(name, t, xr_train, xr_test, xn_test, nn_outputs, save_figure);
 
     res_nn_lstm_ts = nn_outputs;
 end
@@ -159,12 +159,52 @@ if en_nn_gru_ts
     res_nn_gru_ts = nn_outputs;
 end
 
+if 0
+    sample_length = 1;
+    hiddenSize = 5;
+
+    disp(size(xn_test));
+
+    snr_array = [5];
+
+    name = sprintf("LSTM NN - Noise Hs %u Samples %u Div %.2f", hiddenSize, sample_length, samples_div);
+    un_outputs = noise_lstm_nn(t, xr_train, xn_train, xn_test, sample_length, result_length, samples_div, hiddenSize, maxEpochs, "lstm", snr_array);
+    plot_results(name, t, xr_train, xr_test, xn_test, un_outputs, save_figure, 0);
+
+    disp(size(un_outputs));
+
+    sample_length = 1;
+    hiddenSize = 5;
+
+    snr_array = [];
+
+    name = sprintf("LSTM NN - Prediction Hs %u Samples %u Div %.2f", hiddenSize, sample_length, samples_div);
+    nn_outputs = noise_lstm_nn2(t, xr_train, un_outputs, un_outputs, sample_length, result_length, samples_div, hiddenSize, maxEpochs, "lstm", snr_array);
+    plot_results(name, t, xr_train, xr_test, un_outputs, nn_outputs, save_figure, 0);
+
+    disp(size(nn_outputs));
+end
+
+if 0
+    sample_length = 1;
+    samples_div = 1;
+    hiddenSize = 5;
+
+    disp(size(xn_test));
+
+    snr_array = [5 5 5];
+
+    name = sprintf("LSTM NN - Noise Hs %u Samples %u Div %.2f", hiddenSize, sample_length, samples_div);
+    [nn1_outputs, nn2_outputs] = hybrid_lstm_nn(t, xr_train, xn_train, xn_test, sample_length, result_length, samples_div, hiddenSize, maxEpochs, "lstm", snr_array);
+    plot_results(name, t, xr_train, xr_test, xn_test, nn2_outputs, save_figure, 4);
+end
+
 end % hiddenSize
 end % sample_length
 
 % Kalman filter
-kf_outputs = ts_kf(t, xr_train, xn_test);
-plot_results("KF", t, xr_train, xr_test, xn_test, kf_outputs, save_figure, 0);
+% kf_outputs = ts_kf(t, xr_train, xn_test);
+% plot_results("KF", t, xr_train, xr_test, xn_test, kf_outputs, save_figure, 0);
 
 % Extrapolation
 % outputs = ts_extrap(t, xr, xn, 'linear', 3);

@@ -1,4 +1,4 @@
-function net_outputs = noise_lstm_nn(t, x, xn_train, xn_test, sample_length, result_length, samples_div, hiddenSizes, maxEpochs, hiddenType)
+function net_outputs = noise_lstm_nn(t, x, xn_train, xn_test, sample_length, result_length, samples_div, hiddenSizes, maxEpochs, hiddenType, snr_array)
     % Print options
     fprintf("Samples: [%.2f:%.2f] Train sample div: %.2f\n", sample_length, result_length, samples_div);
     fprintf("Network: Hidden: %u Epochs: %u Type: '%s'\n", hiddenSizes, maxEpochs, hiddenType);
@@ -6,32 +6,12 @@ function net_outputs = noise_lstm_nn(t, x, xn_train, xn_test, sample_length, res
     assert(hiddenType == "lstm" || hiddenType == "gru");
 
     % Prepare train data set
-    samples_num = length(x) - (sample_length + result_length - 1);
-    train_samples_num = round(length(x) / samples_div) - (sample_length + result_length - 1);
+    [samples, results] = prepare_train_data(x, xn_train, sample_length, result_length, 0, samples_div);
+    samples_num = length(samples);
 
-    % Setup SNR for additional train data sets
-    snr_values = [];
-    loops = length(snr_values) + 1;
-
-    samples = zeros(train_samples_num * loops, sample_length);
-    results = zeros(train_samples_num * loops, result_length);
-
-    for loop = 1: loops
-        % Use real measurements
-        if loop > length(snr_values)
-            xnt = xn_train;
-        else
-            % Generate alternate noised measurements
-            snr = snr_values(loop);
-            xnt = awgn(x, snr, 'measured');
-        end
-
-        % Save additional datasets with the true one
-        for n = 1 : train_samples_num
-            samples(n + (train_samples_num * (loop - 1)),:) = xnt(n: n + sample_length - 1);
-            results(n + (train_samples_num * (loop - 1)),:) = x(n + sample_length - 1:  n + sample_length + result_length - 2);
-        end
-    end
+    %fprintf("train samples:\n");
+    %disp(size(samples));
+    %disp(size(results));
 
     % Transpose test arrays to fit network inputs
     samples = samples.';
@@ -87,7 +67,7 @@ function net_outputs = noise_lstm_nn(t, x, xn_train, xn_test, sample_length, res
     measurements = zeros(samples_num, sample_length);
     net_outputs = zeros(samples_num, result_length);
 
-    for n = 1 : test_step: samples_num + 1
+    for n = 1 : test_step: samples_num
         real = x(n: n + sample_length - 1);
         measurement = xn_test(n: n + sample_length - 1);
 
@@ -100,13 +80,13 @@ function net_outputs = noise_lstm_nn(t, x, xn_train, xn_test, sample_length, res
         % Skip first network output to align input data
         % with network prediction
         if n == 1
-            continue;
+            %continue;
         end
 
         %disp(measurement);
         %disp(net_output);
 
-        net_outputs(n - 1,:) = net_output(1);
+        net_outputs(n,:) = net_output(1);
     end
 
     %fprintf("xn_test: "); disp(size(xn_test));

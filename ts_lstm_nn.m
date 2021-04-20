@@ -10,16 +10,8 @@ function net_outputs = ts_lstm_nn(t, x, xn, sample_length, result_length, sample
     assert(hiddenType == "lstm" || hiddenType == "gru");
     
     % Prepare train data set
-    samples_num = length(x) - (sample_length + result_length - 1);
-    train_samples_num = round(length(x) / samples_div) - (sample_length + result_length - 1);
-
-    samples = zeros(train_samples_num, sample_length);
-    results = zeros(train_samples_num, result_length);
-
-    for n = 1 : train_samples_num
-        samples(n,:) = x(n:n + sample_length - 1);
-        results(n,:) = x(n + sample_length:n + sample_length + result_length - 1);
-    end
+    [samples, results] = prepare_train_data(x, x, sample_length, result_length, 1, samples_div);
+    samples_num = length(samples);
 
     % Transpose test arrays to fit network inputs
     samples = samples.';

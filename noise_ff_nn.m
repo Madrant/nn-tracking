@@ -7,28 +7,8 @@ function net_outputs = noise_ff_nn(t, x, xn_train, xn_test, sample_length, resul
     net = feedforwardnet(hiddenSizes, trainFcn);
 
     % Prepare train data set
-    samples_num = length(x) - (sample_length + result_length - 1);
-    train_samples_num = round(length(x) / samples_div) - (sample_length + result_length - 1);
-
-    snr_values = [];
-    loops = length(snr_values) + 1;
-
-    samples = zeros(train_samples_num * loops, sample_length);
-    results = zeros(train_samples_num * loops, result_length);
-
-    for loop = 1: loops
-        if loop > length(snr_values)
-            xnt = xn_train;
-        else
-            snr = snr_values(loop);
-            xnt = awgn(x, snr, 'measured');
-        end
-
-        for n = 1 : train_samples_num
-            samples(n + (train_samples_num * (loop - 1)),:) = xnt(n: n + sample_length - 1);
-            results(n + (train_samples_num * (loop - 1)),:) = x(n + sample_length - 1:  n + sample_length + result_length - 2);
-        end
-    end
+    [samples, results] = prepare_train_data(x, xn_train, sample_length, result_length, 0, samples_div);
+    samples_num = length(samples);
 
     % Transpose test arrays to fit network inputs
     samples = samples.';
@@ -42,28 +22,11 @@ function net_outputs = noise_ff_nn(t, x, xn_train, xn_test, sample_length, resul
     [net, tr] = train(net, samples, results);
 
     % Test network
-    test_step = 1;
-
-    real_data = zeros(samples_num, sample_length);
-    measurements = zeros(samples_num, sample_length);
-    net_outputs = zeros(samples_num, result_length);
-
-    for n = 1 : test_step: samples_num
-        real = x(n: n + sample_length - 1);
-        measurement = xn_test(n: n + sample_length - 1);
-
-        net_output = net(measurement.').';
-
-        real_data(n,:) = real;
-        measurements(n,:) = measurement;
-        net_outputs(n,:) = net_output(1);
-    end
+    [test_samples, test_results] = prepare_train_data(x, xn_test, sample_length, result_length, 0, samples_div);
+    net_outputs = test_network(net, test_samples, result_length);
 
     % Assess the performance of the trained network.
     %
     % The default performance function is mean squared error.
-    perf = perform(net, x, net_outputs);
-
-    % Convert column to row
-    net_outputs = net_outputs.';
+    perf = perform(net, x, net_outputs.');
 end
