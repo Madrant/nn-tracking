@@ -30,11 +30,11 @@ function [samples, results] = prepare_train_data(xr, xn, sample_length, result_l
 
         diff = abs(length(xr) - length(xn));
         if length(xr) > length(xn)
-            xr = (diff + 1:length(xr));
+            xr = xr(diff + 1:length(xr));
         end
 
         if length(xn) > length(xr)
-            xn = (diff + 1:length(xn));
+            xn = xn(diff + 1:length(xn));
         end
     end
 
@@ -44,7 +44,7 @@ function [samples, results] = prepare_train_data(xr, xn, sample_length, result_l
     assert(result_length > 0);
 
     assert(sample_length <= length(xr));
-    
+
     assert(predict_offset >= 0);
     assert(samples_div >= 1);
 
@@ -81,9 +81,6 @@ function [samples, results] = prepare_train_data(xr, xn, sample_length, result_l
             % Get result
             s = n + sample_length - 1;
             result = xrt(s + predict_offset: s + result_length + predict_offset - 1);
-
-            %fprintf("sample: "); disp(sample);
-            %fprintf("result: "); disp(result);
 
             % Save train data set to array
             samples(n + (train_samples_num * (loop - 1)),:) = sample;
