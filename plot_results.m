@@ -1,4 +1,4 @@
-function plot_results(name, t, xt, xr, xn, X, save_figure, t_skip)
+function plot_results(name, t, xt, xr, xn, X, save_figure, t_skip, samples_div)
     if ~exist('save_figure', 'var')
         save_figure = false;
     end
@@ -6,6 +6,12 @@ function plot_results(name, t, xt, xr, xn, X, save_figure, t_skip)
     if ~exist('t_skip', 'var')
         t_skip = 0;
     end
+
+    if ~exist('samples_div', 'var')
+        samples_div = 1;
+    end
+
+    assert(samples_div ~= 0);
 
     %fprintf("plot_results: t_skip: %u\n", t_skip);
     %fprintf("t: "); disp(size(t));
@@ -34,11 +40,16 @@ function plot_results(name, t, xt, xr, xn, X, save_figure, t_skip)
     tiledlayout(4, 1);
 
     % Plot input data
+    %
+    % calculate train_threshold
+    t_div = t(round(length(t) / samples_div));
+
     nexttile;
     hold on;
     plot(t, xt);
     plot(t, xr);
     plot(t, xn, '-x'); % Plot measurements
+    plot([t_div t_div], [0 1]);
     title('Model and Measurements');
     xlabel('Time');
     ylabel('Data');
@@ -52,6 +63,7 @@ function plot_results(name, t, xt, xr, xn, X, save_figure, t_skip)
     plot(t, xr);
     plot(t, xn, '-x');
     plot(ts, X, '-o');
+    plot([t_div t_div], [0 1]);
     title('Filter output');
     xlabel('Time');
     ylabel('Data');
