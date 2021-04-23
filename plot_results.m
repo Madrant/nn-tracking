@@ -16,7 +16,7 @@ function plot_results(name, t, xt, xr, xn, X, save_figure, t_skip, samples_div)
     %fprintf("plot_results: t_skip: %u\n", t_skip);
     %fprintf("t: "); disp(size(t));
     %fprintf("X: "); disp(size(X));
-    
+
     ts = t;
     xrs = xr;
 
@@ -25,13 +25,8 @@ function plot_results(name, t, xt, xr, xn, X, save_figure, t_skip, samples_div)
     xrs = xrs(1 + t_skip:length(xrs));
 
     % Align ts and xrs to X
-    if length(ts) > length(X)
-        diff = length(ts) - length(X) + 1;
-        fprintf("Skip ts: %u\n", diff);
-
-        ts = t(diff:length(ts));
-        xrs = xr(diff:length(xrs));
-    end
+    [ts, X] = align_data(ts, X);
+    [xrs, X]= align_data(xrs, X);
 
     assert(length(ts) == length(X));
     assert(length(xrs) == length(X));
