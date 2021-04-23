@@ -5,18 +5,6 @@ function [net_outputs, train_samples] = noise_lstm_nn(t, x, xn_train, xn_test, s
 
     assert(hiddenType == "lstm" || hiddenType == "gru");
 
-    % Prepare train data set
-    [samples, results] = prepare_train_data(x, xn_train, sample_length, result_length, 0, samples_div, snr_array);
-    samples_num = length(samples);
-
-    %fprintf("train samples:\n");
-    %disp(size(samples));
-    %disp(size(results));
-
-    % Transpose test arrays to fit network inputs
-    samples = samples.';
-    results = results.';
-
     % Create neural network
     numHiddenUnits = hiddenSizes;
     maxEpochs = maxEpochs;
@@ -59,17 +47,26 @@ function [net_outputs, train_samples] = noise_lstm_nn(t, x, xn_train, xn_test, s
     %'LearnRateDropFactor', 0.2, ...        
     %'Shuffle', 'never', ... % once, never, every-epoch
 
-    % Train network
+    % Prepare train data
+    %
+    % sample_length = sample_length;
+    % [samples, results] = prepare_train_data(x, xn_train, sample_length, result_length, 0, samples_div, snr_array);
+
     % train_samples = samples; train_results = results;
-    train_samples_num = round((length(x) - (sample_length - 1)) / samples_div);
-    train_samples = xn_train(1:train_samples_num); train_results = x(1:train_samples_num); sample_length = 1;
+    sample_length = 1;
+    [samples, results] = prepare_train_data(x, xn_train, sample_length, result_length, 0, samples_div, snr_array);
+
+    % Convert arrays to fit network inputs
+    train_samples = samples.';
+    train_results = results.';
 
     fprintf("train samples:\n");
     disp(size(train_samples));
-    %disp(train_samples);
+    %disp(samples);
     disp(size(train_results));
-    %disp(train_results);
+    %disp(results);
 
+    % Train network
     net = trainNetwork(train_samples, train_results, layers, options);
 
     % Test network

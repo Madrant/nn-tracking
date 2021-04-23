@@ -5,14 +5,6 @@ function [net_outputs, train_samples] = deep_lstm_nn(t, x, xn_train, xn_test, sa
 
     assert(hiddenType == "lstm" || hiddenType == "gru");
 
-    % Prepare train data set
-    [samples, results] = prepare_train_data(x, xn_train, sample_length, result_length, 0, samples_div, snr_array);
-    samples_num = length(samples);
-
-    % Transpose test arrays to fit network inputs
-    samples = samples.';
-    results = results.';
-
     % Create neural network
     numHiddenUnits = hiddenSizes;
     maxEpochs = maxEpochs;
@@ -35,6 +27,8 @@ function [net_outputs, train_samples] = deep_lstm_nn(t, x, xn_train, xn_test, sa
 
     layers = [ ...
         sequenceInputLayer(1)
+        lstmLayer(numHiddenUnits)
+        reluLayer
         lstmLayer(numHiddenUnits)
         reluLayer
         lstmLayer(numHiddenUnits)
@@ -67,22 +61,29 @@ function [net_outputs, train_samples] = deep_lstm_nn(t, x, xn_train, xn_test, sa
     %'LearnRateDropFactor', 0.2, ...        
     %'Shuffle', 'never', ... % once, never, every-epoch
 
-    % Train network
+    % Prepare train data
+    %
+    % sample_length = sample_length;
+    % [samples, results] = prepare_train_data(x, xn_train, sample_length, result_length, 0, samples_div, snr_array);
 
     % train_samples = samples; train_results = results;
-    train_samples_num = round((length(x) - (sample_length - 1)) / samples_div);
-    train_samples = xn_train(1:train_samples_num); train_results = x(1:train_samples_num); sample_length = 1;
+    sample_length = 1;
+    [samples, results] = prepare_train_data(x, xn_train, sample_length, result_length, 0, samples_div, snr_array);
 
-    %fprintf("train samples:\n");
-    %disp(size(train_samples));
+    % Convert arrays to fit network inputs
+    train_samples = samples.';
+    train_results = results.';
+
+    fprintf("train samples:\n");
+    disp(size(train_samples));
     %disp(samples);
-    %disp(size(train_results));
+    disp(size(train_results));
     %disp(results);
 
-    % net = trainNetwork(xn_train, x, layers, options);
+    % Train network
     net = trainNetwork(train_samples, train_results, layers, options);
 
     % Test network
-    [test_samples, test_results] = prepare_train_data(x, xn_test, result_length, result_length, 0);
+    [test_samples, test_results] = prepare_train_data(x, xn_test, sample_length, result_length, 0);
     net_outputs = test_network(net, test_samples, result_length, hiddenType);
 end
