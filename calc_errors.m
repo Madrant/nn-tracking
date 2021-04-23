@@ -1,4 +1,4 @@
-function [error, abs_error, mse_array, rmse_array] = calc_errors(x, X)
+function [error, abs_error, mse_array, rmse_array, max_error, mean_error, mse, rmse] = calc_errors(x, X)
     error = (x - X);
     abs_error = abs(error);
 
@@ -10,6 +10,9 @@ function [error, abs_error, mse_array, rmse_array] = calc_errors(x, X)
         mse_array(1, n) = mse;
         rmse_array(1, n) = sqrt(mse);
     end
+
+    max_error = max(abs_error);
+    mean_error = mean(abs_error);
+    mse = mean(error.^2);
+    rmse = sqrt(mse);
 end
-
-

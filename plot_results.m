@@ -67,13 +67,7 @@ function plot_results(name, t, xt, xr, xn, X, save_figure, t_skip, samples_div)
     hold off;
 
     % Calculate error for each time step
-    [error, abs_error, mse_array, rmse_array] = calc_errors(xrs, X);
-
-    % Calculate error values
-    max_error = max(abs_error);
-    mean_error = mean(abs_error);
-    mse = mean(error.^2);
-    rmse = sqrt(mse);
+    [error, abs_error, mse_array, rmse_array, max_error, mean_error, mse, rmse] = calc_errors(xrs, X);
 
     fprintf("%s\n", name);
     fprintf("Mean error: %f\n", mean_error);
