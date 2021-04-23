@@ -1,4 +1,4 @@
-function net_outputs = noise_lstm_nn(t, x, xn_train, xn_test, sample_length, result_length, samples_div, hiddenSizes, maxEpochs, hiddenType, snr_array)
+function [net_outputs, train_samples] = noise_lstm_nn(t, x, xn_train, xn_test, sample_length, result_length, samples_div, hiddenSizes, maxEpochs, hiddenType, snr_array)
     % Print options
     fprintf("Samples: [%.2f:%.2f] Train sample div: %.2f\n", sample_length, result_length, samples_div);
     fprintf("Network: Hidden: %u Epochs: %u Type: '%s'\n", hiddenSizes, maxEpochs, hiddenType);
@@ -30,7 +30,7 @@ function net_outputs = noise_lstm_nn(t, x, xn_train, xn_test, sample_length, res
     end
 
     layers = [ ...
-        sequenceInputLayer(sample_length)
+        sequenceInputLayer(1)
         mainLayer
         fullyConnectedLayer(1)
         regressionLayer
@@ -38,7 +38,7 @@ function net_outputs = noise_lstm_nn(t, x, xn_train, xn_test, sample_length, res
 
     options = trainingOptions('sgdm', ... % sgdm, rmsprop, adam
         'MaxEpochs', maxEpochs, ...
-        'MiniBatchSize', sample_length, ...
+        'SequenceLength', sample_length, ...
         'GradientThreshold', 1, ...
         'Verbose', 0, ...
         'Plots', 'none', ... % 'training-progress', 'none'
@@ -46,10 +46,11 @@ function net_outputs = noise_lstm_nn(t, x, xn_train, xn_test, sample_length, res
         'LearnRateSchedule','piecewise', ...
         'LearnRateDropPeriod',125, ...
         'LearnRateDropFactor',0.2, ...
-        'Shuffle', 'never');
+        'Shuffle', 'once');
 
     % Additional training options:
     %
+    % 'MiniBatchSize', 64, ...
     %'GradientThreshold', 1, ...
     %'Momentum', 0.9, ... % only for sgdm
     %'InitialLearnRate', 0.005, ...
@@ -59,7 +60,17 @@ function net_outputs = noise_lstm_nn(t, x, xn_train, xn_test, sample_length, res
     %'Shuffle', 'never', ... % once, never, every-epoch
 
     % Train network
-    net = trainNetwork(samples, results, layers, options);
+    % train_samples = samples; train_results = results;
+    train_samples_num = round((length(x) - (sample_length - 1)) / samples_div);
+    train_samples = xn_train(1:train_samples_num); train_results = x(1:train_samples_num); sample_length = 1;
+
+    fprintf("train samples:\n");
+    disp(size(train_samples));
+    %disp(train_samples);
+    disp(size(train_results));
+    %disp(train_results);
+
+    net = trainNetwork(train_samples, train_results, layers, options);
 
     % Test network
     [test_samples, test_results] = prepare_train_data(x, xn_test, sample_length, result_length, 0);
