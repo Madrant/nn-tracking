@@ -64,7 +64,6 @@ function [samples, results] = prepare_train_data(xr, xn, sample_length, result_l
         % Use external measurements for traning
         if loop > length(snr_values)
             xnt = xn;
-            xrt = xr;
         else
         % Generate measurements according to SNR
             snr = snr_values(loop);
@@ -72,7 +71,7 @@ function [samples, results] = prepare_train_data(xr, xn, sample_length, result_l
         end
 
         [xrt, xnt] = rescale_data(xr, xnt, 0, 1);
-        
+
         for n = 1 : train_samples_num
             % Get test sample
             s = n;
