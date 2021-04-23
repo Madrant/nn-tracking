@@ -40,8 +40,8 @@ function [samples, results] = prepare_train_data(xr, xn, sample_length, result_l
 
     assert(length(xr) == length(xn));
 
-    assert(sample_length > 0);
-    assert(result_length > 0);
+    assert(sample_length >= 0);
+    assert(result_length >= 0);
 
     assert(sample_length <= length(xr));
 
@@ -69,10 +69,10 @@ function [samples, results] = prepare_train_data(xr, xn, sample_length, result_l
         % Generate measurements according to SNR
             snr = snr_values(loop);
             xnt = awgn(xr, snr, 'measured');
-
-            [xrt, xnt] = rescale_data(xr, xnt, 0, 1);
         end
 
+        [xrt, xnt] = rescale_data(xr, xnt, 0, 1);
+        
         for n = 1 : train_samples_num
             % Get test sample
             s = n;
