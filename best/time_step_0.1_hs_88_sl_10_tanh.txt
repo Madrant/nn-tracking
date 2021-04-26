@@ -1,0 +1,27 @@
+Best estimated feasible point (according to models)
+    sequenceLength    hiddenSize    actType    numLayers    dropout    gradientThreshold    initialLearnRate
+    ______________    __________    _______    _________    _______    _________________    ________________
+
+          10              88         tanh          2        0.43532         4.5649              0.001001    
+
+Estimated objective function value = 0.076086
+Estimated function evaluation time = 32.9975
+
+Loading file bayesopt_0.063691.mat
+  SeriesNetwork with properties
+
+         Layers [9×1 nnet.cnn.layer.Layer]
+     InputNames {'sequenceinput'}
+    OutputNames {'regressionoutput'}
+
+    sequenceLength    hiddenSize    actType    numLayers    dropout    gradientThreshold    initialLearnRate
+    ______________    __________    _______    _________    _______    _________________    ________________
+
+          10              88         tanh          2        0.43532         4.5649              0.001001    
+
+SL 10 HS 88 ME 0.063691 MSE 0.005918
+Best NN configuration
+Mean error 0.063691
+Max error  0.196704
+MSE        0.005918
+RMSE       0.076926
