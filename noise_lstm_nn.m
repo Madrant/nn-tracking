@@ -17,6 +17,16 @@ function [net_outputs, train_samples] = noise_lstm_nn(t, x, xn_train, xn_test, s
         mainLayer = gruLayer(numHiddenUnits);
     end
 
+    % LSTM and GRU layer parameters
+    %
+    % See also:
+    % https://www.mathworks.com/help/deeplearning/ref/nnet.cnn.layer.grulayer.html
+    % https://www.mathworks.com/help/deeplearning/ref/nnet.cnn.layer.lstmlayer.html
+    %
+    % 'InputWeightsInitializer', 'zeros', ...
+    % 'RecurrentWeightsInitializer', 'zeros', ...
+    % 'BiasInitializer', 'ones'
+
     layers = [ ...
         sequenceInputLayer(1)
         mainLayer
@@ -24,7 +34,8 @@ function [net_outputs, train_samples] = noise_lstm_nn(t, x, xn_train, xn_test, s
         regressionLayer
     ];
 
-    options = trainingOptions('sgdm', ... % sgdm, rmsprop, adam
+    % https://www.mathworks.com/help/deeplearning/ref/trainingoptions.html
+    options = trainingOptions('adam', ... % sgdm, rmsprop, adam
         'MaxEpochs', maxEpochs, ...
         'SequenceLength', sample_length, ...
         'GradientThreshold', 1, ...
