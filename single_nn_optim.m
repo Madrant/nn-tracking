@@ -5,48 +5,92 @@ clc;       % Clear command window
 % Initialize random number generator
 rng(12345, 'combRecursive');
 
+% Define input data
+t = 1:0.1:10;
+
+% Generate test data (real target position)
+r = 0.01;
+global snr;
+snr = 5;
+
+% Data set 1 (xr1, xr2)
+w = 3 * pi;
+phi = 0;
+A = 0.5 + floor(t);
+
+global xr;
+global xn_train;
+global xn_test; 
+
+[xr, xn_train] = gen_sin(t, A, w, phi, r, snr);
+xn_test = xn_train;
+
+global result_length;
+global samples_div;
+result_length = 1;
+samples_div = 1.5;
+
+global snr_array;
+snr_array = [snr snr snr];
+
 % Define variables to optimize:
+%
+% See also:
+% https://www.mathworks.com/help/deeplearning/ref/trainingoptions.html
 optimVars = [
-    optimizableVariable('SequenceLength',   [1 10], 'Type', 'integer')
+    optimizableVariable('sequenceLength',   [1 10], 'Type', 'integer')
     optimizableVariable('hiddenSize', [1 100], 'Type', 'integer')
-    optimizableVariable('InitialLearnRate', [0.005 1], 'Transform', 'log')];
+    optimizableVariable('gradientThreshold', [0.1 100], 'Transform', 'log')
+    optimizableVariable('initialLearnRate', [0.005 1], 'Transform', 'log')];
 
 BayesObject = bayesopt(make_validation_fcn, optimVars,  ...
-    'MaxObjectiveEvaluations', 100, ...
+    'MaxObjectiveEvaluations', 1, ...
     'MaxTime', 14*60*60, ...
     'IsObjectiveDeterministic', false, ...
     'UseParallel', false);
 
-function ObjFcn = make_validation_fcn(xr1)
+% Get the best network
+bestIdx = BayesObject.IndexOfMinimumTrace(end);
+filename = BayesObject.UserDataTrace{bestIdx};
+
+% Load network from file
+fprintf("Loading file: %s\n", filename);
+savedStruct = load(filename);
+
+mean_error = savedStruct.mean_error;
+net = savedStruct.net;
+opt = savedStruct.optimVars;
+
+disp(net);
+disp(opt);
+
+sample_length = 1;
+
+[test_samples, test_results] = prepare_train_data(xr, xn_test, sample_length, result_length, 0);
+X = test_network(net, test_samples, result_length, "lstm");
+
+[xrs, X] = align_data(xr, X);
+
+[error, abs_error, mse_array, rmse_array, max_error, mean_error, mse, rmse] = calc_errors(xrs, X);
+
+fprintf("SL: %u HS: %u ME: %f MSE: %f\n", opt.sequenceLength, opt.hiddenSize, mean_error, mse);
+plot_results("Best NN configuration", t, xr, xr, xn_test, X, false, 0, samples_div);
+
+function ObjFcn = make_validation_fcn()
 ObjFcn = @validation_fcn;
-    function [mean_error, cons] = validation_fcn(optimVars, xr1)
+    function [mean_error, cons, filename] = validation_fcn(optimVars)
         % Define input data
-        t = 1:0.1:10;
+        sample_length = optimVars.sequenceLength;
 
-        % Generate test data (real target position)
-        r = 0.01;
-        snr = 5;
-
-        % Data set 1 (xr1, xr2)
-        w = 3 * pi;
-        phi = 0;
-        A = 0.5 + floor(t);
-
-        [xr, xn_train] = gen_sin(t, A, w, phi, r, snr);
-        xn_test = xn_train;
-
-        sample_length = optimVars.SequenceLength;
-        result_length = 1;
-
-        samples_div = 1.5;
-        snr_array = [snr snr snr];
-        
         % Create neural network
         maxEpochs = 100;
 
         layers = [ ...
             sequenceInputLayer(1)
-            lstmLayer(optimVars.hiddenSize)
+            lstmLayer(optimVars.hiddenSize, ...
+                'InputWeightsInitializer', 'zeros', ...
+                'RecurrentWeightsInitializer', 'zeros', ...
+                'BiasInitializer', 'ones')
             fullyConnectedLayer(1)
             regressionLayer
         ];
@@ -55,14 +99,14 @@ ObjFcn = @validation_fcn;
         options = trainingOptions('adam', ... % sgdm, rmsprop, adam
             'MaxEpochs', maxEpochs, ...
             'SequenceLength', sample_length, ... % longest, shortest, <num>
-            'GradientThreshold', 1, ...
-            'Verbose', 0, ...
-            'Plots', 'none', ... % 'training-progress', 'none'
-            'InitialLearnRate', 0.005, ...
+            'GradientThreshold', optimVars.gradientThreshold, ...
+            'InitialLearnRate', optimVars.initialLearnRate, ...
             'LearnRateSchedule','piecewise', ...
-            'LearnRateDropPeriod',125, ...
-            'LearnRateDropFactor',0.2, ...
-            'Shuffle', 'never');
+            'LearnRateDropPeriod', 125, ...
+            'LearnRateDropFactor', 0.2, ...
+            'Shuffle', 'never', ...
+            'Verbose', 0, ...
+            'Plots', 'none'); % 'training-progress', 'none'
 
         % Additional training options:
         %
@@ -82,6 +126,12 @@ ObjFcn = @validation_fcn;
 
         % train_samples = samples; train_results = results;
         sample_length = 1;
+        global xr;
+        global xn_train;
+        global xn_test;
+        global result_length;
+        global samples_div;
+        global snr_array;
         [samples, results] = prepare_train_data(xr, xn_train, sample_length, result_length, 0, samples_div, snr_array);
 
         % Convert arrays to fit network inputs
@@ -101,12 +151,16 @@ ObjFcn = @validation_fcn;
         [test_samples, test_results] = prepare_train_data(xr, xn_test, sample_length, result_length, 0);
         X = test_network(net, test_samples, result_length, "lstm");
 
-        [ts, X] = align_data(t, X);
         [xrs, X]= align_data(xr, X);
 
         [error, abs_error, mse_array, rmse_array, max_error, mean_error, mse, rmse] = calc_errors(xrs, X);
 
         fprintf("SL: %u HS: %u ME: %f MSE: %f\n", sample_length, optimVars.hiddenSize, mean_error, mse);
+
+        % Save trained network to file
+        filename = "bayesopt_" + num2str(mean_error) + ".mat";
+        fprintf("Saving to file: %s\n", filename);
+        save(filename, 'net', 'mean_error', 'optimVars');
 
         cons = [];
     end
