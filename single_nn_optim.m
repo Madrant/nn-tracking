@@ -40,15 +40,15 @@ snr_array = [snr snr snr];
 optimVars = [
     optimizableVariable('sequenceLength', [1 10], 'Type', 'integer')
     optimizableVariable('hiddenSize', [1 100], 'Type', 'integer')
-    optimizableVariable('type', ["lstm" "gru"]) % "lstm" "gru"
-    optimizableVariable('actType', ["relu" "tahn"]) % "leakyrelu" "clippedrelu" "elu" "swish"
+    %optimizableVariable('type', ["lstm" "gru"]) % "lstm" "gru"
+    optimizableVariable('actType', ["relu" "tanh"]) % "leakyrelu" "clippedrelu" "elu" "swish"
     optimizableVariable('numLayers', [1 3], 'Type', 'integer')
     optimizableVariable('dropout', [0 0.5])
     optimizableVariable('gradientThreshold', [0.1 100], 'Transform', 'log')
     optimizableVariable('initialLearnRate', [0.001 1], 'Transform', 'log')];
 
 BayesObject = bayesopt(make_validation_fcn, optimVars,  ...
-    'MaxObjectiveEvaluations', 1, ...
+    'MaxObjectiveEvaluations', 100, ...
     'MaxTime', 14*60*60, ...
     'IsObjectiveDeterministic', false, ...
     'UseParallel', false);
@@ -82,7 +82,7 @@ plot_results("Best NN configuration", t, xr, xr, xn_test, X, false, 0, samples_d
 
 function layers = rnnBlock(hiddenSize, hiddenType, activation, numLayers, dropout)
     assert(hiddenType == "lstm" || hiddenType == "gru");
-    assert(activation == "relu" || activation == "tahn" || activation == "none");
+    assert(activation == "relu" || activation == "tanh" || activation == "none");
 
     if ~exist('hiddenType', 'var')
         hiddenType = "lstm"
@@ -106,8 +106,8 @@ function layers = rnnBlock(hiddenSize, hiddenType, activation, numLayers, dropou
     % Determine activation type
     if activation == "relu"
         layer(end + 1,:) = reluLayer;
-    elseif activation == "tahn"
-        layer(end + 1,:) = tahnLayer;
+    elseif activation == "tanh"
+        layer(end + 1,:) = tanhLayer;
     end
 
     if (dropout > 0)
@@ -129,7 +129,7 @@ ObjFcn = @validation_fcn;
 
         layers = [ ...
             sequenceInputLayer(1)
-            rnnBlock(optimVars.hiddenSize, optimVars.type, optimVars.actType, optimVars.numLayers, optimVars.dropout)
+            rnnBlock(optimVars.hiddenSize, "lstm", optimVars.actType, optimVars.numLayers, optimVars.dropout)
             fullyConnectedLayer(1)
             regressionLayer
         ];
