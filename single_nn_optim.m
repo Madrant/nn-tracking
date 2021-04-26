@@ -38,10 +38,14 @@ snr_array = [snr snr snr];
 % See also:
 % https://www.mathworks.com/help/deeplearning/ref/trainingoptions.html
 optimVars = [
-    optimizableVariable('sequenceLength',   [1 10], 'Type', 'integer')
+    optimizableVariable('sequenceLength', [1 10], 'Type', 'integer')
     optimizableVariable('hiddenSize', [1 100], 'Type', 'integer')
+    optimizableVariable('type', ["lstm" "gru"]) % "lstm" "gru"
+    optimizableVariable('actType', ["relu" "tahn"]) % "leakyrelu" "clippedrelu" "elu" "swish"
+    optimizableVariable('numLayers', [1 3], 'Type', 'integer')
+    optimizableVariable('dropout', [0 0.5])
     optimizableVariable('gradientThreshold', [0.1 100], 'Transform', 'log')
-    optimizableVariable('initialLearnRate', [0.005 1], 'Transform', 'log')];
+    optimizableVariable('initialLearnRate', [0.001 1], 'Transform', 'log')];
 
 BayesObject = bayesopt(make_validation_fcn, optimVars,  ...
     'MaxObjectiveEvaluations', 1, ...
@@ -76,6 +80,44 @@ X = test_network(net, test_samples, result_length, "lstm");
 fprintf("SL: %u HS: %u ME: %f MSE: %f\n", opt.sequenceLength, opt.hiddenSize, mean_error, mse);
 plot_results("Best NN configuration", t, xr, xr, xn_test, X, false, 0, samples_div);
 
+function layers = rnnBlock(hiddenSize, hiddenType, activation, numLayers, dropout)
+    assert(hiddenType == "lstm" || hiddenType == "gru");
+    assert(activation == "relu" || activation == "tahn" || activation == "none");
+
+    if ~exist('hiddenType', 'var')
+        hiddenType = "lstm"
+    end
+
+    if ~exist('numLayers', 'var')
+        numLayers = 1;
+    end
+
+    if ~exist('dropout', 'var')
+        dropout = 0;
+    end
+
+    % Determine main working layer type
+    layer = [lstmLayer(hiddenSize)];
+
+    if hiddenType == "gru"
+        layer(end,:) = gruLayer(hiddenSize);
+    end
+
+    % Determine activation type
+    if activation == "relu"
+        layer(end + 1,:) = reluLayer;
+    elseif activation == "tahn"
+        layer(end + 1,:) = tahnLayer;
+    end
+
+    if (dropout > 0)
+        layer(end + 1,:) = dropoutLayer(dropout);
+    end
+
+    % Copy layers 'numLayers' time
+    layers = repmat(layer, numLayers, 1);
+end
+
 function ObjFcn = make_validation_fcn()
 ObjFcn = @validation_fcn;
     function [mean_error, cons, filename] = validation_fcn(optimVars)
@@ -87,10 +129,7 @@ ObjFcn = @validation_fcn;
 
         layers = [ ...
             sequenceInputLayer(1)
-            lstmLayer(optimVars.hiddenSize, ...
-                'InputWeightsInitializer', 'zeros', ...
-                'RecurrentWeightsInitializer', 'zeros', ...
-                'BiasInitializer', 'ones')
+            rnnBlock(optimVars.hiddenSize, optimVars.type, optimVars.actType, optimVars.numLayers, optimVars.dropout)
             fullyConnectedLayer(1)
             regressionLayer
         ];
