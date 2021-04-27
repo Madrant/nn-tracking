@@ -6,7 +6,7 @@ clc;       % Clear command window
 rng(12345, 'combRecursive');
 
 % Define input data
-t = 1:0.1:10;
+t = 1:0.05:10;
 
 % Generate test data (real target position)
 r = 0.01;
@@ -38,17 +38,17 @@ snr_array = [snr snr snr];
 % See also:
 % https://www.mathworks.com/help/deeplearning/ref/trainingoptions.html
 optimVars = [
-    optimizableVariable('sequenceLength', [1 10], 'Type', 'integer')
+    optimizableVariable('sequenceLength', [1 30], 'Type', 'integer')
     optimizableVariable('hiddenSize', [1 100], 'Type', 'integer')
     %optimizableVariable('type', ["lstm" "gru"]) % "lstm" "gru"
-    optimizableVariable('actType', ["relu" "tanh"]) % "leakyrelu" "clippedrelu" "elu" "swish"
-    optimizableVariable('numLayers', [1 3], 'Type', 'integer')
+    optimizableVariable('actType', ["relu" "tanh" "leakedrelu"]) % "leakyrelu" "clippedrelu" "elu" "swish"
+    optimizableVariable('numLayers', [1 5], 'Type', 'integer')
     optimizableVariable('dropout', [0 0.5])
-    optimizableVariable('gradientThreshold', [0.1 100], 'Transform', 'log')
+    optimizableVariable('gradientThreshold', [0.1 5], 'Transform', 'log')
     optimizableVariable('initialLearnRate', [0.001 1], 'Transform', 'log')];
 
 BayesObject = bayesopt(make_validation_fcn, optimVars,  ...
-    'MaxObjectiveEvaluations', 100, ...
+    'MaxObjectiveEvaluations', 500, ...
     'MaxTime', 14*60*60, ...
     'IsObjectiveDeterministic', false, ...
     'UseParallel', false);
@@ -82,10 +82,10 @@ plot_results("Best NN configuration", t, xr, xr, xn_test, X, false, 0, samples_d
 
 function layers = rnnBlock(hiddenSize, hiddenType, activation, numLayers, dropout)
     assert(hiddenType == "lstm" || hiddenType == "gru");
-    assert(activation == "relu" || activation == "tanh" || activation == "none");
+    assert(activation == "relu" || activation == "tanh" || activation == "none" || activation == "leakedrelu");
 
     if ~exist('hiddenType', 'var')
-        hiddenType = "lstm"
+        hiddenType = "lstm";
     end
 
     if ~exist('numLayers', 'var')
@@ -106,6 +106,8 @@ function layers = rnnBlock(hiddenSize, hiddenType, activation, numLayers, dropou
     % Determine activation type
     if activation == "relu"
         layer(end + 1,:) = reluLayer;
+    elseif activation == "leakedrelu"
+        layer(end + 1,:) = leakyReluLayer;
     elseif activation == "tanh"
         layer(end + 1,:) = tanhLayer;
     end

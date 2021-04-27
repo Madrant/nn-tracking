@@ -1,0 +1,1646 @@
+SL: 1 HS: 88 ME: 0.157377 MSE: 0.037383
+Saving to file: bayesopt_0.15738.mat
+|================================================================================================================================================================================|
+| Iter | Eval   | Objective   | Objective   | BestSoFar   | BestSoFar   | sequenceLeng-|   hiddenSize |      actType |    numLayers |      dropout | gradientThre-| initialLearn-|
+|      | result |             | runtime     | (observed)  | (estim.)    | th           |              |              |              |              | shold        | Rate         |
+|================================================================================================================================================================================|
+|    1 | Best   |     0.15738 |      70.352 |     0.15738 |     0.15738 |           12 |           88 |         relu |            2 |      0.20861 |      0.14506 |      0.01577 |
+SL: 1 HS: 82 ME: 0.135844 MSE: 0.027853
+Saving to file: bayesopt_0.13584.mat
+|    2 | Best   |     0.13584 |      121.49 |     0.13584 |      0.1367 |           13 |           82 |   leakedrelu |            5 |      0.42219 |      0.26036 |     0.029791 |
+SL: 1 HS: 3 ME: 0.148451 MSE: 0.033497
+Saving to file: bayesopt_0.14845.mat
+|    3 | Accept |     0.14845 |       123.9 |     0.13584 |     0.13674 |            3 |            3 |   leakedrelu |            3 |      0.19441 |      0.23499 |      0.17504 |
+SL: 1 HS: 54 ME: 0.049081 MSE: 0.004247
+Saving to file: bayesopt_0.049081.mat
+|    4 | Best   |    0.049081 |      15.396 |    0.049081 |    0.049089 |           29 |           54 |   leakedrelu |            1 |      0.19457 |       4.3311 |     0.037504 |
+SL: 1 HS: 100 ME: 0.062703 MSE: 0.006537
+Saving to file: bayesopt_0.062703.mat
+|    5 | Accept |    0.062703 |      49.044 |    0.049081 |    0.049108 |           25 |          100 |   leakedrelu |            2 |     0.010359 |       2.7714 |    0.0010027 |
+SL: 1 HS: 81 ME: 0.136914 MSE: 0.028301
+Saving to file: bayesopt_0.13691.mat
+|    6 | Accept |     0.13691 |      71.729 |    0.049081 |     0.04911 |           30 |           81 |         tanh |            3 |      0.24213 |       4.9538 |      0.47824 |
+SL: 1 HS: 39 ME: 0.152055 MSE: 0.034932
+Saving to file: bayesopt_0.15206.mat
+|    7 | Accept |     0.15206 |      29.032 |    0.049081 |    0.049091 |           19 |           39 |   leakedrelu |            2 |      0.47627 |       4.9799 |      0.27683 |
+SL: 1 HS: 29 ME: 0.146715 MSE: 0.032661
+Saving to file: bayesopt_0.14672.mat
+|    8 | Accept |     0.14672 |      36.839 |    0.049081 |     0.04909 |           30 |           29 |   leakedrelu |            4 |      0.10042 |       3.9526 |     0.016551 |
+SL: 1 HS: 54 ME: 0.118954 MSE: 0.021166
+Saving to file: bayesopt_0.11895.mat
+|    9 | Accept |     0.11895 |      16.197 |    0.049081 |     0.10418 |           28 |           54 |   leakedrelu |            1 |     0.053408 |       3.5627 |     0.054839 |
+SL: 1 HS: 84 ME: 0.120150 MSE: 0.022164
+Saving to file: bayesopt_0.12015.mat
+|   10 | Accept |     0.12015 |      21.024 |    0.049081 |     0.11006 |           26 |           84 |   leakedrelu |            1 |      0.13484 |       4.9859 |     0.038315 |
+SL: 1 HS: 18 ME: 0.109918 MSE: 0.018617
+Saving to file: bayesopt_0.10992.mat
+|   11 | Accept |     0.10992 |      11.522 |    0.049081 |    0.049122 |           30 |           18 |   leakedrelu |            1 |      0.30857 |       2.7734 |      0.10077 |
+SL: 1 HS: 64 ME: 0.194261 MSE: 0.054988
+Saving to file: bayesopt_0.19426.mat
+|   12 | Accept |     0.19426 |       16.14 |    0.049081 |    0.049093 |           29 |           64 |   leakedrelu |            1 |      0.16734 |      0.37217 |      0.38839 |
+SL: 1 HS: 20 ME: 0.156207 MSE: 0.037034
+Saving to file: bayesopt_0.15621.mat
+|   13 | Accept |     0.15621 |      20.461 |    0.049081 |     0.10815 |           25 |           20 |   leakedrelu |            2 |     0.019244 |       2.0623 |      0.12649 |
+SL: 1 HS: 29 ME: 0.152489 MSE: 0.035436
+Saving to file: bayesopt_0.15249.mat
+|   14 | Accept |     0.15249 |       12.18 |    0.049081 |    0.049092 |           30 |           29 |   leakedrelu |            1 |      0.49286 |       4.9568 |      0.19281 |
+SL: 1 HS: 15 ME: 0.062420 MSE: 0.006039
+Saving to file: bayesopt_0.06242.mat
+|   15 | Accept |     0.06242 |      12.022 |    0.049081 |    0.049092 |           30 |           15 |   leakedrelu |            1 |      0.22158 |         4.47 |     0.012745 |
+SL: 1 HS: 5 ME: 0.135356 MSE: 0.027799
+Saving to file: bayesopt_0.13536.mat
+|   16 | Accept |     0.13536 |      18.103 |    0.049081 |    0.049097 |           29 |            5 |   leakedrelu |            2 |      0.22419 |       4.2032 |      0.14232 |
+SL: 1 HS: 26 ME: 0.047060 MSE: 0.003454
+Saving to file: bayesopt_0.04706.mat
+|   17 | Best   |     0.04706 |      14.205 |     0.04706 |    0.047069 |           22 |           26 |   leakedrelu |            1 |      0.13159 |       4.3278 |     0.011949 |
+SL: 1 HS: 42 ME: 0.124048 MSE: 0.021842
+Saving to file: bayesopt_0.12405.mat
+|   18 | Accept |     0.12405 |      15.678 |     0.04706 |    0.047068 |           24 |           42 |   leakedrelu |            1 |      0.22031 |      0.35712 |     0.018902 |
+SL: 1 HS: 52 ME: 0.076468 MSE: 0.009429
+Saving to file: bayesopt_0.076468.mat
+|   19 | Accept |    0.076468 |      26.719 |     0.04706 |    0.047068 |           12 |           52 |   leakedrelu |            1 |      0.26882 |       4.1773 |     0.025054 |
+SL: 1 HS: 42 ME: 0.051194 MSE: 0.004285
+Saving to file: bayesopt_0.051194.mat
+|   20 | Accept |    0.051194 |      14.128 |     0.04706 |    0.047066 |           27 |           42 |   leakedrelu |            1 |      0.11998 |       2.9669 |    0.0059368 |
+SL: 1 HS: 55 ME: 0.058126 MSE: 0.005337
+Saving to file: bayesopt_0.058126.mat
+|================================================================================================================================================================================|
+| Iter | Eval   | Objective   | Objective   | BestSoFar   | BestSoFar   | sequenceLeng-|   hiddenSize |      actType |    numLayers |      dropout | gradientThre-| initialLearn-|
+|      | result |             | runtime     | (observed)  | (estim.)    | th           |              |              |              |              | shold        | Rate         |
+|================================================================================================================================================================================|
+|   21 | Accept |    0.058126 |      18.315 |     0.04706 |    0.047067 |           25 |           55 |   leakedrelu |            1 |      0.14736 |       4.9206 |    0.0071338 |
+SL: 1 HS: 53 ME: 0.058083 MSE: 0.005549
+Saving to file: bayesopt_0.058083.mat
+|   22 | Accept |    0.058083 |      17.687 |     0.04706 |    0.047066 |           26 |           53 |   leakedrelu |            1 |      0.16706 |       4.1081 |    0.0092709 |
+SL: 1 HS: 57 ME: 0.051234 MSE: 0.004492
+Saving to file: bayesopt_0.051234.mat
+|   23 | Accept |    0.051234 |      17.393 |     0.04706 |    0.047069 |           28 |           57 |   leakedrelu |            1 |     0.017225 |       3.9983 |    0.0025123 |
+SL: 1 HS: 46 ME: 0.046817 MSE: 0.003993
+Saving to file: bayesopt_0.046817.mat
+|   24 | Best   |    0.046817 |      17.898 |    0.046817 |    0.046822 |           24 |           46 |   leakedrelu |            1 |     0.086716 |       3.8586 |     0.001407 |
+SL: 1 HS: 9 ME: 0.059447 MSE: 0.005924
+Saving to file: bayesopt_0.059447.mat
+|   25 | Accept |    0.059447 |      11.883 |    0.046817 |    0.046822 |           27 |            9 |   leakedrelu |            1 |      0.10013 |       3.6722 |    0.0037814 |
+SL: 1 HS: 27 ME: 0.064079 MSE: 0.006481
+Saving to file: bayesopt_0.064079.mat
+|   26 | Accept |    0.064079 |      13.529 |    0.046817 |    0.046822 |           25 |           27 |   leakedrelu |            1 |     0.036515 |       1.6853 |    0.0016535 |
+SL: 1 HS: 72 ME: 0.067957 MSE: 0.007087
+Saving to file: bayesopt_0.067957.mat
+|   27 | Accept |    0.067957 |      19.992 |    0.046817 |    0.046824 |           27 |           72 |   leakedrelu |            1 |     0.047899 |       1.5736 |    0.0011097 |
+SL: 1 HS: 40 ME: 0.089692 MSE: 0.012196
+Saving to file: bayesopt_0.089692.mat
+|   28 | Accept |    0.089692 |      19.138 |    0.046817 |    0.046833 |           16 |           40 |   leakedrelu |            1 |     0.084205 |       4.8294 |    0.0030691 |
+SL: 1 HS: 44 ME: 0.082816 MSE: 0.010285
+Saving to file: bayesopt_0.082816.mat
+|   29 | Accept |    0.082816 |      14.291 |    0.046817 |    0.057763 |           28 |           44 |   leakedrelu |            1 |      0.18893 |       3.8771 |     0.024471 |
+SL: 1 HS: 9 ME: 0.048217 MSE: 0.004045
+Saving to file: bayesopt_0.048217.mat
+|   30 | Accept |    0.048217 |      12.155 |    0.046817 |     0.05798 |           26 |            9 |   leakedrelu |            1 |     0.084144 |      0.10028 |    0.0061886 |
+SL: 1 HS: 3 ME: 0.154805 MSE: 0.035694
+Saving to file: bayesopt_0.15481.mat
+|   31 | Accept |     0.15481 |      12.116 |    0.046817 |    0.059209 |           26 |            3 |   leakedrelu |            1 |      0.19809 |      0.12787 |      0.00242 |
+SL: 1 HS: 50 ME: 0.108298 MSE: 0.017063
+Saving to file: bayesopt_0.1083.mat
+|   32 | Accept |      0.1083 |      16.232 |    0.046817 |    0.059896 |           28 |           50 |   leakedrelu |            1 |     0.019977 |      0.12261 |    0.0061513 |
+SL: 1 HS: 12 ME: 0.045242 MSE: 0.003361
+Saving to file: bayesopt_0.045242.mat
+|   33 | Best   |    0.045242 |      13.655 |    0.045242 |    0.055625 |           23 |           12 |   leakedrelu |            1 |      0.16179 |       2.6142 |    0.0037797 |
+SL: 1 HS: 18 ME: 0.130808 MSE: 0.025203
+Saving to file: bayesopt_0.13081.mat
+|   34 | Accept |     0.13081 |      12.342 |    0.045242 |    0.055813 |           28 |           18 |   leakedrelu |            1 |      0.27754 |      0.11284 |     0.099354 |
+SL: 1 HS: 20 ME: 0.309817 MSE: 0.122401
+Saving to file: bayesopt_0.30982.mat
+|   35 | Accept |     0.30982 |      13.689 |    0.045242 |    0.056556 |           24 |           20 |   leakedrelu |            1 |      0.18072 |       2.5469 |      0.85273 |
+SL: 1 HS: 3 ME: 0.099067 MSE: 0.014338
+Saving to file: bayesopt_0.099067.mat
+|   36 | Accept |    0.099067 |      14.006 |    0.045242 |    0.057457 |           21 |            3 |   leakedrelu |            1 |      0.47144 |       3.1854 |    0.0044421 |
+SL: 1 HS: 46 ME: 0.068005 MSE: 0.007354
+Saving to file: bayesopt_0.068005.mat
+|   37 | Accept |    0.068005 |      15.669 |    0.045242 |    0.056261 |           27 |           46 |   leakedrelu |            1 |     0.026463 |       1.7136 |    0.0058011 |
+SL: 1 HS: 18 ME: 0.041606 MSE: 0.003117
+Saving to file: bayesopt_0.041606.mat
+|   38 | Best   |    0.041606 |      15.282 |    0.041606 |    0.052905 |           19 |           18 |   leakedrelu |            1 |      0.08658 |       4.7037 |     0.001012 |
+SL: 1 HS: 86 ME: 0.054322 MSE: 0.004809
+Saving to file: bayesopt_0.054322.mat
+|   39 | Accept |    0.054322 |      24.432 |    0.041606 |    0.052085 |           30 |           86 |   leakedrelu |            1 |        0.177 |       4.1069 |    0.0011834 |
+SL: 1 HS: 34 ME: 0.136572 MSE: 0.028325
+Saving to file: bayesopt_0.13657.mat
+|   40 | Accept |     0.13657 |      15.065 |    0.041606 |    0.052009 |           23 |           34 |   leakedrelu |            1 |      0.48811 |      0.10205 |      0.53927 |
+SL: 1 HS: 40 ME: 0.061445 MSE: 0.005683
+Saving to file: bayesopt_0.061445.mat
+|================================================================================================================================================================================|
+| Iter | Eval   | Objective   | Objective   | BestSoFar   | BestSoFar   | sequenceLeng-|   hiddenSize |      actType |    numLayers |      dropout | gradientThre-| initialLearn-|
+|      | result |             | runtime     | (observed)  | (estim.)    | th           |              |              |              |              | shold        | Rate         |
+|================================================================================================================================================================================|
+|   41 | Accept |    0.061445 |      13.186 |    0.041606 |    0.052935 |           29 |           40 |   leakedrelu |            1 |        0.142 |       2.8816 |    0.0013866 |
+SL: 1 HS: 38 ME: 0.059634 MSE: 0.005370
+Saving to file: bayesopt_0.059634.mat
+|   42 | Accept |    0.059634 |      14.442 |    0.041606 |    0.053505 |           25 |           38 |   leakedrelu |            1 |       0.1366 |       4.3136 |    0.0011486 |
+SL: 1 HS: 25 ME: 0.055056 MSE: 0.005026
+Saving to file: bayesopt_0.055056.mat
+|   43 | Accept |    0.055056 |      13.699 |    0.041606 |    0.053316 |           24 |           25 |   leakedrelu |            1 |     0.036208 |       2.9689 |    0.0031476 |
+SL: 1 HS: 25 ME: 0.047656 MSE: 0.003740
+Saving to file: bayesopt_0.047656.mat
+|   44 | Accept |    0.047656 |      13.848 |    0.041606 |    0.053149 |           22 |           25 |   leakedrelu |            1 |      0.17869 |       2.8178 |    0.0081942 |
+SL: 1 HS: 32 ME: 0.039493 MSE: 0.002828
+Saving to file: bayesopt_0.039493.mat
+|   45 | Best   |    0.039493 |      15.851 |    0.039493 |    0.051103 |           20 |           32 |   leakedrelu |            1 |       0.1015 |       3.1387 |    0.0089165 |
+SL: 1 HS: 42 ME: 0.062538 MSE: 0.006334
+Saving to file: bayesopt_0.062538.mat
+|   46 | Accept |    0.062538 |      15.726 |    0.039493 |    0.051388 |           23 |           42 |   leakedrelu |            1 |      0.08019 |       2.4971 |     0.012495 |
+SL: 1 HS: 10 ME: 0.080963 MSE: 0.009854
+Saving to file: bayesopt_0.080963.mat
+|   47 | Accept |    0.080963 |      11.282 |    0.039493 |    0.051657 |           29 |           10 |   leakedrelu |            1 |      0.47016 |       2.2693 |     0.015326 |
+SL: 1 HS: 21 ME: 0.073291 MSE: 0.008175
+Saving to file: bayesopt_0.073291.mat
+|   48 | Accept |    0.073291 |      15.159 |    0.039493 |    0.051476 |           20 |           21 |   leakedrelu |            1 |     0.046295 |       4.4377 |    0.0012772 |
+SL: 1 HS: 16 ME: 0.057558 MSE: 0.004987
+Saving to file: bayesopt_0.057558.mat
+|   49 | Accept |    0.057558 |      18.869 |    0.039493 |    0.051077 |           29 |           16 |   leakedrelu |            2 |      0.13047 |       2.4958 |    0.0020113 |
+SL: 1 HS: 14 ME: 0.069083 MSE: 0.007552
+Saving to file: bayesopt_0.069083.mat
+|   50 | Accept |    0.069083 |      11.631 |    0.039493 |    0.051209 |           29 |           14 |   leakedrelu |            1 |     0.048551 |       2.8097 |    0.0012153 |
+SL: 1 HS: 20 ME: 0.053210 MSE: 0.004330
+Saving to file: bayesopt_0.05321.mat
+|   51 | Accept |     0.05321 |      13.669 |    0.039493 |    0.050854 |           22 |           20 |   leakedrelu |            1 |     0.042013 |       2.2273 |    0.0028505 |
+SL: 1 HS: 17 ME: 0.047715 MSE: 0.003659
+Saving to file: bayesopt_0.047715.mat
+|   52 | Accept |    0.047715 |      15.216 |    0.039493 |    0.049879 |           19 |           17 |   leakedrelu |            1 |      0.15577 |       2.1371 |    0.0068624 |
+SL: 1 HS: 3 ME: 0.135644 MSE: 0.027424
+Saving to file: bayesopt_0.13564.mat
+|   53 | Accept |     0.13564 |      13.202 |    0.039493 |    0.047964 |           23 |            3 |   leakedrelu |            1 |      0.32012 |       2.3814 |    0.0011243 |
+SL: 1 HS: 79 ME: 0.055720 MSE: 0.005141
+Saving to file: bayesopt_0.05572.mat
+|   54 | Accept |     0.05572 |      24.978 |    0.039493 |    0.047882 |           23 |           79 |   leakedrelu |            1 |     0.061938 |       4.8638 |    0.0012895 |
+SL: 1 HS: 16 ME: 0.052368 MSE: 0.003970
+Saving to file: bayesopt_0.052368.mat
+|   55 | Accept |    0.052368 |      13.424 |    0.039493 |    0.047785 |           22 |           16 |   leakedrelu |            1 |      0.17853 |       1.7125 |     0.007236 |
+SL: 1 HS: 9 ME: 0.043276 MSE: 0.003429
+Saving to file: bayesopt_0.043276.mat
+|   56 | Accept |    0.043276 |      19.638 |    0.039493 |    0.046549 |           13 |            9 |   leakedrelu |            1 |     0.078149 |       2.3356 |    0.0053943 |
+SL: 1 HS: 7 ME: 0.047399 MSE: 0.003801
+Saving to file: bayesopt_0.047399.mat
+|   57 | Accept |    0.047399 |      15.267 |    0.039493 |    0.046219 |           19 |            7 |   leakedrelu |            1 |      0.18391 |       2.1484 |    0.0081466 |
+SL: 1 HS: 32 ME: 0.049119 MSE: 0.004359
+Saving to file: bayesopt_0.049119.mat
+|   58 | Accept |    0.049119 |      25.048 |    0.039493 |    0.046115 |           23 |           32 |   leakedrelu |            2 |      0.02579 |         4.31 |     0.001014 |
+SL: 1 HS: 8 ME: 0.066732 MSE: 0.006466
+Saving to file: bayesopt_0.066732.mat
+|   59 | Accept |    0.066732 |      12.347 |    0.039493 |    0.046456 |           28 |            8 |   leakedrelu |            1 |       0.1014 |       1.7752 |    0.0056547 |
+SL: 1 HS: 79 ME: 0.060355 MSE: 0.005431
+Saving to file: bayesopt_0.060355.mat
+|   60 | Accept |    0.060355 |      23.249 |    0.039493 |    0.046566 |           30 |           79 |   leakedrelu |            1 |    0.0027761 |       2.0867 |    0.0019143 |
+SL: 1 HS: 2 ME: 0.077945 MSE: 0.009376
+Saving to file: bayesopt_0.077945.mat
+|================================================================================================================================================================================|
+| Iter | Eval   | Objective   | Objective   | BestSoFar   | BestSoFar   | sequenceLeng-|   hiddenSize |      actType |    numLayers |      dropout | gradientThre-| initialLearn-|
+|      | result |             | runtime     | (observed)  | (estim.)    | th           |              |              |              |              | shold        | Rate         |
+|================================================================================================================================================================================|
+|   61 | Accept |    0.077945 |      13.311 |    0.039493 |    0.046968 |           24 |            2 |   leakedrelu |            1 |      0.16174 |      0.10735 |     0.012919 |
+SL: 1 HS: 5 ME: 0.058637 MSE: 0.005459
+Saving to file: bayesopt_0.058637.mat
+|   62 | Accept |    0.058637 |      15.175 |    0.039493 |    0.047003 |           20 |            5 |   leakedrelu |            1 |     0.059646 |       2.7165 |    0.0063836 |
+SL: 1 HS: 23 ME: 0.045964 MSE: 0.003259
+Saving to file: bayesopt_0.045964.mat
+|   63 | Accept |    0.045964 |      12.308 |    0.039493 |    0.045963 |           29 |           23 |   leakedrelu |            1 |      0.22436 |       2.2704 |     0.004409 |
+SL: 1 HS: 60 ME: 0.088369 MSE: 0.011110
+Saving to file: bayesopt_0.088369.mat
+|   64 | Accept |    0.088369 |      18.097 |    0.039493 |    0.048112 |           26 |           60 |   leakedrelu |            1 |      0.25496 |       2.8083 |    0.0043452 |
+SL: 1 HS: 45 ME: 0.069937 MSE: 0.007045
+Saving to file: bayesopt_0.069937.mat
+|   65 | Accept |    0.069937 |      14.746 |    0.039493 |    0.048295 |           26 |           45 |   leakedrelu |            1 |      0.49444 |      0.10699 |    0.0082274 |
+SL: 1 HS: 7 ME: 0.082763 MSE: 0.010574
+Saving to file: bayesopt_0.082763.mat
+|   66 | Accept |    0.082763 |      12.003 |    0.039493 |    0.048447 |           26 |            7 |   leakedrelu |            1 |       0.2712 |      0.42083 |    0.0073809 |
+SL: 1 HS: 6 ME: 0.088724 MSE: 0.010937
+Saving to file: bayesopt_0.088724.mat
+|   67 | Accept |    0.088724 |      12.083 |    0.039493 |    0.050312 |           27 |            6 |   leakedrelu |            1 |      0.23868 |       2.6348 |    0.0056671 |
+SL: 1 HS: 17 ME: 0.065093 MSE: 0.006486
+Saving to file: bayesopt_0.065093.mat
+|   68 | Accept |    0.065093 |      20.105 |    0.039493 |    0.052504 |           13 |           17 |   leakedrelu |            1 |     0.022167 |       3.7048 |    0.0098244 |
+SL: 1 HS: 20 ME: 0.063375 MSE: 0.006370
+Saving to file: bayesopt_0.063375.mat
+|   69 | Accept |    0.063375 |      22.163 |    0.039493 |    0.052262 |           23 |           20 |   leakedrelu |            2 |     0.031186 |        4.926 |      0.00136 |
+SL: 1 HS: 3 ME: 0.085528 MSE: 0.010584
+Saving to file: bayesopt_0.085528.mat
+|   70 | Accept |    0.085528 |      10.747 |    0.039493 |    0.039511 |           30 |            3 |   leakedrelu |            1 |     0.057857 |       1.9026 |    0.0055379 |
+SL: 1 HS: 13 ME: 0.048964 MSE: 0.004151
+Saving to file: bayesopt_0.048964.mat
+|   71 | Accept |    0.048964 |      25.662 |    0.039493 |    0.039511 |           16 |           13 |   leakedrelu |            2 |      0.13797 |      0.33452 |    0.0056382 |
+SL: 1 HS: 30 ME: 0.060355 MSE: 0.006217
+Saving to file: bayesopt_0.060355.mat
+|   72 | Accept |    0.060355 |      14.973 |    0.039493 |    0.039511 |           22 |           30 |   leakedrelu |            1 |      0.30268 |       3.9644 |     0.030813 |
+SL: 1 HS: 43 ME: 0.070390 MSE: 0.008475
+Saving to file: bayesopt_0.07039.mat
+|   73 | Accept |     0.07039 |      13.631 |    0.039493 |    0.039508 |           28 |           43 |   leakedrelu |            1 |      0.33466 |       4.6846 |     0.043795 |
+SL: 1 HS: 10 ME: 0.074552 MSE: 0.008795
+Saving to file: bayesopt_0.074552.mat
+|   74 | Accept |    0.074552 |      14.269 |    0.039493 |    0.046636 |           19 |           10 |   leakedrelu |            1 |     0.048272 |      0.39287 |    0.0084407 |
+SL: 1 HS: 20 ME: 0.084004 MSE: 0.010651
+Saving to file: bayesopt_0.084004.mat
+|   75 | Accept |    0.084004 |      19.056 |    0.039493 |    0.044085 |           13 |           20 |   leakedrelu |            1 |      0.22233 |       4.0665 |      0.01011 |
+SL: 1 HS: 30 ME: 0.062094 MSE: 0.005878
+Saving to file: bayesopt_0.062094.mat
+|   76 | Accept |    0.062094 |      13.458 |    0.039493 |    0.046705 |           22 |           30 |   leakedrelu |            1 |      0.12339 |       1.1686 |    0.0086102 |
+SL: 1 HS: 32 ME: 0.049814 MSE: 0.004101
+Saving to file: bayesopt_0.049814.mat
+|   77 | Accept |    0.049814 |       15.67 |    0.039493 |    0.046581 |           18 |           32 |   leakedrelu |            1 |      0.11744 |       1.0271 |    0.0039806 |
+SL: 1 HS: 15 ME: 0.058607 MSE: 0.005314
+Saving to file: bayesopt_0.058607.mat
+|   78 | Accept |    0.058607 |      13.681 |    0.039493 |    0.047928 |           21 |           15 |   leakedrelu |            1 |      0.15837 |       1.3567 |    0.0048881 |
+SL: 1 HS: 4 ME: 0.080977 MSE: 0.010534
+Saving to file: bayesopt_0.080977.mat
+|   79 | Accept |    0.080977 |      28.348 |    0.039493 |    0.049982 |           13 |            4 |   leakedrelu |            2 |     0.075628 |      0.10359 |    0.0068432 |
+SL: 1 HS: 16 ME: 0.053822 MSE: 0.004527
+Saving to file: bayesopt_0.053822.mat
+|   80 | Accept |    0.053822 |      12.263 |    0.039493 |     0.05014 |           25 |           16 |   leakedrelu |            1 |      0.15046 |      0.76497 |    0.0064836 |
+SL: 1 HS: 16 ME: 0.126789 MSE: 0.023071
+Saving to file: bayesopt_0.12679.mat
+|================================================================================================================================================================================|
+| Iter | Eval   | Objective   | Objective   | BestSoFar   | BestSoFar   | sequenceLeng-|   hiddenSize |      actType |    numLayers |      dropout | gradientThre-| initialLearn-|
+|      | result |             | runtime     | (observed)  | (estim.)    | th           |              |              |              |              | shold        | Rate         |
+|================================================================================================================================================================================|
+|   81 | Accept |     0.12679 |      11.165 |    0.039493 |    0.050217 |           29 |           16 |   leakedrelu |            1 |      0.03849 |      0.10544 |     0.043352 |
+SL: 1 HS: 26 ME: 0.070342 MSE: 0.007766
+Saving to file: bayesopt_0.070342.mat
+|   82 | Accept |    0.070342 |      12.251 |    0.039493 |     0.04709 |           28 |           26 |   leakedrelu |            1 |      0.10547 |       0.6846 |    0.0066312 |
+SL: 1 HS: 82 ME: 0.049190 MSE: 0.004197
+Saving to file: bayesopt_0.04919.mat
+|   83 | Accept |     0.04919 |      28.642 |    0.039493 |    0.047363 |           12 |           82 |   leakedrelu |            1 |      0.10909 |       3.5369 |    0.0069874 |
+SL: 1 HS: 25 ME: 0.063847 MSE: 0.006084
+Saving to file: bayesopt_0.063847.mat
+|   84 | Accept |    0.063847 |       19.39 |    0.039493 |    0.050618 |           13 |           25 |   leakedrelu |            1 |      0.11563 |       1.4129 |    0.0060431 |
+SL: 1 HS: 18 ME: 0.119425 MSE: 0.023474
+Saving to file: bayesopt_0.11943.mat
+|   85 | Accept |     0.11943 |      18.937 |    0.039493 |    0.049085 |           28 |           18 |   leakedrelu |            2 |      0.11886 |       1.2078 |    0.0038293 |
+SL: 1 HS: 4 ME: 0.074773 MSE: 0.008164
+Saving to file: bayesopt_0.074773.mat
+|   86 | Accept |    0.074773 |      11.792 |    0.039493 |    0.050916 |           25 |            4 |   leakedrelu |            1 |      0.15776 |      0.22635 |    0.0061064 |
+SL: 1 HS: 31 ME: 0.053140 MSE: 0.004551
+Saving to file: bayesopt_0.05314.mat
+|   87 | Accept |     0.05314 |      28.249 |    0.039493 |    0.050845 |            8 |           31 |   leakedrelu |            1 |     0.086055 |       1.4656 |    0.0053151 |
+SL: 1 HS: 19 ME: 0.052517 MSE: 0.004980
+Saving to file: bayesopt_0.052517.mat
+|   88 | Accept |    0.052517 |      20.197 |    0.039493 |    0.050653 |           25 |           19 |   leakedrelu |            2 |      0.10483 |       4.5502 |    0.0011694 |
+SL: 1 HS: 89 ME: 0.052349 MSE: 0.004338
+Saving to file: bayesopt_0.052349.mat
+|   89 | Accept |    0.052349 |      31.836 |    0.039493 |    0.050528 |           12 |           89 |   leakedrelu |            1 |      0.12649 |      0.69908 |    0.0067643 |
+SL: 1 HS: 6 ME: 0.113303 MSE: 0.020047
+Saving to file: bayesopt_0.1133.mat
+|   90 | Accept |      0.1133 |      12.311 |    0.039493 |    0.050814 |           24 |            6 |   leakedrelu |            1 |      0.49958 |      0.32096 |     0.050503 |
+SL: 1 HS: 18 ME: 0.047781 MSE: 0.003648
+Saving to file: bayesopt_0.047781.mat
+|   91 | Accept |    0.047781 |      13.278 |    0.039493 |    0.050514 |           23 |           18 |   leakedrelu |            1 |      0.12594 |       4.9221 |    0.0014863 |
+SL: 1 HS: 26 ME: 0.052445 MSE: 0.004519
+Saving to file: bayesopt_0.052445.mat
+|   92 | Accept |    0.052445 |      19.302 |    0.039493 |    0.050063 |           13 |           26 |   leakedrelu |            1 |      0.14521 |       1.1248 |    0.0083452 |
+SL: 1 HS: 17 ME: 0.135685 MSE: 0.027888
+Saving to file: bayesopt_0.13568.mat
+|   93 | Accept |     0.13568 |       11.69 |    0.039493 |    0.048522 |           28 |           17 |   leakedrelu |            1 |      0.49608 |       2.0133 |      0.69327 |
+SL: 1 HS: 21 ME: 0.110874 MSE: 0.018429
+Saving to file: bayesopt_0.11087.mat
+|   94 | Accept |     0.11087 |      19.094 |    0.039493 |    0.052356 |           13 |           21 |   leakedrelu |            1 |      0.12131 |      0.27996 |    0.0052812 |
+SL: 1 HS: 21 ME: 0.134306 MSE: 0.027186
+Saving to file: bayesopt_0.13431.mat
+|   95 | Accept |     0.13431 |       11.42 |    0.039493 |    0.050221 |           29 |           21 |   leakedrelu |            1 |      0.01569 |        0.198 |      0.54407 |
+SL: 1 HS: 2 ME: 0.152204 MSE: 0.034984
+Saving to file: bayesopt_0.1522.mat
+|   96 | Accept |      0.1522 |      11.221 |    0.039493 |    0.050415 |           26 |            2 |   leakedrelu |            1 |      0.37878 |      0.18124 |    0.0010594 |
+SL: 1 HS: 15 ME: 0.238887 MSE: 0.079101
+Saving to file: bayesopt_0.23889.mat
+|   97 | Accept |     0.23889 |      11.433 |    0.039493 |     0.05169 |           27 |           15 |   leakedrelu |            1 |      0.34918 |      0.24337 |      0.90652 |
+SL: 1 HS: 6 ME: 0.079628 MSE: 0.009675
+Saving to file: bayesopt_0.079628.mat
+|   98 | Accept |    0.079628 |      11.206 |    0.039493 |     0.05198 |           28 |            6 |   leakedrelu |            1 |      0.37282 |       0.1195 |     0.027245 |
+SL: 1 HS: 4 ME: 0.136114 MSE: 0.027713
+Saving to file: bayesopt_0.13611.mat
+|   99 | Accept |     0.13611 |      20.039 |    0.039493 |    0.052108 |           23 |            4 |   leakedrelu |            2 |      0.11482 |       4.0256 |    0.0010702 |
+SL: 1 HS: 24 ME: 0.102305 MSE: 0.014656
+Saving to file: bayesopt_0.1023.mat
+|  100 | Accept |      0.1023 |      14.226 |    0.039493 |    0.051966 |           21 |           24 |   leakedrelu |            1 |       0.4991 |      0.21782 |    0.0010266 |
+SL: 1 HS: 4 ME: 0.148119 MSE: 0.033127
+Saving to file: bayesopt_0.14812.mat
+|================================================================================================================================================================================|
+| Iter | Eval   | Objective   | Objective   | BestSoFar   | BestSoFar   | sequenceLeng-|   hiddenSize |      actType |    numLayers |      dropout | gradientThre-| initialLearn-|
+|      | result |             | runtime     | (observed)  | (estim.)    | th           |              |              |              |              | shold        | Rate         |
+|================================================================================================================================================================================|
+|  101 | Accept |     0.14812 |      11.087 |    0.039493 |    0.051829 |           28 |            4 |   leakedrelu |            1 |      0.32228 |       4.8878 |      0.68288 |
+SL: 1 HS: 5 ME: 0.155774 MSE: 0.036664
+Saving to file: bayesopt_0.15577.mat
+|  102 | Accept |     0.15577 |      10.709 |    0.039493 |    0.051487 |           30 |            5 |   leakedrelu |            1 |      0.40083 |      0.34523 |      0.12399 |
+SL: 1 HS: 7 ME: 0.185484 MSE: 0.050558
+Saving to file: bayesopt_0.18548.mat
+|  103 | Accept |     0.18548 |      17.192 |    0.039493 |    0.051676 |           29 |            7 |   leakedrelu |            2 |     0.036687 |       2.5307 |      0.98346 |
+SL: 1 HS: 17 ME: 0.150496 MSE: 0.034378
+Saving to file: bayesopt_0.1505.mat
+|  104 | Accept |      0.1505 |      14.285 |    0.039493 |    0.051771 |           20 |           17 |   leakedrelu |            1 |    0.0021039 |       4.1676 |      0.63784 |
+SL: 1 HS: 19 ME: 0.095335 MSE: 0.013550
+Saving to file: bayesopt_0.095335.mat
+|  105 | Accept |    0.095335 |      11.271 |    0.039493 |    0.051847 |           29 |           19 |   leakedrelu |            1 |      0.41723 |      0.40718 |    0.0034454 |
+SL: 1 HS: 13 ME: 0.125069 MSE: 0.024604
+Saving to file: bayesopt_0.12507.mat
+|  106 | Accept |     0.12507 |      11.112 |    0.039493 |     0.05192 |           30 |           13 |   leakedrelu |            1 |      0.15061 |      0.24466 |     0.090109 |
+SL: 1 HS: 17 ME: 0.086728 MSE: 0.012307
+Saving to file: bayesopt_0.086728.mat
+|  107 | Accept |    0.086728 |      11.833 |    0.039493 |    0.051956 |           26 |           17 |   leakedrelu |            1 |      0.44828 |       2.7165 |    0.0010343 |
+SL: 1 HS: 39 ME: 0.161730 MSE: 0.039376
+Saving to file: bayesopt_0.16173.mat
+|  108 | Accept |     0.16173 |      13.083 |    0.039493 |    0.051875 |           28 |           39 |   leakedrelu |            1 |     0.095105 |      0.10356 |      0.48634 |
+SL: 1 HS: 7 ME: 0.215379 MSE: 0.066097
+Saving to file: bayesopt_0.21538.mat
+|  109 | Accept |     0.21538 |      10.738 |    0.039493 |    0.051943 |           30 |            7 |   leakedrelu |            1 |      0.25831 |      0.27182 |       0.6075 |
+SL: 1 HS: 17 ME: 0.127160 MSE: 0.024500
+Saving to file: bayesopt_0.12716.mat
+|  110 | Accept |     0.12716 |      11.599 |    0.039493 |     0.05275 |           28 |           17 |   leakedrelu |            1 |      0.10166 |       2.8474 |      0.28234 |
+SL: 1 HS: 9 ME: 0.135923 MSE: 0.027869
+Saving to file: bayesopt_0.13592.mat
+|  111 | Accept |     0.13592 |      10.835 |    0.039493 |    0.052072 |           30 |            9 |   leakedrelu |            1 |     0.042441 |       0.4806 |      0.14924 |
+SL: 1 HS: 14 ME: 0.169136 MSE: 0.042162
+Saving to file: bayesopt_0.16914.mat
+|  112 | Accept |     0.16914 |       11.57 |    0.039493 |    0.052811 |           27 |           14 |   leakedrelu |            1 |      0.48913 |      0.11477 |      0.15692 |
+SL: 1 HS: 18 ME: 0.134579 MSE: 0.027345
+Saving to file: bayesopt_0.13458.mat
+|  113 | Accept |     0.13458 |      11.365 |    0.039493 |    0.052783 |           30 |           18 |   leakedrelu |            1 |      0.39894 |       1.9484 |       0.2848 |
+SL: 1 HS: 14 ME: 0.048815 MSE: 0.004076
+Saving to file: bayesopt_0.048815.mat
+|  114 | Accept |    0.048815 |      11.432 |    0.039493 |    0.052133 |           28 |           14 |   leakedrelu |            1 |       0.3733 |        2.891 |     0.011898 |
+SL: 1 HS: 32 ME: 0.066445 MSE: 0.006714
+Saving to file: bayesopt_0.066445.mat
+|  115 | Accept |    0.066445 |      12.496 |    0.039493 |    0.052124 |           28 |           32 |   leakedrelu |            1 |      0.33957 |       4.8766 |     0.021091 |
+SL: 1 HS: 22 ME: 0.055687 MSE: 0.004969
+Saving to file: bayesopt_0.055687.mat
+|  116 | Accept |    0.055687 |      14.015 |    0.039493 |    0.052104 |           21 |           22 |   leakedrelu |            1 |      0.37342 |       3.6344 |     0.014329 |
+SL: 1 HS: 10 ME: 0.107129 MSE: 0.018536
+Saving to file: bayesopt_0.10713.mat
+|  117 | Accept |     0.10713 |       18.35 |    0.039493 |    0.052018 |           26 |           10 |   leakedrelu |            2 |      0.36503 |       4.0423 |      0.01303 |
+SL: 1 HS: 6 ME: 0.135929 MSE: 0.027822
+Saving to file: bayesopt_0.13593.mat
+|  118 | Accept |     0.13593 |      17.287 |    0.039493 |    0.052013 |           30 |            6 |   leakedrelu |            2 |      0.49368 |      0.28552 |    0.0027835 |
+SL: 1 HS: 39 ME: 0.055031 MSE: 0.005270
+Saving to file: bayesopt_0.055031.mat
+|  119 | Accept |    0.055031 |      15.839 |    0.039493 |    0.051843 |           20 |           39 |   leakedrelu |            1 |       0.1664 |       3.7301 |    0.0030265 |
+SL: 1 HS: 4 ME: 0.188085 MSE: 0.051903
+Saving to file: bayesopt_0.18809.mat
+|  120 | Accept |     0.18809 |      23.368 |    0.039493 |    0.051924 |           30 |            4 |   leakedrelu |            3 |      0.37856 |      0.88615 |      0.89445 |
+SL: 1 HS: 3 ME: 0.147137 MSE: 0.032720
+Saving to file: bayesopt_0.14714.mat
+|================================================================================================================================================================================|
+| Iter | Eval   | Objective   | Objective   | BestSoFar   | BestSoFar   | sequenceLeng-|   hiddenSize |      actType |    numLayers |      dropout | gradientThre-| initialLearn-|
+|      | result |             | runtime     | (observed)  | (estim.)    | th           |              |              |              |              | shold        | Rate         |
+|================================================================================================================================================================================|
+|  121 | Accept |     0.14714 |      16.877 |    0.039493 |    0.051861 |           30 |            3 |   leakedrelu |            2 |      0.41636 |      0.21551 |     0.054156 |
+SL: 1 HS: 13 ME: 0.126379 MSE: 0.024065
+Saving to file: bayesopt_0.12638.mat
+|  122 | Accept |     0.12638 |      11.282 |    0.039493 |    0.051897 |           27 |           13 |   leakedrelu |            1 |    0.0085422 |      0.11687 |    0.0010004 |
+SL: 1 HS: 9 ME: 0.161048 MSE: 0.038965
+Saving to file: bayesopt_0.16105.mat
+|  123 | Accept |     0.16105 |       23.93 |    0.039493 |    0.052729 |           30 |            9 |   leakedrelu |            3 |      0.20341 |      0.10314 |     0.032162 |
+SL: 1 HS: 4 ME: 0.145425 MSE: 0.031912
+Saving to file: bayesopt_0.14543.mat
+|  124 | Accept |     0.14543 |      29.387 |    0.039493 |     0.05275 |           30 |            4 |   leakedrelu |            4 |      0.35966 |      0.11925 |    0.0010044 |
+SL: 1 HS: 10 ME: 0.145556 MSE: 0.032198
+Saving to file: bayesopt_0.14556.mat
+|  125 | Accept |     0.14556 |      31.189 |    0.039493 |    0.052789 |           30 |           10 |   leakedrelu |            4 |     0.034117 |      0.22672 |      0.43269 |
+SL: 1 HS: 15 ME: 0.137281 MSE: 0.028389
+Saving to file: bayesopt_0.13728.mat
+|  126 | Accept |     0.13728 |      11.209 |    0.039493 |    0.052667 |           29 |           15 |   leakedrelu |            1 |      0.32715 |      0.10052 |       0.3413 |
+SL: 1 HS: 26 ME: 0.089512 MSE: 0.011754
+Saving to file: bayesopt_0.089512.mat
+|  127 | Accept |    0.089512 |      12.152 |    0.039493 |    0.052797 |           28 |           26 |   leakedrelu |            1 |       0.4941 |       2.8982 |      0.06938 |
+SL: 1 HS: 11 ME: 0.138454 MSE: 0.029249
+Saving to file: bayesopt_0.13845.mat
+|  128 | Accept |     0.13845 |      11.174 |    0.039493 |    0.051803 |           27 |           11 |   leakedrelu |            1 |      0.14772 |      0.10213 |      0.81131 |
+SL: 1 HS: 21 ME: 0.125451 MSE: 0.022411
+Saving to file: bayesopt_0.12545.mat
+|  129 | Accept |     0.12545 |       11.59 |    0.039493 |    0.051696 |           27 |           21 |   leakedrelu |            1 |      0.31168 |      0.10547 |    0.0051624 |
+SL: 1 HS: 19 ME: 0.193745 MSE: 0.054761
+Saving to file: bayesopt_0.19375.mat
+|  130 | Accept |     0.19375 |      11.365 |    0.039493 |    0.051656 |           29 |           19 |   leakedrelu |            1 |      0.43726 |        4.062 |      0.93374 |
+SL: 1 HS: 81 ME: 0.242689 MSE: 0.081261
+Saving to file: bayesopt_0.24269.mat
+|  131 | Accept |     0.24269 |      20.331 |    0.039493 |    0.051658 |           28 |           81 |   leakedrelu |            1 |      0.49124 |      0.11375 |      0.63894 |
+SL: 1 HS: 96 ME: 0.074140 MSE: 0.007804
+Saving to file: bayesopt_0.07414.mat
+|  132 | Accept |     0.07414 |      22.843 |    0.039493 |    0.051687 |           27 |           96 |   leakedrelu |            1 |      0.10233 |       3.6216 |     0.005891 |
+SL: 1 HS: 46 ME: 0.122671 MSE: 0.023761
+Saving to file: bayesopt_0.12267.mat
+|  133 | Accept |     0.12267 |      14.217 |    0.039493 |    0.051915 |           29 |           46 |   leakedrelu |            1 |      0.43716 |      0.10884 |     0.041413 |
+SL: 1 HS: 21 ME: 0.054514 MSE: 0.004639
+Saving to file: bayesopt_0.054514.mat
+|  134 | Accept |    0.054514 |      20.318 |    0.039493 |    0.052116 |           12 |           21 |   leakedrelu |            1 |      0.17398 |        4.437 |    0.0056715 |
+SL: 1 HS: 40 ME: 0.045805 MSE: 0.003402
+Saving to file: bayesopt_0.045805.mat
+|  135 | Accept |    0.045805 |      14.699 |    0.039493 |    0.052139 |           23 |           40 |   leakedrelu |            1 |      0.24042 |       4.1213 |    0.0010888 |
+SL: 1 HS: 45 ME: 0.044457 MSE: 0.003072
+Saving to file: bayesopt_0.044457.mat
+|  136 | Accept |    0.044457 |      13.295 |    0.039493 |    0.052035 |           29 |           45 |   leakedrelu |            1 |      0.18653 |       3.2539 |    0.0011656 |
+SL: 1 HS: 51 ME: 0.059586 MSE: 0.005473
+Saving to file: bayesopt_0.059586.mat
+|  137 | Accept |    0.059586 |      18.612 |    0.039493 |    0.051834 |           18 |           51 |   leakedrelu |            1 |      0.17109 |       4.2501 |    0.0010793 |
+SL: 1 HS: 32 ME: 0.062088 MSE: 0.006090
+Saving to file: bayesopt_0.062088.mat
+|  138 | Accept |    0.062088 |      12.878 |    0.039493 |    0.051981 |           26 |           32 |   leakedrelu |            1 |      0.44825 |       4.9808 |     0.008096 |
+SL: 1 HS: 50 ME: 0.058232 MSE: 0.005431
+Saving to file: bayesopt_0.058232.mat
+|  139 | Accept |    0.058232 |      18.208 |    0.039493 |    0.052126 |           18 |           50 |   leakedrelu |            1 |      0.37561 |       1.7632 |    0.0010702 |
+SL: 1 HS: 31 ME: 0.063479 MSE: 0.005979
+Saving to file: bayesopt_0.063479.mat
+|  140 | Accept |    0.063479 |      11.765 |    0.039493 |    0.052189 |           29 |           31 |   leakedrelu |            1 |      0.28026 |       2.9658 |    0.0018975 |
+SL: 1 HS: 65 ME: 0.085983 MSE: 0.011637
+Saving to file: bayesopt_0.085983.mat
+|================================================================================================================================================================================|
+| Iter | Eval   | Objective   | Objective   | BestSoFar   | BestSoFar   | sequenceLeng-|   hiddenSize |      actType |    numLayers |      dropout | gradientThre-| initialLearn-|
+|      | result |             | runtime     | (observed)  | (estim.)    | th           |              |              |              |              | shold        | Rate         |
+|================================================================================================================================================================================|
+|  141 | Accept |    0.085983 |      16.003 |    0.039493 |    0.052011 |           29 |           65 |   leakedrelu |            1 |      0.17427 |      0.13037 |     0.086241 |
+SL: 1 HS: 97 ME: 0.060403 MSE: 0.005598
+Saving to file: bayesopt_0.060403.mat
+|  142 | Accept |    0.060403 |      23.274 |    0.039493 |    0.052101 |           26 |           97 |   leakedrelu |            1 |      0.19208 |      0.82135 |    0.0017259 |
+SL: 1 HS: 39 ME: 0.048634 MSE: 0.003732
+Saving to file: bayesopt_0.048634.mat
+|  143 | Accept |    0.048634 |      13.149 |    0.039493 |    0.052078 |           28 |           39 |   leakedrelu |            1 |      0.42426 |       3.9854 |    0.0014832 |
+SL: 1 HS: 25 ME: 0.053759 MSE: 0.004525
+Saving to file: bayesopt_0.053759.mat
+|  144 | Accept |    0.053759 |      16.555 |    0.039493 |     0.05199 |           16 |           25 |   leakedrelu |            1 |     0.089838 |       4.2825 |    0.0037469 |
+SL: 1 HS: 34 ME: 0.052208 MSE: 0.004547
+Saving to file: bayesopt_0.052208.mat
+|  145 | Accept |    0.052208 |      13.039 |    0.039493 |     0.05193 |           26 |           34 |   leakedrelu |            1 |      0.40502 |       4.7284 |    0.0025878 |
+SL: 1 HS: 43 ME: 0.050529 MSE: 0.004149
+Saving to file: bayesopt_0.050529.mat
+|  146 | Accept |    0.050529 |      13.501 |    0.039493 |    0.051828 |           28 |           43 |   leakedrelu |            1 |      0.32883 |       4.0568 |    0.0016486 |
+SL: 1 HS: 25 ME: 0.061490 MSE: 0.006137
+Saving to file: bayesopt_0.06149.mat
+|  147 | Accept |     0.06149 |      11.709 |    0.039493 |    0.051934 |           27 |           25 |   leakedrelu |            1 |     0.048629 |       3.6286 |    0.0086586 |
+SL: 1 HS: 94 ME: 0.105067 MSE: 0.016801
+Saving to file: bayesopt_0.10507.mat
+|  148 | Accept |     0.10507 |      22.481 |    0.039493 |    0.052146 |           27 |           94 |   leakedrelu |            1 |     0.041995 |      0.91707 |    0.0025852 |
+SL: 1 HS: 47 ME: 0.060864 MSE: 0.005596
+Saving to file: bayesopt_0.060864.mat
+|  149 | Accept |    0.060864 |      22.818 |    0.039493 |     0.05211 |           13 |           47 |   leakedrelu |            1 |      0.47388 |       2.8216 |    0.0019594 |
+SL: 1 HS: 88 ME: 0.049502 MSE: 0.004095
+Saving to file: bayesopt_0.049502.mat
+|  150 | Accept |    0.049502 |       23.49 |    0.039493 |     0.05258 |           23 |           88 |   leakedrelu |            1 |      0.46824 |       1.5276 |    0.0019539 |
+SL: 1 HS: 86 ME: 0.049439 MSE: 0.003718
+Saving to file: bayesopt_0.049439.mat
+|  151 | Accept |    0.049439 |      20.778 |    0.039493 |    0.052673 |           29 |           86 |   leakedrelu |            1 |      0.46958 |       3.8754 |    0.0013315 |
+SL: 1 HS: 85 ME: 0.060592 MSE: 0.005553
+Saving to file: bayesopt_0.060592.mat
+|  152 | Accept |    0.060592 |      20.064 |    0.039493 |    0.052737 |           25 |           85 |   leakedrelu |            1 |      0.35887 |       1.2132 |    0.0010921 |
+SL: 1 HS: 93 ME: 0.051363 MSE: 0.004538
+Saving to file: bayesopt_0.051363.mat
+|  153 | Accept |    0.051363 |      23.284 |    0.039493 |    0.052651 |           25 |           93 |   leakedrelu |            1 |      0.39158 |       1.4645 |    0.0028647 |
+SL: 1 HS: 94 ME: 0.046051 MSE: 0.003313
+Saving to file: bayesopt_0.046051.mat
+|  154 | Accept |    0.046051 |      22.992 |    0.039493 |    0.052932 |           26 |           94 |   leakedrelu |            1 |      0.45772 |      0.61153 |    0.0083334 |
+SL: 1 HS: 87 ME: 0.053141 MSE: 0.004059
+Saving to file: bayesopt_0.053141.mat
+|  155 | Accept |    0.053141 |      26.289 |    0.039493 |    0.053082 |           17 |           87 |   leakedrelu |            1 |      0.47308 |      0.12857 |    0.0040288 |
+SL: 1 HS: 71 ME: 0.047007 MSE: 0.003845
+Saving to file: bayesopt_0.047007.mat
+|  156 | Accept |    0.047007 |      18.281 |    0.039493 |    0.053204 |           26 |           71 |   leakedrelu |            1 |      0.42705 |        4.537 |    0.0010612 |
+SL: 1 HS: 93 ME: 0.060105 MSE: 0.005136
+Saving to file: bayesopt_0.060105.mat
+|  157 | Accept |    0.060105 |      23.202 |    0.039493 |    0.053056 |           25 |           93 |   leakedrelu |            1 |      0.49136 |       2.1573 |    0.0036921 |
+SL: 1 HS: 73 ME: 0.055768 MSE: 0.004971
+Saving to file: bayesopt_0.055768.mat
+|  158 | Accept |    0.055768 |      17.868 |    0.039493 |      0.0529 |           28 |           73 |   leakedrelu |            1 |       0.4658 |       3.6482 |    0.0014748 |
+SL: 1 HS: 58 ME: 0.055496 MSE: 0.004665
+Saving to file: bayesopt_0.055496.mat
+|  159 | Accept |    0.055496 |      15.067 |    0.039493 |    0.053254 |           29 |           58 |   leakedrelu |            1 |      0.49199 |       3.6214 |     0.013295 |
+SL: 1 HS: 39 ME: 0.057148 MSE: 0.005574
+Saving to file: bayesopt_0.057148.mat
+|  160 | Accept |    0.057148 |      17.759 |    0.039493 |    0.053157 |           16 |           39 |   leakedrelu |            1 |     0.025053 |       4.0589 |    0.0010524 |
+SL: 1 HS: 94 ME: 0.043777 MSE: 0.003222
+Saving to file: bayesopt_0.043777.mat
+|================================================================================================================================================================================|
+| Iter | Eval   | Objective   | Objective   | BestSoFar   | BestSoFar   | sequenceLeng-|   hiddenSize |      actType |    numLayers |      dropout | gradientThre-| initialLearn-|
+|      | result |             | runtime     | (observed)  | (estim.)    | th           |              |              |              |              | shold        | Rate         |
+|================================================================================================================================================================================|
+|  161 | Accept |    0.043777 |      22.154 |    0.039493 |    0.053239 |           27 |           94 |   leakedrelu |            1 |      0.43494 |        2.544 |    0.0072808 |
+SL: 1 HS: 68 ME: 0.081466 MSE: 0.009602
+Saving to file: bayesopt_0.081466.mat
+|  162 | Accept |    0.081466 |      16.399 |    0.039493 |     0.05291 |           27 |           68 |   leakedrelu |            1 |      0.47534 |       1.6245 |    0.0039959 |
+SL: 1 HS: 100 ME: 0.045800 MSE: 0.003263
+Saving to file: bayesopt_0.0458.mat
+|  163 | Accept |      0.0458 |      24.617 |    0.039493 |    0.052877 |           24 |          100 |   leakedrelu |            1 |      0.36188 |      0.43443 |    0.0067453 |
+SL: 1 HS: 93 ME: 0.078743 MSE: 0.009620
+Saving to file: bayesopt_0.078743.mat
+|  164 | Accept |    0.078743 |      22.118 |    0.039493 |    0.053373 |           27 |           93 |   leakedrelu |            1 |      0.35614 |      0.55296 |    0.0086337 |
+SL: 1 HS: 100 ME: 0.112979 MSE: 0.017052
+Saving to file: bayesopt_0.11298.mat
+|  165 | Accept |     0.11298 |      22.591 |    0.039493 |    0.054699 |           29 |          100 |   leakedrelu |            1 |      0.48416 |      0.37224 |    0.0036356 |
+SL: 1 HS: 69 ME: 0.054711 MSE: 0.004960
+Saving to file: bayesopt_0.054711.mat
+|  166 | Accept |    0.054711 |      32.282 |    0.039493 |    0.054704 |           25 |           69 |   leakedrelu |            2 |      0.18942 |        3.813 |    0.0010918 |
+SL: 1 HS: 94 ME: 0.054896 MSE: 0.004911
+Saving to file: bayesopt_0.054896.mat
+|  167 | Accept |    0.054896 |      22.574 |    0.039493 |    0.054648 |           28 |           94 |   leakedrelu |            1 |      0.44655 |        3.531 |    0.0096667 |
+SL: 1 HS: 73 ME: 0.046544 MSE: 0.003565
+Saving to file: bayesopt_0.046544.mat
+|  168 | Accept |    0.046544 |      17.501 |    0.039493 |    0.054773 |           30 |           73 |   leakedrelu |            1 |        0.418 |       4.9621 |    0.0069252 |
+SL: 1 HS: 73 ME: 0.062682 MSE: 0.006056
+Saving to file: bayesopt_0.062682.mat
+|  169 | Accept |    0.062682 |      33.601 |    0.039493 |    0.054632 |           26 |           73 |   leakedrelu |            2 |       0.2372 |        4.416 |      0.00149 |
+SL: 1 HS: 85 ME: 0.070737 MSE: 0.007040
+Saving to file: bayesopt_0.070737.mat
+|  170 | Accept |    0.070737 |      29.971 |    0.039493 |    0.054523 |           11 |           85 |   leakedrelu |            1 |      0.38259 |       4.9843 |    0.0014549 |
+SL: 1 HS: 4 ME: 0.080749 MSE: 0.010308
+Saving to file: bayesopt_0.080749.mat
+|  171 | Accept |    0.080749 |       10.54 |    0.039493 |       0.055 |           29 |            4 |   leakedrelu |            1 |      0.10032 |       1.2251 |     0.039862 |
+SL: 1 HS: 71 ME: 0.123103 MSE: 0.023023
+Saving to file: bayesopt_0.1231.mat
+|  172 | Accept |      0.1231 |      17.194 |    0.039493 |    0.055236 |           29 |           71 |   leakedrelu |            1 |      0.49666 |       3.9896 |      0.10598 |
+SL: 1 HS: 68 ME: 0.428664 MSE: 0.211602
+Saving to file: bayesopt_0.42866.mat
+|  173 | Accept |     0.42866 |      16.607 |    0.039493 |     0.04921 |           29 |           68 |   leakedrelu |            1 |    0.0097766 |      0.11328 |      0.83985 |
+SL: 1 HS: 87 ME: 0.052349 MSE: 0.004601
+Saving to file: bayesopt_0.052349.mat
+|  174 | Accept |    0.052349 |      22.887 |    0.039493 |    0.049184 |           24 |           87 |   leakedrelu |            1 |      0.35397 |       2.8939 |    0.0097216 |
+SL: 1 HS: 52 ME: 0.056604 MSE: 0.005075
+Saving to file: bayesopt_0.056604.mat
+|  175 | Accept |    0.056604 |      38.011 |    0.039493 |    0.049203 |           29 |           52 |   leakedrelu |            3 |      0.41122 |       3.4117 |    0.0010987 |
+SL: 1 HS: 3 ME: 0.137157 MSE: 0.028408
+Saving to file: bayesopt_0.13716.mat
+|  176 | Accept |     0.13716 |      453.01 |    0.039493 |    0.049183 |            1 |            3 |         tanh |            4 |      0.32058 |       1.9791 |       0.0206 |
+SL: 1 HS: 99 ME: 0.144556 MSE: 0.031696
+Saving to file: bayesopt_0.14456.mat
+|  177 | Accept |     0.14456 |      25.454 |    0.039493 |    0.049335 |           28 |           99 |   leakedrelu |            1 |      0.19544 |       2.0716 |      0.15354 |
+SL: 1 HS: 80 ME: 0.041802 MSE: 0.003090
+Saving to file: bayesopt_0.041802.mat
+|  178 | Accept |    0.041802 |      18.534 |    0.039493 |    0.049299 |           26 |           80 |   leakedrelu |            1 |      0.49337 |       1.7104 |    0.0076888 |
+SL: 1 HS: 72 ME: 0.207889 MSE: 0.061917
+Saving to file: bayesopt_0.20789.mat
+|  179 | Accept |     0.20789 |      20.161 |    0.039493 |    0.048921 |           29 |           72 |   leakedrelu |            1 |      0.44926 |       4.7414 |      0.88306 |
+SL: 1 HS: 59 ME: 0.058283 MSE: 0.005209
+Saving to file: bayesopt_0.058283.mat
+|  180 | Accept |    0.058283 |      15.589 |    0.039493 |    0.048885 |           28 |           59 |   leakedrelu |            1 |      0.49322 |       4.0833 |    0.0010435 |
+SL: 1 HS: 85 ME: 0.090526 MSE: 0.012357
+Saving to file: bayesopt_0.090526.mat
+|================================================================================================================================================================================|
+| Iter | Eval   | Objective   | Objective   | BestSoFar   | BestSoFar   | sequenceLeng-|   hiddenSize |      actType |    numLayers |      dropout | gradientThre-| initialLearn-|
+|      | result |             | runtime     | (observed)  | (estim.)    | th           |              |              |              |              | shold        | Rate         |
+|================================================================================================================================================================================|
+|  181 | Accept |    0.090526 |      18.707 |    0.039493 |    0.048982 |           27 |           85 |   leakedrelu |            1 |       0.4855 |       1.8512 |     0.011128 |
+SL: 1 HS: 89 ME: 0.082956 MSE: 0.010250
+Saving to file: bayesopt_0.082956.mat
+|  182 | Accept |    0.082956 |      21.185 |    0.039493 |    0.049146 |           27 |           89 |   leakedrelu |            1 |      0.36555 |       4.5446 |    0.0071654 |
+SL: 1 HS: 53 ME: 0.063884 MSE: 0.006275
+Saving to file: bayesopt_0.063884.mat
+|  183 | Accept |    0.063884 |      19.367 |    0.039493 |    0.049579 |           17 |           53 |   leakedrelu |            1 |     0.025548 |       4.2515 |    0.0010612 |
+SL: 1 HS: 1 ME: 0.112295 MSE: 0.018622
+Saving to file: bayesopt_0.11229.mat
+|  184 | Accept |     0.11229 |      9.5837 |    0.039493 |    0.049583 |           28 |            1 |   leakedrelu |            1 |    0.0086364 |       4.7336 |     0.067221 |
+SL: 1 HS: 62 ME: 0.136957 MSE: 0.028150
+Saving to file: bayesopt_0.13696.mat
+|  185 | Accept |     0.13696 |       15.54 |    0.039493 |    0.049616 |           30 |           62 |   leakedrelu |            1 |    0.0067218 |      0.13814 |      0.18758 |
+SL: 1 HS: 99 ME: 0.137672 MSE: 0.028665
+Saving to file: bayesopt_0.13767.mat
+|  186 | Accept |     0.13767 |      23.324 |    0.039493 |    0.049632 |           26 |           99 |   leakedrelu |            1 |      0.43698 |      0.13809 |     0.049652 |
+SL: 1 HS: 59 ME: 0.156277 MSE: 0.036918
+Saving to file: bayesopt_0.15628.mat
+|  187 | Accept |     0.15628 |      15.342 |    0.039493 |    0.049748 |           29 |           59 |   leakedrelu |            1 |       0.4798 |      0.11286 |      0.20904 |
+SL: 1 HS: 62 ME: 0.079971 MSE: 0.009211
+Saving to file: bayesopt_0.079971.mat
+|  188 | Accept |    0.079971 |      15.878 |    0.039493 |    0.049628 |           28 |           62 |   leakedrelu |            1 |    0.0016556 |      0.11019 |      0.03156 |
+SL: 1 HS: 43 ME: 0.059565 MSE: 0.005314
+Saving to file: bayesopt_0.059565.mat
+|  189 | Accept |    0.059565 |      19.067 |    0.039493 |    0.050058 |           15 |           43 |   leakedrelu |            1 |      0.34376 |       4.9333 |    0.0010703 |
+SL: 1 HS: 59 ME: 0.045913 MSE: 0.003877
+Saving to file: bayesopt_0.045913.mat
+|  190 | Accept |    0.045913 |      17.042 |    0.039493 |    0.050165 |           24 |           59 |   leakedrelu |            1 |      0.49819 |       4.2056 |    0.0027199 |
+SL: 1 HS: 60 ME: 0.051729 MSE: 0.004652
+Saving to file: bayesopt_0.051729.mat
+|  191 | Accept |    0.051729 |      16.009 |    0.039493 |    0.050209 |           26 |           60 |   leakedrelu |            1 |       0.4004 |       2.8848 |    0.0020108 |
+SL: 1 HS: 51 ME: 0.051474 MSE: 0.004217
+Saving to file: bayesopt_0.051474.mat
+|  192 | Accept |    0.051474 |      17.684 |    0.039493 |    0.050155 |           20 |           51 |   leakedrelu |            1 |      0.47708 |       4.4476 |    0.0017598 |
+SL: 1 HS: 71 ME: 0.088294 MSE: 0.011688
+Saving to file: bayesopt_0.088294.mat
+|  193 | Accept |    0.088294 |      18.079 |    0.039493 |    0.050259 |           22 |           71 |   leakedrelu |            1 |      0.48995 |       4.0913 |    0.0072037 |
+SL: 1 HS: 99 ME: 0.062653 MSE: 0.006306
+Saving to file: bayesopt_0.062653.mat
+|  194 | Accept |    0.062653 |      47.146 |    0.039493 |    0.050289 |           30 |           99 |         tanh |            2 |      0.12942 |      0.34447 |    0.0043643 |
+SL: 1 HS: 66 ME: 0.063171 MSE: 0.006016
+Saving to file: bayesopt_0.063171.mat
+|  195 | Accept |    0.063171 |      17.745 |    0.039493 |    0.050248 |           24 |           66 |   leakedrelu |            1 |      0.32874 |       3.9142 |     0.001134 |
+SL: 1 HS: 99 ME: 0.109590 MSE: 0.017898
+Saving to file: bayesopt_0.10959.mat
+|  196 | Accept |     0.10959 |      47.266 |    0.039493 |    0.050239 |           30 |           99 |         tanh |            2 |      0.33759 |        0.217 |    0.0012308 |
+SL: 1 HS: 94 ME: 0.075281 MSE: 0.008604
+Saving to file: bayesopt_0.075281.mat
+|  197 | Accept |    0.075281 |       23.45 |    0.039493 |    0.050258 |           30 |           94 |         tanh |            1 |      0.31666 |       1.2272 |     0.012953 |
+SL: 1 HS: 74 ME: 0.081281 MSE: 0.010551
+Saving to file: bayesopt_0.081281.mat
+|  198 | Accept |    0.081281 |      18.384 |    0.039493 |    0.050333 |           29 |           74 |         tanh |            1 |      0.20628 |      0.18421 |    0.0057294 |
+SL: 1 HS: 87 ME: 0.084746 MSE: 0.011111
+Saving to file: bayesopt_0.084746.mat
+|  199 | Accept |    0.084746 |      23.411 |    0.039493 |     0.05038 |           25 |           87 |         tanh |            1 |     0.016969 |      0.13537 |     0.015066 |
+SL: 1 HS: 57 ME: 0.112522 MSE: 0.019659
+Saving to file: bayesopt_0.11252.mat
+|  200 | Accept |     0.11252 |      15.681 |    0.039493 |    0.050399 |           29 |           57 |         tanh |            1 |      0.47586 |      0.10495 |     0.092165 |
+SL: 1 HS: 32 ME: 0.311147 MSE: 0.123270
+Saving to file: bayesopt_0.31115.mat
+|================================================================================================================================================================================|
+| Iter | Eval   | Objective   | Objective   | BestSoFar   | BestSoFar   | sequenceLeng-|   hiddenSize |      actType |    numLayers |      dropout | gradientThre-| initialLearn-|
+|      | result |             | runtime     | (observed)  | (estim.)    | th           |              |              |              |              | shold        | Rate         |
+|================================================================================================================================================================================|
+|  201 | Accept |     0.31115 |      13.391 |    0.039493 |    0.050441 |           29 |           32 |         tanh |            1 |       0.4174 |      0.18664 |      0.87979 |
+SL: 1 HS: 14 ME: 0.068294 MSE: 0.007127
+Saving to file: bayesopt_0.068294.mat
+|  202 | Accept |    0.068294 |      12.132 |    0.039493 |    0.050485 |           28 |           14 |         tanh |            1 |       0.1136 |       1.0575 |    0.0012175 |
+SL: 1 HS: 17 ME: 0.064287 MSE: 0.006484
+Saving to file: bayesopt_0.064287.mat
+|  203 | Accept |    0.064287 |      11.859 |    0.039493 |    0.050343 |           30 |           17 |         tanh |            1 |       0.4591 |      0.12561 |     0.001388 |
+SL: 1 HS: 8 ME: 0.087381 MSE: 0.011837
+Saving to file: bayesopt_0.087381.mat
+|  204 | Accept |    0.087381 |        11.2 |    0.039493 |    0.050371 |           29 |            8 |         tanh |            1 |     0.080932 |      0.16043 |    0.0033522 |
+SL: 1 HS: 12 ME: 0.077696 MSE: 0.009162
+Saving to file: bayesopt_0.077696.mat
+|  205 | Accept |    0.077696 |       11.46 |    0.039493 |    0.050416 |           29 |           12 |         tanh |            1 |      0.36584 |       3.0563 |    0.0015222 |
+SL: 1 HS: 52 ME: 0.091943 MSE: 0.012944
+Saving to file: bayesopt_0.091943.mat
+|  206 | Accept |    0.091943 |       15.54 |    0.039493 |    0.050506 |           27 |           52 |         tanh |            1 |     0.045651 |      0.34118 |    0.0018526 |
+SL: 1 HS: 7 ME: 0.102501 MSE: 0.015914
+Saving to file: bayesopt_0.1025.mat
+|  207 | Accept |      0.1025 |      13.224 |    0.039493 |    0.050514 |           23 |            7 |         tanh |            1 |      0.10637 |      0.10016 |    0.0011196 |
+SL: 1 HS: 33 ME: 0.072407 MSE: 0.007688
+Saving to file: bayesopt_0.072407.mat
+|  208 | Accept |    0.072407 |       12.77 |    0.039493 |    0.050599 |           30 |           33 |         tanh |            1 |      0.48734 |       2.1868 |    0.0044218 |
+SL: 1 HS: 52 ME: 0.063735 MSE: 0.006189
+Saving to file: bayesopt_0.063735.mat
+|  209 | Accept |    0.063735 |      17.194 |    0.039493 |    0.050727 |           24 |           52 |         tanh |            1 |      0.43461 |        4.714 |    0.0015275 |
+SL: 1 HS: 92 ME: 0.093419 MSE: 0.013500
+Saving to file: bayesopt_0.093419.mat
+|  210 | Accept |    0.093419 |      25.166 |    0.039493 |    0.050762 |           24 |           92 |         tanh |            1 |     0.097161 |       3.5999 |     0.067982 |
+SL: 1 HS: 51 ME: 0.065868 MSE: 0.006912
+Saving to file: bayesopt_0.065868.mat
+|  211 | Accept |    0.065868 |      14.891 |    0.039493 |    0.050801 |           29 |           51 |         tanh |            1 |      0.48051 |      0.26026 |    0.0023127 |
+SL: 1 HS: 1 ME: 0.177227 MSE: 0.046833
+Saving to file: bayesopt_0.17723.mat
+|  212 | Accept |     0.17723 |      9.6245 |    0.039493 |    0.050761 |           30 |            1 |         tanh |            1 |     0.056451 |       1.5921 |      0.36384 |
+SL: 1 HS: 50 ME: 0.056102 MSE: 0.004600
+Saving to file: bayesopt_0.056102.mat
+|  213 | Accept |    0.056102 |      14.994 |    0.039493 |    0.050814 |           29 |           50 |         tanh |            1 |      0.29357 |       4.3819 |    0.0035153 |
+SL: 1 HS: 85 ME: 0.047000 MSE: 0.003152
+Saving to file: bayesopt_0.047.mat
+|  214 | Accept |       0.047 |      19.232 |    0.039493 |    0.050914 |           29 |           85 |         tanh |            1 |      0.36167 |        4.489 |    0.0048994 |
+SL: 1 HS: 66 ME: 0.072965 MSE: 0.007593
+Saving to file: bayesopt_0.072965.mat
+|  215 | Accept |    0.072965 |      18.799 |    0.039493 |    0.050942 |           22 |           66 |         tanh |            1 |      0.43727 |        3.466 |    0.0044938 |
+SL: 1 HS: 65 ME: 0.048019 MSE: 0.003874
+Saving to file: bayesopt_0.048019.mat
+|  216 | Accept |    0.048019 |      18.617 |    0.039493 |    0.051006 |           24 |           65 |         tanh |            1 |    0.0096426 |       3.8312 |    0.0065193 |
+SL: 1 HS: 77 ME: 0.080009 MSE: 0.010041
+Saving to file: bayesopt_0.080009.mat
+|  217 | Accept |    0.080009 |      20.357 |    0.039493 |    0.051098 |           24 |           77 |         tanh |            1 |      0.12757 |       4.8736 |    0.0053424 |
+SL: 1 HS: 36 ME: 0.047581 MSE: 0.003803
+Saving to file: bayesopt_0.047581.mat
+|  218 | Accept |    0.047581 |       13.53 |    0.039493 |    0.051014 |           28 |           36 |         tanh |            1 |     0.095912 |       4.6724 |    0.0087221 |
+SL: 1 HS: 35 ME: 0.078707 MSE: 0.009166
+Saving to file: bayesopt_0.078707.mat
+|  219 | Accept |    0.078707 |      12.786 |    0.039493 |    0.051079 |           29 |           35 |         tanh |            1 |     0.033633 |       3.4636 |     0.014263 |
+SL: 1 HS: 37 ME: 0.055847 MSE: 0.004759
+Saving to file: bayesopt_0.055847.mat
+|  220 | Accept |    0.055847 |      14.962 |    0.039493 |    0.051086 |           22 |           37 |         tanh |            1 |    0.0097897 |       4.4152 |    0.0053771 |
+SL: 1 HS: 27 ME: 0.053052 MSE: 0.004344
+Saving to file: bayesopt_0.053052.mat
+|================================================================================================================================================================================|
+| Iter | Eval   | Objective   | Objective   | BestSoFar   | BestSoFar   | sequenceLeng-|   hiddenSize |      actType |    numLayers |      dropout | gradientThre-| initialLearn-|
+|      | result |             | runtime     | (observed)  | (estim.)    | th           |              |              |              |              | shold        | Rate         |
+|================================================================================================================================================================================|
+|  221 | Accept |    0.053052 |      13.298 |    0.039493 |    0.051048 |           25 |           27 |         tanh |            1 |      0.20152 |       4.6879 |     0.002445 |
+SL: 1 HS: 2 ME: 0.118976 MSE: 0.022459
+Saving to file: bayesopt_0.11898.mat
+|  222 | Accept |     0.11898 |      11.342 |    0.039493 |    0.051147 |           28 |            2 |         tanh |            1 |      0.19724 |      0.29541 |     0.070502 |
+SL: 1 HS: 40 ME: 0.056630 MSE: 0.004600
+Saving to file: bayesopt_0.05663.mat
+|  223 | Accept |     0.05663 |       13.84 |    0.039493 |    0.051122 |           28 |           40 |         tanh |            1 |      0.13722 |       1.7762 |    0.0056863 |
+SL: 1 HS: 30 ME: 0.067348 MSE: 0.007141
+Saving to file: bayesopt_0.067348.mat
+|  224 | Accept |    0.067348 |      12.494 |    0.039493 |    0.051138 |           30 |           30 |         tanh |            1 |      0.13578 |       4.2842 |    0.0038158 |
+SL: 1 HS: 13 ME: 0.156868 MSE: 0.036470
+Saving to file: bayesopt_0.15687.mat
+|  225 | Accept |     0.15687 |      11.966 |    0.039493 |     0.05125 |           28 |           13 |         tanh |            1 |      0.44699 |       3.5173 |      0.20043 |
+SL: 1 HS: 2 ME: 0.121394 MSE: 0.023149
+Saving to file: bayesopt_0.12139.mat
+|  226 | Accept |     0.12139 |      12.306 |    0.039493 |    0.051286 |           26 |            2 |         tanh |            1 |      0.49917 |      0.14684 |     0.044114 |
+SL: 1 HS: 82 ME: 0.082445 MSE: 0.011002
+Saving to file: bayesopt_0.082445.mat
+|  227 | Accept |    0.082445 |      88.256 |    0.039493 |    0.051293 |           29 |           82 |         tanh |            5 |      0.32854 |       4.7834 |    0.0059098 |
+SL: 1 HS: 5 ME: 0.181694 MSE: 0.048707
+Saving to file: bayesopt_0.18169.mat
+|  228 | Accept |     0.18169 |      11.172 |    0.039493 |    0.050674 |           30 |            5 |         tanh |            1 |        0.411 |       1.2803 |      0.91536 |
+SL: 1 HS: 4 ME: 0.099915 MSE: 0.015388
+Saving to file: bayesopt_0.099915.mat
+|  229 | Accept |    0.099915 |      11.051 |    0.039493 |    0.050725 |           29 |            4 |         tanh |            1 |      0.49504 |      0.17463 |     0.010493 |
+SL: 1 HS: 50 ME: 0.046796 MSE: 0.003833
+Saving to file: bayesopt_0.046796.mat
+|  230 | Accept |    0.046796 |      14.798 |    0.039493 |    0.050816 |           29 |           50 |         tanh |            1 |       0.4644 |       3.0274 |     0.010578 |
+SL: 1 HS: 63 ME: 0.054329 MSE: 0.004533
+Saving to file: bayesopt_0.054329.mat
+|  231 | Accept |    0.054329 |      20.142 |    0.039493 |    0.050821 |           19 |           63 |         tanh |            1 |      0.29059 |       4.7774 |     0.015523 |
+SL: 1 HS: 49 ME: 0.067831 MSE: 0.007161
+Saving to file: bayesopt_0.067831.mat
+|  232 | Accept |    0.067831 |      15.655 |    0.039493 |    0.050831 |           28 |           49 |         tanh |            1 |      0.40362 |       1.1761 |     0.012286 |
+SL: 1 HS: 50 ME: 0.069237 MSE: 0.007379
+Saving to file: bayesopt_0.069237.mat
+|  233 | Accept |    0.069237 |      14.915 |    0.039493 |    0.050819 |           29 |           50 |         tanh |            1 |      0.32459 |       2.8284 |    0.0056841 |
+SL: 1 HS: 59 ME: 0.074858 MSE: 0.008742
+Saving to file: bayesopt_0.074858.mat
+|  234 | Accept |    0.074858 |      18.241 |    0.039493 |    0.050827 |           23 |           59 |         tanh |            1 |       0.0285 |         4.11 |      0.01647 |
+SL: 1 HS: 81 ME: 0.048154 MSE: 0.003660
+Saving to file: bayesopt_0.048154.mat
+|  235 | Accept |    0.048154 |      19.365 |    0.039493 |    0.050842 |           28 |           81 |         tanh |            1 |      0.48321 |       4.7544 |     0.013031 |
+SL: 1 HS: 37 ME: 0.100666 MSE: 0.015286
+Saving to file: bayesopt_0.10067.mat
+|  236 | Accept |     0.10067 |      13.365 |    0.039493 |    0.050935 |           30 |           37 |         tanh |            1 |      0.11452 |       2.9161 |       0.1229 |
+SL: 1 HS: 58 ME: 0.094650 MSE: 0.013713
+Saving to file: bayesopt_0.09465.mat
+|  237 | Accept |     0.09465 |      18.072 |    0.039493 |    0.051001 |           23 |           58 |         tanh |            1 |      0.43984 |       4.5078 |     0.031666 |
+SL: 1 HS: 11 ME: 0.233636 MSE: 0.076144
+Saving to file: bayesopt_0.23364.mat
+|  238 | Accept |     0.23364 |       11.64 |    0.039493 |     0.05107 |           30 |           11 |         tanh |            1 |     0.046451 |      0.10617 |      0.80799 |
+SL: 1 HS: 56 ME: 0.062868 MSE: 0.006284
+Saving to file: bayesopt_0.062868.mat
+|  239 | Accept |    0.062868 |      19.708 |    0.039493 |    0.051051 |           19 |           56 |         tanh |            1 |      0.30149 |       4.8351 |    0.0079798 |
+SL: 1 HS: 33 ME: 0.125007 MSE: 0.023832
+Saving to file: bayesopt_0.12501.mat
+|  240 | Accept |     0.12501 |      13.221 |    0.039493 |    0.051237 |           27 |           33 |         tanh |            1 |     0.033684 |       4.2911 |      0.95522 |
+SL: 1 HS: 2 ME: 0.135289 MSE: 0.027816
+Saving to file: bayesopt_0.13529.mat
+|================================================================================================================================================================================|
+| Iter | Eval   | Objective   | Objective   | BestSoFar   | BestSoFar   | sequenceLeng-|   hiddenSize |      actType |    numLayers |      dropout | gradientThre-| initialLearn-|
+|      | result |             | runtime     | (observed)  | (estim.)    | th           |              |              |              |              | shold        | Rate         |
+|================================================================================================================================================================================|
+|  241 | Accept |     0.13529 |      11.384 |    0.039493 |     0.05094 |           27 |            2 |         tanh |            1 |      0.47007 |      0.11696 |      0.26901 |
+SL: 1 HS: 28 ME: 0.073537 MSE: 0.008097
+Saving to file: bayesopt_0.073537.mat
+|  242 | Accept |    0.073537 |      12.426 |    0.039493 |     0.05092 |           30 |           28 |         tanh |            1 |      0.48894 |       1.2893 |    0.0018755 |
+SL: 1 HS: 8 ME: 0.060245 MSE: 0.006086
+Saving to file: bayesopt_0.060245.mat
+|  243 | Accept |    0.060245 |      11.293 |    0.039493 |    0.050827 |           30 |            8 |         tanh |            1 |     0.029556 |       2.7579 |     0.035598 |
+SL: 1 HS: 1 ME: 0.078539 MSE: 0.009555
+Saving to file: bayesopt_0.078539.mat
+|  244 | Accept |    0.078539 |      9.6353 |    0.039493 |    0.050887 |           29 |            1 |         tanh |            1 |     0.082894 |       4.7634 |     0.006914 |
+SL: 1 HS: 35 ME: 0.070631 MSE: 0.008043
+Saving to file: bayesopt_0.070631.mat
+|  245 | Accept |    0.070631 |      13.858 |    0.039493 |    0.050899 |           24 |           35 |   leakedrelu |            1 |       0.2749 |        4.738 |    0.0065753 |
+SL: 1 HS: 81 ME: 0.074415 MSE: 0.008765
+Saving to file: bayesopt_0.074415.mat
+|  246 | Accept |    0.074415 |      20.791 |    0.039493 |    0.050955 |           24 |           81 |         tanh |            1 |      0.45046 |       2.0842 |    0.0095518 |
+SL: 1 HS: 10 ME: 0.113528 MSE: 0.018198
+Saving to file: bayesopt_0.11353.mat
+|  247 | Accept |     0.11353 |      11.624 |    0.039493 |    0.051105 |           30 |           10 |         tanh |            1 |     0.036529 |      0.19945 |     0.019435 |
+SL: 1 HS: 45 ME: 0.052365 MSE: 0.004882
+Saving to file: bayesopt_0.052365.mat
+|  248 | Accept |    0.052365 |      16.068 |    0.039493 |    0.051077 |           23 |           45 |         tanh |            1 |      0.11569 |       4.4211 |    0.0010827 |
+SL: 1 HS: 4 ME: 0.090611 MSE: 0.012605
+Saving to file: bayesopt_0.090611.mat
+|  249 | Accept |    0.090611 |      13.202 |    0.039493 |    0.051295 |           23 |            4 |         tanh |            1 |      0.47599 |       3.8513 |     0.028735 |
+SL: 1 HS: 28 ME: 0.060923 MSE: 0.005735
+Saving to file: bayesopt_0.060923.mat
+|  250 | Accept |    0.060923 |      18.015 |    0.039493 |     0.05129 |           16 |           28 |         tanh |            1 |     0.027716 |       4.3047 |    0.0014813 |
+SL: 1 HS: 32 ME: 0.152326 MSE: 0.034669
+Saving to file: bayesopt_0.15233.mat
+|  251 | Accept |     0.15233 |      12.989 |    0.039493 |    0.051632 |           29 |           32 |         tanh |            1 |     0.088827 |      0.10173 |      0.36602 |
+SL: 1 HS: 94 ME: 0.048760 MSE: 0.003862
+Saving to file: bayesopt_0.04876.mat
+|  252 | Accept |     0.04876 |      24.659 |    0.039493 |    0.051812 |           25 |           94 |         tanh |            1 |     0.011621 |        4.165 |    0.0023497 |
+SL: 1 HS: 65 ME: 0.039196 MSE: 0.002310
+Saving to file: bayesopt_0.039196.mat
+|  253 | Best   |    0.039196 |      17.338 |    0.039196 |    0.051888 |           26 |           65 |         tanh |            1 |      0.12492 |       3.0505 |    0.0025168 |
+SL: 1 HS: 83 ME: 0.056345 MSE: 0.004889
+Saving to file: bayesopt_0.056345.mat
+|  254 | Accept |    0.056345 |      20.486 |    0.039196 |    0.051867 |           26 |           83 |         tanh |            1 |      0.11238 |       4.3783 |      0.00179 |
+SL: 1 HS: 48 ME: 0.056090 MSE: 0.004997
+Saving to file: bayesopt_0.05609.mat
+|  255 | Accept |     0.05609 |      21.258 |    0.039196 |    0.051836 |           16 |           48 |         tanh |            1 |     0.067127 |        4.089 |    0.0020425 |
+SL: 1 HS: 63 ME: 0.065157 MSE: 0.006246
+Saving to file: bayesopt_0.065157.mat
+|  256 | Accept |    0.065157 |      18.435 |    0.039196 |    0.051776 |           23 |           63 |         tanh |            1 |    0.0058631 |       3.0513 |    0.0023877 |
+SL: 1 HS: 86 ME: 0.501682 MSE: 0.279495
+Saving to file: bayesopt_0.50168.mat
+|  257 | Accept |     0.50168 |      26.508 |    0.039196 |    0.051259 |           30 |           86 |         tanh |            1 |      0.21377 |      0.39465 |      0.99312 |
+SL: 1 HS: 97 ME: 0.081782 MSE: 0.010275
+Saving to file: bayesopt_0.081782.mat
+|  258 | Accept |    0.081782 |      23.376 |    0.039196 |    0.051271 |           27 |           97 |         tanh |            1 |      0.33405 |       4.5491 |    0.0021448 |
+SL: 1 HS: 29 ME: 0.123228 MSE: 0.020172
+Saving to file: bayesopt_0.12323.mat
+|  259 | Accept |     0.12323 |       13.11 |    0.039196 |    0.051391 |           28 |           29 |         tanh |            1 |     0.082012 |        0.121 |      0.04741 |
+SL: 1 HS: 44 ME: 0.124743 MSE: 0.023372
+Saving to file: bayesopt_0.12474.mat
+|  260 | Accept |     0.12474 |      13.629 |    0.039196 |    0.051394 |           29 |           44 |         tanh |            1 |      0.49524 |       3.6147 |      0.31566 |
+SL: 1 HS: 60 ME: 0.040056 MSE: 0.002557
+Saving to file: bayesopt_0.040056.mat
+|================================================================================================================================================================================|
+| Iter | Eval   | Objective   | Objective   | BestSoFar   | BestSoFar   | sequenceLeng-|   hiddenSize |      actType |    numLayers |      dropout | gradientThre-| initialLearn-|
+|      | result |             | runtime     | (observed)  | (estim.)    | th           |              |              |              |              | shold        | Rate         |
+|================================================================================================================================================================================|
+|  261 | Accept |    0.040056 |      20.495 |    0.039196 |    0.051362 |           18 |           60 |         tanh |            1 |    0.0098543 |       4.7548 |    0.0011227 |
+SL: 1 HS: 52 ME: 0.049056 MSE: 0.004099
+Saving to file: bayesopt_0.049056.mat
+|  262 | Accept |    0.049056 |       15.15 |    0.039196 |    0.051333 |           29 |           52 |         tanh |            1 |     0.032813 |       4.9672 |    0.0011614 |
+SL: 1 HS: 75 ME: 0.052367 MSE: 0.003931
+Saving to file: bayesopt_0.052367.mat
+|  263 | Accept |    0.052367 |      22.829 |    0.039196 |    0.051327 |           18 |           75 |         tanh |            1 |      0.16021 |       4.7216 |    0.0012055 |
+SL: 1 HS: 73 ME: 0.084476 MSE: 0.010949
+Saving to file: bayesopt_0.084476.mat
+|  264 | Accept |    0.084476 |      17.526 |    0.039196 |    0.051344 |           27 |           73 |   leakedrelu |            1 |      0.40625 |      0.10944 |    0.0010908 |
+SL: 1 HS: 54 ME: 0.041768 MSE: 0.003036
+Saving to file: bayesopt_0.041768.mat
+|  265 | Accept |    0.041768 |      15.323 |    0.039196 |    0.051343 |           29 |           54 |         tanh |            1 |      0.29335 |       3.3722 |     0.001066 |
+SL: 1 HS: 52 ME: 0.065679 MSE: 0.006510
+Saving to file: bayesopt_0.065679.mat
+|  266 | Accept |    0.065679 |      15.858 |    0.039196 |    0.051342 |           28 |           52 |         tanh |            1 |      0.20276 |       3.6305 |    0.0010366 |
+SL: 1 HS: 72 ME: 0.086459 MSE: 0.010152
+Saving to file: bayesopt_0.086459.mat
+|  267 | Accept |    0.086459 |      17.838 |    0.039196 |    0.051439 |           26 |           72 |         tanh |            1 |     0.043421 |       4.0043 |    0.0013635 |
+SL: 1 HS: 2 ME: 0.135377 MSE: 0.027796
+Saving to file: bayesopt_0.13538.mat
+|  268 | Accept |     0.13538 |       34.48 |    0.039196 |    0.051448 |           30 |            2 |         relu |            5 |      0.13956 |       1.2174 |      0.42263 |
+SL: 1 HS: 14 ME: 0.089928 MSE: 0.012192
+Saving to file: bayesopt_0.089928.mat
+|  269 | Accept |    0.089928 |      11.979 |    0.039196 |    0.051389 |           27 |           14 |         tanh |            1 |      0.20828 |       4.9384 |    0.0010057 |
+SL: 1 HS: 11 ME: 0.147418 MSE: 0.033445
+Saving to file: bayesopt_0.14742.mat
+|  270 | Accept |     0.14742 |      37.586 |    0.039196 |    0.051399 |           28 |           11 |         relu |            5 |      0.16351 |       2.7986 |    0.0011002 |
+SL: 1 HS: 15 ME: 0.143940 MSE: 0.031498
+Saving to file: bayesopt_0.14394.mat
+|  271 | Accept |     0.14394 |      38.415 |    0.039196 |    0.051405 |           30 |           15 |         relu |            5 |      0.39523 |       4.6037 |     0.039627 |
+SL: 1 HS: 6 ME: 0.140448 MSE: 0.030110
+Saving to file: bayesopt_0.14045.mat
+|  272 | Accept |     0.14045 |      35.166 |    0.039196 |    0.051415 |           29 |            6 |         relu |            5 |      0.34801 |      0.16582 |    0.0073222 |
+SL: 1 HS: 1 ME: 0.161521 MSE: 0.040364
+Saving to file: bayesopt_0.16152.mat
+|  273 | Accept |     0.16152 |      10.254 |    0.039196 |    0.051313 |           26 |            1 |         tanh |            1 |      0.45891 |       4.3212 |     0.088421 |
+SL: 1 HS: 3 ME: 0.158311 MSE: 0.037859
+Saving to file: bayesopt_0.15831.mat
+|  274 | Accept |     0.15831 |      11.323 |    0.039196 |     0.05123 |           28 |            3 |         tanh |            1 |     0.068186 |       4.1836 |      0.77872 |
+SL: 1 HS: 58 ME: 0.048723 MSE: 0.003658
+Saving to file: bayesopt_0.048723.mat
+|  275 | Accept |    0.048723 |      16.505 |    0.039196 |    0.051233 |           26 |           58 |         tanh |            1 |      0.45025 |       4.4917 |    0.0010382 |
+SL: 1 HS: 98 ME: 0.066434 MSE: 0.006738
+Saving to file: bayesopt_0.066434.mat
+|  276 | Accept |    0.066434 |      23.053 |    0.039196 |    0.051249 |           29 |           98 |         tanh |            1 |      0.14362 |       4.9204 |    0.0092089 |
+SL: 1 HS: 3 ME: 0.139084 MSE: 0.029511
+Saving to file: bayesopt_0.13908.mat
+|  277 | Accept |     0.13908 |      37.466 |    0.039196 |    0.051249 |           25 |            3 |         relu |            5 |      0.22189 |      0.10265 |     0.092091 |
+SL: 1 HS: 49 ME: 0.051414 MSE: 0.004522
+Saving to file: bayesopt_0.051414.mat
+|  278 | Accept |    0.051414 |      39.357 |    0.039196 |    0.051242 |           30 |           49 |         tanh |            3 |      0.34077 |       3.6121 |    0.0010783 |
+SL: 1 HS: 52 ME: 0.056053 MSE: 0.005030
+Saving to file: bayesopt_0.056053.mat
+|  279 | Accept |    0.056053 |      17.458 |    0.039196 |    0.051226 |           22 |           52 |         tanh |            1 |     0.036945 |       2.4405 |    0.0010014 |
+SL: 1 HS: 35 ME: 0.104076 MSE: 0.016252
+Saving to file: bayesopt_0.10408.mat
+|  280 | Accept |     0.10408 |      12.763 |    0.039196 |    0.051259 |           29 |           35 |         tanh |            1 |      0.47701 |      0.11473 |     0.014232 |
+SL: 1 HS: 90 ME: 0.173849 MSE: 0.044568
+Saving to file: bayesopt_0.17385.mat
+|================================================================================================================================================================================|
+| Iter | Eval   | Objective   | Objective   | BestSoFar   | BestSoFar   | sequenceLeng-|   hiddenSize |      actType |    numLayers |      dropout | gradientThre-| initialLearn-|
+|      | result |             | runtime     | (observed)  | (estim.)    | th           |              |              |              |              | shold        | Rate         |
+|================================================================================================================================================================================|
+|  281 | Accept |     0.17385 |      22.111 |    0.039196 |    0.051659 |           29 |           90 |         tanh |            1 |       0.4438 |      0.12965 |      0.28728 |
+SL: 1 HS: 45 ME: 0.061325 MSE: 0.005924
+Saving to file: bayesopt_0.061325.mat
+|  282 | Accept |    0.061325 |      35.213 |    0.039196 |    0.051653 |           28 |           45 |         tanh |            3 |     0.020778 |        3.179 |    0.0020895 |
+SL: 1 HS: 53 ME: 0.048547 MSE: 0.003522
+Saving to file: bayesopt_0.048547.mat
+|  283 | Accept |    0.048547 |      15.406 |    0.039196 |    0.051624 |           30 |           53 |         tanh |            1 |     0.014726 |       4.9803 |    0.0026171 |
+SL: 1 HS: 23 ME: 0.128463 MSE: 0.024971
+Saving to file: bayesopt_0.12846.mat
+|  284 | Accept |     0.12846 |      12.443 |    0.039196 |    0.051653 |           28 |           23 |         tanh |            1 |     0.089803 |      0.24572 |      0.16192 |
+SL: 1 HS: 57 ME: 0.052242 MSE: 0.004185
+Saving to file: bayesopt_0.052242.mat
+|  285 | Accept |    0.052242 |      15.693 |    0.039196 |    0.051627 |           30 |           57 |         tanh |            1 |      0.27721 |       4.8393 |    0.0020797 |
+SL: 1 HS: 32 ME: 0.109312 MSE: 0.017597
+Saving to file: bayesopt_0.10931.mat
+|  286 | Accept |     0.10931 |      13.547 |    0.039196 |    0.051642 |           26 |           32 |         tanh |            1 |      0.48485 |       1.3555 |     0.061048 |
+SL: 1 HS: 6 ME: 0.062570 MSE: 0.006165
+Saving to file: bayesopt_0.06257.mat
+|  287 | Accept |     0.06257 |      13.374 |    0.039196 |    0.051662 |           23 |            6 |         tanh |            1 |     0.044216 |      0.10075 |     0.006754 |
+SL: 1 HS: 54 ME: 0.058334 MSE: 0.005640
+Saving to file: bayesopt_0.058334.mat
+|  288 | Accept |    0.058334 |      29.353 |    0.039196 |    0.051641 |           26 |           54 |         tanh |            2 |      0.13242 |       4.6329 |     0.001035 |
+SL: 1 HS: 40 ME: 0.050415 MSE: 0.004754
+Saving to file: bayesopt_0.050415.mat
+|  289 | Accept |    0.050415 |      23.947 |    0.039196 |    0.051606 |           24 |           40 |   leakedrelu |            2 |    0.0011898 |       4.3101 |    0.0015173 |
+SL: 1 HS: 6 ME: 0.304842 MSE: 0.119189
+Saving to file: bayesopt_0.30484.mat
+|  290 | Accept |     0.30484 |      36.973 |    0.039196 |    0.051703 |           28 |            6 |         relu |            5 |      0.12478 |      0.10709 |      0.96673 |
+SL: 1 HS: 97 ME: 0.166565 MSE: 0.037488
+Saving to file: bayesopt_0.16657.mat
+|  291 | Accept |     0.16657 |      22.547 |    0.039196 |     0.04991 |           27 |           97 |   leakedrelu |            1 |      0.44638 |      0.10759 |    0.0070445 |
+SL: 1 HS: 8 ME: 0.152612 MSE: 0.035210
+Saving to file: bayesopt_0.15261.mat
+|  292 | Accept |     0.15261 |      29.823 |    0.039196 |    0.049932 |           30 |            8 |         relu |            4 |     0.015367 |       4.6807 |    0.0053204 |
+SL: 1 HS: 14 ME: 0.096130 MSE: 0.014575
+Saving to file: bayesopt_0.09613.mat
+|  293 | Accept |     0.09613 |      17.948 |    0.039196 |    0.049943 |           27 |           14 |         relu |            2 |     0.039662 |       0.1227 |    0.0010011 |
+SL: 1 HS: 5 ME: 0.073064 MSE: 0.008163
+Saving to file: bayesopt_0.073064.mat
+|  294 | Accept |    0.073064 |      10.571 |    0.039196 |    0.049977 |           29 |            5 |         relu |            1 |      0.15302 |      0.20955 |     0.028011 |
+SL: 1 HS: 13 ME: 0.154096 MSE: 0.035997
+Saving to file: bayesopt_0.1541.mat
+|  295 | Accept |      0.1541 |      13.417 |    0.039196 |    0.049977 |           21 |           13 |         relu |            1 |      0.37708 |       4.3105 |      0.22361 |
+SL: 1 HS: 18 ME: 0.060337 MSE: 0.005307
+Saving to file: bayesopt_0.060337.mat
+|  296 | Accept |    0.060337 |      11.352 |    0.039196 |    0.050017 |           27 |           18 |   leakedrelu |            1 |      0.10118 |       4.9046 |    0.0023013 |
+SL: 1 HS: 77 ME: 0.061583 MSE: 0.005848
+Saving to file: bayesopt_0.061583.mat
+|  297 | Accept |    0.061583 |      18.175 |    0.039196 |    0.049968 |           28 |           77 |         relu |            1 |      0.40608 |      0.12845 |    0.0014796 |
+SL: 1 HS: 92 ME: 0.057841 MSE: 0.005620
+Saving to file: bayesopt_0.057841.mat
+|  298 | Accept |    0.057841 |       21.81 |    0.039196 |     0.04996 |           29 |           92 |         relu |            1 |     0.044857 |       0.1305 |    0.0010755 |
+SL: 1 HS: 84 ME: 0.071185 MSE: 0.007581
+Saving to file: bayesopt_0.071185.mat
+|  299 | Accept |    0.071185 |      18.527 |    0.039196 |    0.049959 |           29 |           84 |         relu |            1 |      0.33998 |      0.68818 |    0.0011297 |
+SL: 1 HS: 52 ME: 0.071069 MSE: 0.007331
+Saving to file: bayesopt_0.071069.mat
+|  300 | Accept |    0.071069 |      14.516 |    0.039196 |    0.049877 |           29 |           52 |         relu |            1 |     0.064285 |       0.1502 |    0.0011172 |
+SL: 1 HS: 95 ME: 0.100772 MSE: 0.015056
+Saving to file: bayesopt_0.10077.mat
+|================================================================================================================================================================================|
+| Iter | Eval   | Objective   | Objective   | BestSoFar   | BestSoFar   | sequenceLeng-|   hiddenSize |      actType |    numLayers |      dropout | gradientThre-| initialLearn-|
+|      | result |             | runtime     | (observed)  | (estim.)    | th           |              |              |              |              | shold        | Rate         |
+|================================================================================================================================================================================|
+|  301 | Accept |     0.10077 |      22.106 |    0.039196 |     0.04993 |           29 |           95 |         relu |            1 |     0.067644 |      0.12722 |    0.0021276 |
+SL: 1 HS: 68 ME: 0.081268 MSE: 0.010321
+Saving to file: bayesopt_0.081268.mat
+|  302 | Accept |    0.081268 |      31.295 |    0.039196 |    0.049819 |           28 |           68 |         relu |            2 |      0.47896 |      0.14868 |    0.0010332 |
+SL: 1 HS: 12 ME: 0.137261 MSE: 0.028624
+Saving to file: bayesopt_0.13726.mat
+|  303 | Accept |     0.13726 |      11.332 |    0.039196 |    0.050205 |           30 |           12 |         relu |            1 |      0.18788 |      0.87265 |      0.97319 |
+SL: 1 HS: 96 ME: 0.146489 MSE: 0.031447
+Saving to file: bayesopt_0.14649.mat
+|  304 | Accept |     0.14649 |      22.144 |    0.039196 |    0.049808 |           29 |           96 |         relu |            1 |      0.11956 |       2.8555 |      0.49868 |
+SL: 1 HS: 3 ME: 0.149807 MSE: 0.033884
+Saving to file: bayesopt_0.14981.mat
+|  305 | Accept |     0.14981 |      11.905 |    0.039196 |    0.050056 |           24 |            3 |         relu |            1 |      0.16235 |        0.104 |    0.0028432 |
+SL: 1 HS: 10 ME: 0.137949 MSE: 0.029000
+Saving to file: bayesopt_0.13795.mat
+|  306 | Accept |     0.13795 |      11.008 |    0.039196 |    0.050226 |           27 |           10 |         relu |            1 |      0.21791 |      0.12746 |      0.30446 |
+SL: 1 HS: 22 ME: 0.095068 MSE: 0.013903
+Saving to file: bayesopt_0.095068.mat
+|  307 | Accept |    0.095068 |      11.737 |    0.039196 |    0.049899 |           28 |           22 |         relu |            1 |      0.16023 |       0.1018 |     0.054335 |
+SL: 1 HS: 31 ME: 0.055438 MSE: 0.004950
+Saving to file: bayesopt_0.055438.mat
+|  308 | Accept |    0.055438 |      12.211 |    0.039196 |     0.04982 |           28 |           31 |         relu |            1 |      0.37445 |       4.1674 |     0.011705 |
+SL: 1 HS: 36 ME: 0.043572 MSE: 0.002938
+Saving to file: bayesopt_0.043572.mat
+|  309 | Accept |    0.043572 |      13.064 |    0.039196 |    0.050118 |           26 |           36 |         relu |            1 |      0.48131 |      0.86522 |      0.01732 |
+SL: 1 HS: 7 ME: 0.069925 MSE: 0.007234
+Saving to file: bayesopt_0.069925.mat
+|  310 | Accept |    0.069925 |      10.606 |    0.039196 |    0.051903 |           30 |            7 |         relu |            1 |      0.14812 |       2.6678 |     0.018134 |
+SL: 1 HS: 2 ME: 0.092975 MSE: 0.013244
+Saving to file: bayesopt_0.092975.mat
+|  311 | Accept |    0.092975 |      10.552 |    0.039196 |     0.04982 |           27 |            2 |         relu |            1 |      0.38108 |      0.82022 |     0.015497 |
+SL: 1 HS: 42 ME: 0.076370 MSE: 0.008326
+Saving to file: bayesopt_0.07637.mat
+|  312 | Accept |     0.07637 |      12.695 |    0.039196 |    0.051484 |           29 |           42 |         relu |            1 |      0.24523 |       3.1298 |     0.017084 |
+SL: 1 HS: 23 ME: 0.053222 MSE: 0.004588
+Saving to file: bayesopt_0.053222.mat
+|  313 | Accept |    0.053222 |      11.195 |    0.039196 |    0.049668 |           29 |           23 |         relu |            1 |      0.43783 |       4.1976 |      0.00207 |
+SL: 1 HS: 53 ME: 0.054201 MSE: 0.004570
+Saving to file: bayesopt_0.054201.mat
+|  314 | Accept |    0.054201 |      14.256 |    0.039196 |    0.050018 |           29 |           53 |         relu |            1 |      0.46467 |       3.4809 |    0.0041842 |
+SL: 1 HS: 47 ME: 0.159187 MSE: 0.037518
+Saving to file: bayesopt_0.15919.mat
+|  315 | Accept |     0.15919 |       17.24 |    0.039196 |     0.04757 |           21 |           47 |         relu |            1 |      0.27635 |      0.98235 |    0.0017619 |
+SL: 1 HS: 73 ME: 0.058208 MSE: 0.005389
+Saving to file: bayesopt_0.058208.mat
+|  316 | Accept |    0.058208 |      28.546 |    0.039196 |    0.051266 |           11 |           73 |   leakedrelu |            1 |      0.47803 |      0.56318 |    0.0059544 |
+SL: 1 HS: 71 ME: 0.045407 MSE: 0.003309
+Saving to file: bayesopt_0.045407.mat
+|  317 | Accept |    0.045407 |      17.842 |    0.039196 |    0.049726 |           26 |           71 |         relu |            1 |      0.49681 |       3.3783 |    0.0065346 |
+SL: 1 HS: 41 ME: 0.067275 MSE: 0.006803
+Saving to file: bayesopt_0.067275.mat
+|  318 | Accept |    0.067275 |      12.513 |    0.039196 |    0.049672 |           29 |           41 |         relu |            1 |      0.48461 |       3.4811 |    0.0057656 |
+SL: 1 HS: 10 ME: 0.080410 MSE: 0.010142
+Saving to file: bayesopt_0.08041.mat
+|  319 | Accept |     0.08041 |      11.134 |    0.039196 |    0.050437 |           28 |           10 |         relu |            1 |      0.49075 |       0.4165 |     0.049955 |
+SL: 1 HS: 64 ME: 0.066549 MSE: 0.006328
+Saving to file: bayesopt_0.066549.mat
+|  320 | Accept |    0.066549 |      20.467 |    0.039196 |    0.050899 |           17 |           64 |         relu |            1 |      0.42981 |       4.6926 |    0.0076009 |
+SL: 1 HS: 65 ME: 0.136268 MSE: 0.028172
+Saving to file: bayesopt_0.13627.mat
+|================================================================================================================================================================================|
+| Iter | Eval   | Objective   | Objective   | BestSoFar   | BestSoFar   | sequenceLeng-|   hiddenSize |      actType |    numLayers |      dropout | gradientThre-| initialLearn-|
+|      | result |             | runtime     | (observed)  | (estim.)    | th           |              |              |              |              | shold        | Rate         |
+|================================================================================================================================================================================|
+|  321 | Accept |     0.13627 |      15.999 |    0.039196 |    0.051419 |           27 |           65 |         relu |            1 |       0.4293 |      0.10542 |        0.535 |
+SL: 1 HS: 100 ME: 0.071468 MSE: 0.006771
+Saving to file: bayesopt_0.071468.mat
+|  322 | Accept |    0.071468 |      26.883 |    0.039196 |    0.051795 |           18 |          100 |         relu |            1 |      0.40649 |       3.1459 |    0.0023449 |
+SL: 1 HS: 89 ME: 0.061074 MSE: 0.005856
+Saving to file: bayesopt_0.061074.mat
+|  323 | Accept |    0.061074 |      30.201 |    0.039196 |    0.051399 |           13 |           89 |         relu |            1 |      0.27322 |       4.9537 |    0.0046843 |
+SL: 1 HS: 34 ME: 0.081959 MSE: 0.009467
+Saving to file: bayesopt_0.081959.mat
+|  324 | Accept |    0.081959 |      13.733 |    0.039196 |    0.049839 |           22 |           34 |         relu |            1 |      0.49075 |       0.6396 |     0.018228 |
+SL: 1 HS: 1 ME: 0.137450 MSE: 0.028720
+Saving to file: bayesopt_0.13745.mat
+|  325 | Accept |     0.13745 |       10.62 |    0.039196 |    0.049255 |           22 |            1 |         relu |            1 |      0.48764 |       4.7951 |     0.084369 |
+SL: 1 HS: 11 ME: 0.071830 MSE: 0.009247
+Saving to file: bayesopt_0.07183.mat
+|  326 | Accept |     0.07183 |      19.968 |    0.039196 |    0.049391 |           12 |           11 |         relu |            1 |      0.49587 |       4.5105 |    0.0054467 |
+SL: 1 HS: 39 ME: 0.058002 MSE: 0.005167
+Saving to file: bayesopt_0.058002.mat
+|  327 | Accept |    0.058002 |      14.273 |    0.039196 |    0.051591 |           26 |           39 |         tanh |            1 |      0.48591 |        1.771 |    0.0010559 |
+SL: 1 HS: 71 ME: 0.113367 MSE: 0.019133
+Saving to file: bayesopt_0.11337.mat
+|  328 | Accept |     0.11337 |      16.995 |    0.039196 |    0.050171 |           30 |           71 |         relu |            1 |      0.31773 |       3.8727 |     0.086318 |
+SL: 1 HS: 98 ME: 0.047967 MSE: 0.003726
+Saving to file: bayesopt_0.047967.mat
+|  329 | Accept |    0.047967 |       24.08 |    0.039196 |    0.049851 |           26 |           98 |         relu |            1 |      0.36859 |      0.10929 |     0.001164 |
+SL: 1 HS: 53 ME: 0.083552 MSE: 0.010859
+Saving to file: bayesopt_0.083552.mat
+|  330 | Accept |    0.083552 |      15.342 |    0.039196 |     0.04985 |           28 |           53 |         relu |            1 |      0.49982 |       4.8612 |     0.010045 |
+SL: 1 HS: 54 ME: 0.058226 MSE: 0.005265
+Saving to file: bayesopt_0.058226.mat
+|  331 | Accept |    0.058226 |      15.945 |    0.039196 |    0.049119 |           27 |           54 |         tanh |            1 |      0.49438 |       2.8438 |    0.0010197 |
+SL: 1 HS: 97 ME: 0.062718 MSE: 0.005741
+Saving to file: bayesopt_0.062718.mat
+|  332 | Accept |    0.062718 |      24.994 |    0.039196 |    0.051287 |           22 |           97 |         relu |            1 |      0.41916 |       4.6331 |      0.00108 |
+SL: 1 HS: 42 ME: 0.059053 MSE: 0.005274
+Saving to file: bayesopt_0.059053.mat
+|  333 | Accept |    0.059053 |      13.801 |    0.039196 |     0.04945 |           26 |           42 |         relu |            1 |      0.48053 |       4.6092 |    0.0034313 |
+SL: 1 HS: 33 ME: 0.146467 MSE: 0.032602
+Saving to file: bayesopt_0.14647.mat
+|  334 | Accept |     0.14647 |      12.853 |    0.039196 |    0.050005 |           30 |           33 |         relu |            1 |      0.11627 |      0.10135 |       0.9241 |
+SL: 1 HS: 31 ME: 0.049738 MSE: 0.003707
+Saving to file: bayesopt_0.049738.mat
+|  335 | Accept |    0.049738 |      11.887 |    0.039196 |    0.050845 |           30 |           31 |         relu |            1 |     0.095794 |       4.8669 |    0.0014216 |
+SL: 1 HS: 20 ME: 0.070881 MSE: 0.007359
+Saving to file: bayesopt_0.070881.mat
+|  336 | Accept |    0.070881 |      12.892 |    0.039196 |    0.051719 |           22 |           20 |         relu |            1 |     0.074762 |       2.9561 |    0.0010581 |
+SL: 1 HS: 62 ME: 0.053733 MSE: 0.004698
+Saving to file: bayesopt_0.053733.mat
+|  337 | Accept |    0.053733 |      18.595 |    0.039196 |    0.049349 |           21 |           62 |         relu |            1 |      0.49873 |       4.2767 |    0.0012238 |
+SL: 1 HS: 45 ME: 0.064192 MSE: 0.006577
+Saving to file: bayesopt_0.064192.mat
+|  338 | Accept |    0.064192 |      16.971 |    0.039196 |    0.048686 |           18 |           45 |         relu |            1 |      0.43279 |       4.5979 |    0.0010811 |
+SL: 1 HS: 94 ME: 0.068161 MSE: 0.006842
+Saving to file: bayesopt_0.068161.mat
+|  339 | Accept |    0.068161 |      87.329 |    0.039196 |      0.0516 |            3 |           94 |   leakedrelu |            1 |      0.36289 |      0.43527 |    0.0032987 |
+SL: 1 HS: 4 ME: 0.151949 MSE: 0.033203
+Saving to file: bayesopt_0.15195.mat
+|  340 | Accept |     0.15195 |      31.614 |    0.039196 |    0.050162 |           29 |            4 |         tanh |            4 |      0.44247 |      0.11637 |    0.0021764 |
+SL: 1 HS: 8 ME: 0.080573 MSE: 0.010137
+Saving to file: bayesopt_0.080573.mat
+|================================================================================================================================================================================|
+| Iter | Eval   | Objective   | Objective   | BestSoFar   | BestSoFar   | sequenceLeng-|   hiddenSize |      actType |    numLayers |      dropout | gradientThre-| initialLearn-|
+|      | result |             | runtime     | (observed)  | (estim.)    | th           |              |              |              |              | shold        | Rate         |
+|================================================================================================================================================================================|
+|  341 | Accept |    0.080573 |      12.675 |    0.039196 |    0.049949 |           22 |            8 |         relu |            1 |     0.016337 |       4.8999 |    0.0012557 |
+SL: 1 HS: 97 ME: 0.125852 MSE: 0.022744
+Saving to file: bayesopt_0.12585.mat
+|  342 | Accept |     0.12585 |      25.407 |    0.039196 |     0.05005 |           23 |           97 |         relu |            1 |      0.17226 |      0.12653 |    0.0010303 |
+SL: 1 HS: 13 ME: 0.109538 MSE: 0.018244
+Saving to file: bayesopt_0.10954.mat
+|  343 | Accept |     0.10954 |      11.284 |    0.039196 |    0.052063 |           30 |           13 |         relu |            1 |      0.42738 |      0.11579 |    0.0075829 |
+SL: 1 HS: 30 ME: 0.069088 MSE: 0.006882
+Saving to file: bayesopt_0.069088.mat
+|  344 | Accept |    0.069088 |       12.24 |    0.039196 |    0.050615 |           27 |           30 |         relu |            1 |      0.44427 |       2.1157 |     0.028174 |
+SL: 1 HS: 60 ME: 0.060899 MSE: 0.005569
+Saving to file: bayesopt_0.060899.mat
+|  345 | Accept |    0.060899 |      22.646 |    0.039196 |    0.049888 |           14 |           60 |         relu |            1 |       0.4806 |        4.928 |    0.0026767 |
+SL: 1 HS: 4 ME: 0.175382 MSE: 0.045630
+Saving to file: bayesopt_0.17538.mat
+|  346 | Accept |     0.17538 |      10.925 |    0.039196 |    0.051333 |           30 |            4 |         relu |            1 |     0.096104 |        2.507 |       0.7354 |
+SL: 1 HS: 42 ME: 0.050964 MSE: 0.004374
+Saving to file: bayesopt_0.050964.mat
+|  347 | Accept |    0.050964 |      14.646 |    0.039196 |    0.050134 |           24 |           42 |         relu |            1 |      0.46168 |       1.9021 |      0.01217 |
+SL: 1 HS: 61 ME: 0.074734 MSE: 0.008483
+Saving to file: bayesopt_0.074734.mat
+|  348 | Accept |    0.074734 |      15.745 |    0.039196 |    0.050619 |           27 |           61 |   leakedrelu |            1 |      0.41592 |       1.1465 |    0.0014539 |
+SL: 1 HS: 79 ME: 0.057184 MSE: 0.005243
+Saving to file: bayesopt_0.057184.mat
+|  349 | Accept |    0.057184 |      20.491 |    0.039196 |    0.050659 |           22 |           79 |         relu |            1 |      0.20498 |       4.9801 |    0.0011206 |
+SL: 1 HS: 59 ME: 0.063774 MSE: 0.006152
+Saving to file: bayesopt_0.063774.mat
+|  350 | Accept |    0.063774 |      17.247 |    0.039196 |    0.050529 |           24 |           59 |         relu |            1 |      0.41106 |       4.9347 |    0.0035262 |
+SL: 1 HS: 65 ME: 0.075883 MSE: 0.009027
+Saving to file: bayesopt_0.075883.mat
+|  351 | Accept |    0.075883 |      31.434 |    0.039196 |    0.049825 |           29 |           65 |         tanh |            2 |     0.062403 |       4.9694 |    0.0019155 |
+SL: 1 HS: 53 ME: 0.132535 MSE: 0.026259
+Saving to file: bayesopt_0.13254.mat
+|  352 | Accept |     0.13254 |      14.733 |    0.039196 |    0.050362 |           29 |           53 |         relu |            1 |      0.15748 |      0.29878 |      0.14817 |
+SL: 1 HS: 36 ME: 0.192288 MSE: 0.053955
+Saving to file: bayesopt_0.19229.mat
+|  353 | Accept |     0.19229 |      15.126 |    0.039196 |    0.050436 |           24 |           36 |         relu |            1 |       0.2898 |        4.985 |      0.93219 |
+SL: 1 HS: 69 ME: 0.140658 MSE: 0.030055
+Saving to file: bayesopt_0.14066.mat
+|  354 | Accept |     0.14066 |      65.159 |    0.039196 |    0.049756 |           27 |           69 |         tanh |            4 |      0.11949 |       3.1111 |      0.15873 |
+SL: 1 HS: 88 ME: 0.056163 MSE: 0.004806
+Saving to file: bayesopt_0.056163.mat
+|  355 | Accept |    0.056163 |      22.671 |    0.039196 |    0.049891 |           25 |           88 |         relu |            1 |      0.24327 |       1.7663 |      0.01475 |
+SL: 1 HS: 64 ME: 0.041699 MSE: 0.002725
+Saving to file: bayesopt_0.041699.mat
+|  356 | Accept |    0.041699 |      17.561 |    0.039196 |    0.050692 |           26 |           64 |         tanh |            1 |     0.053945 |       1.3954 |    0.0042509 |
+SL: 1 HS: 2 ME: 0.147122 MSE: 0.032895
+Saving to file: bayesopt_0.14712.mat
+|  357 | Accept |     0.14712 |       11.74 |    0.039196 |    0.053416 |           25 |            2 |         relu |            1 |      0.17949 |      0.58141 |      0.24984 |
+SL: 1 HS: 98 ME: 0.128989 MSE: 0.025072
+Saving to file: bayesopt_0.12899.mat
+|  358 | Accept |     0.12899 |      23.587 |    0.039196 |    0.051876 |           30 |           98 |         relu |            1 |     0.064208 |       0.3018 |     0.060743 |
+SL: 1 HS: 2 ME: 0.394101 MSE: 0.183109
+Saving to file: bayesopt_0.3941.mat
+|  359 | Accept |      0.3941 |      10.967 |    0.039196 |    0.048411 |           27 |            2 |         relu |            1 |      0.27106 |      0.26123 |      0.99176 |
+SL: 1 HS: 32 ME: 0.058666 MSE: 0.006234
+Saving to file: bayesopt_0.058666.mat
+|  360 | Accept |    0.058666 |      13.021 |    0.039196 |    0.051077 |           29 |           32 |         tanh |            1 |     0.042028 |       0.1048 |    0.0025515 |
+SL: 1 HS: 49 ME: 0.111252 MSE: 0.018433
+Saving to file: bayesopt_0.11125.mat
+|================================================================================================================================================================================|
+| Iter | Eval   | Objective   | Objective   | BestSoFar   | BestSoFar   | sequenceLeng-|   hiddenSize |      actType |    numLayers |      dropout | gradientThre-| initialLearn-|
+|      | result |             | runtime     | (observed)  | (estim.)    | th           |              |              |              |              | shold        | Rate         |
+|================================================================================================================================================================================|
+|  361 | Accept |     0.11125 |      16.578 |    0.039196 |    0.050847 |           22 |           49 |         relu |            1 |      0.14345 |      0.94151 |     0.051867 |
+SL: 1 HS: 70 ME: 0.051080 MSE: 0.003798
+Saving to file: bayesopt_0.05108.mat
+|  362 | Accept |     0.05108 |      17.662 |    0.039196 |    0.050461 |           27 |           70 |         tanh |            1 |      0.18193 |      0.77831 |    0.0044333 |
+SL: 1 HS: 83 ME: 0.072621 MSE: 0.008517
+Saving to file: bayesopt_0.072621.mat
+|  363 | Accept |    0.072621 |      20.914 |    0.039196 |    0.050298 |           26 |           83 |         tanh |            1 |      0.18355 |       1.1529 |    0.0021417 |
+SL: 1 HS: 9 ME: 0.075745 MSE: 0.008994
+Saving to file: bayesopt_0.075745.mat
+|  364 | Accept |    0.075745 |      12.224 |    0.039196 |    0.048355 |           25 |            9 |         relu |            1 |     0.052503 |       0.3387 |    0.0018521 |
+SL: 1 HS: 44 ME: 0.095727 MSE: 0.013766
+Saving to file: bayesopt_0.095727.mat
+|  365 | Accept |    0.095727 |      14.042 |    0.039196 |    0.050962 |           30 |           44 |         tanh |            1 |     0.028823 |      0.68731 |    0.0066381 |
+SL: 1 HS: 57 ME: 0.080483 MSE: 0.009830
+Saving to file: bayesopt_0.080483.mat
+|  366 | Accept |    0.080483 |      24.347 |    0.039196 |    0.051388 |           13 |           57 |   leakedrelu |            1 |     0.084622 |       2.0786 |     0.009668 |
+SL: 1 HS: 91 ME: 0.053931 MSE: 0.004483
+Saving to file: bayesopt_0.053931.mat
+|  367 | Accept |    0.053931 |      22.747 |    0.039196 |    0.050626 |           28 |           91 |         relu |            1 |      0.26461 |       4.4781 |     0.017104 |
+SL: 1 HS: 48 ME: 0.046937 MSE: 0.003512
+Saving to file: bayesopt_0.046937.mat
+|  368 | Accept |    0.046937 |      15.911 |    0.039196 |    0.049805 |           26 |           48 |         relu |            1 |      0.17472 |       1.4659 |       0.0133 |
+SL: 1 HS: 95 ME: 0.061694 MSE: 0.005815
+Saving to file: bayesopt_0.061694.mat
+|  369 | Accept |    0.061694 |      24.042 |    0.039196 |    0.049095 |           25 |           95 |         relu |            1 |      0.38485 |       3.4379 |     0.007663 |
+SL: 1 HS: 28 ME: 0.048196 MSE: 0.003634
+Saving to file: bayesopt_0.048196.mat
+|  370 | Accept |    0.048196 |      13.929 |    0.039196 |    0.050501 |           23 |           28 |         relu |            1 |     0.017268 |       2.0193 |     0.008803 |
+SL: 1 HS: 41 ME: 0.075727 MSE: 0.008513
+Saving to file: bayesopt_0.075727.mat
+|  371 | Accept |    0.075727 |      13.022 |    0.039196 |    0.048007 |           30 |           41 |         relu |            1 |      0.49902 |       1.4396 |    0.0090712 |
+SL: 1 HS: 69 ME: 0.048940 MSE: 0.004463
+Saving to file: bayesopt_0.04894.mat
+|  372 | Accept |     0.04894 |       20.73 |    0.039196 |    0.050438 |           21 |           69 |         relu |            1 |     0.029341 |       2.4687 |    0.0033788 |
+SL: 1 HS: 67 ME: 0.062511 MSE: 0.005813
+Saving to file: bayesopt_0.062511.mat
+|  373 | Accept |    0.062511 |      17.123 |    0.039196 |    0.052301 |           26 |           67 |         relu |            1 |      0.16008 |       3.2721 |    0.0025354 |
+SL: 1 HS: 70 ME: 0.061965 MSE: 0.007018
+Saving to file: bayesopt_0.061965.mat
+|  374 | Accept |    0.061965 |      17.626 |    0.039196 |    0.053045 |           28 |           70 |         relu |            1 |     0.036813 |       3.6563 |    0.0074858 |
+SL: 1 HS: 69 ME: 0.062757 MSE: 0.006175
+Saving to file: bayesopt_0.062757.mat
+|  375 | Accept |    0.062757 |      17.023 |    0.039196 |    0.048726 |           26 |           69 |         relu |            1 |     0.054257 |       3.4167 |    0.0011715 |
+SL: 1 HS: 75 ME: 0.060684 MSE: 0.005615
+Saving to file: bayesopt_0.060684.mat
+|  376 | Accept |    0.060684 |      18.902 |    0.039196 |    0.050929 |           25 |           75 |   leakedrelu |            1 |      0.29957 |        0.286 |    0.0031689 |
+SL: 1 HS: 32 ME: 0.046400 MSE: 0.003817
+Saving to file: bayesopt_0.0464.mat
+|  377 | Accept |      0.0464 |      12.128 |    0.039196 |    0.053305 |           30 |           32 |         relu |            1 |     0.090833 |       3.8755 |    0.0057555 |
+SL: 1 HS: 53 ME: 0.049290 MSE: 0.004229
+Saving to file: bayesopt_0.04929.mat
+|  378 | Accept |     0.04929 |      14.962 |    0.039196 |    0.049614 |           29 |           53 |         relu |            1 |    0.0061793 |       4.4085 |    0.0018356 |
+SL: 1 HS: 77 ME: 0.041873 MSE: 0.002771
+Saving to file: bayesopt_0.041873.mat
+|  379 | Accept |    0.041873 |      26.676 |    0.039196 |    0.050618 |           13 |           77 |   leakedrelu |            1 |     0.071114 |      0.22697 |    0.0012029 |
+SL: 1 HS: 30 ME: 0.058715 MSE: 0.005313
+Saving to file: bayesopt_0.058715.mat
+|  380 | Accept |    0.058715 |      11.631 |    0.039196 |    0.049053 |           29 |           30 |         relu |            1 |      0.03005 |       4.3794 |    0.0032105 |
+SL: 1 HS: 79 ME: 0.062306 MSE: 0.006021
+Saving to file: bayesopt_0.062306.mat
+|================================================================================================================================================================================|
+| Iter | Eval   | Objective   | Objective   | BestSoFar   | BestSoFar   | sequenceLeng-|   hiddenSize |      actType |    numLayers |      dropout | gradientThre-| initialLearn-|
+|      | result |             | runtime     | (observed)  | (estim.)    | th           |              |              |              |              | shold        | Rate         |
+|================================================================================================================================================================================|
+|  381 | Accept |    0.062306 |      33.287 |    0.039196 |    0.049066 |            9 |           79 |   leakedrelu |            1 |      0.19691 |      0.11797 |    0.0013881 |
+SL: 1 HS: 77 ME: 0.054714 MSE: 0.004602
+Saving to file: bayesopt_0.054714.mat
+|  382 | Accept |    0.054714 |      18.358 |    0.039196 |    0.050716 |           29 |           77 |         tanh |            1 |     0.039504 |       1.8012 |    0.0057274 |
+SL: 1 HS: 25 ME: 0.059039 MSE: 0.005426
+Saving to file: bayesopt_0.059039.mat
+|  383 | Accept |    0.059039 |      11.693 |    0.039196 |    0.048167 |           27 |           25 |         relu |            1 |     0.044065 |       4.6537 |     0.009941 |
+SL: 1 HS: 47 ME: 0.078541 MSE: 0.009101
+Saving to file: bayesopt_0.078541.mat
+|  384 | Accept |    0.078541 |      14.836 |    0.039196 |    0.047539 |           29 |           47 |         tanh |            1 |      0.44576 |      0.10349 |    0.0011565 |
+SL: 1 HS: 84 ME: 0.074635 MSE: 0.007810
+Saving to file: bayesopt_0.074635.mat
+|  385 | Accept |    0.074635 |      25.364 |    0.039196 |    0.047573 |           15 |           84 |   leakedrelu |            1 |      0.49999 |      0.46218 |    0.0010018 |
+SL: 1 HS: 30 ME: 0.072182 MSE: 0.007631
+Saving to file: bayesopt_0.072182.mat
+|  386 | Accept |    0.072182 |      11.701 |    0.039196 |    0.049606 |           29 |           30 |         relu |            1 |     0.069236 |       2.8229 |    0.0055968 |
+SL: 1 HS: 24 ME: 0.050011 MSE: 0.003824
+Saving to file: bayesopt_0.050011.mat
+|  387 | Accept |    0.050011 |       11.44 |    0.039196 |    0.048309 |           29 |           24 |   leakedrelu |            1 |      0.40517 |       1.7246 |     0.011909 |
+SL: 1 HS: 1 ME: 0.155168 MSE: 0.036376
+Saving to file: bayesopt_0.15517.mat
+|  388 | Accept |     0.15517 |      9.5573 |    0.039196 |    0.050335 |           27 |            1 |         relu |            1 |     0.099463 |      0.83546 |    0.0010092 |
+SL: 1 HS: 44 ME: 0.182082 MSE: 0.048896
+Saving to file: bayesopt_0.18208.mat
+|  389 | Accept |     0.18208 |      15.037 |    0.039196 |    0.049717 |           30 |           44 |         relu |            1 |     0.019009 |      0.32219 |      0.97278 |
+SL: 1 HS: 34 ME: 0.074171 MSE: 0.008855
+Saving to file: bayesopt_0.074171.mat
+|  390 | Accept |    0.074171 |      12.772 |    0.039196 |    0.050792 |           27 |           34 |         relu |            1 |     0.049167 |      0.48977 |     0.015313 |
+SL: 1 HS: 44 ME: 0.163394 MSE: 0.039604
+Saving to file: bayesopt_0.16339.mat
+|  391 | Accept |     0.16339 |      13.146 |    0.039196 |    0.050833 |           29 |           44 |         relu |            1 |      0.38331 |       1.0162 |       0.4066 |
+SL: 1 HS: 3 ME: 0.195605 MSE: 0.054944
+Saving to file: bayesopt_0.19561.mat
+|  392 | Accept |     0.19561 |       11.43 |    0.039196 |    0.050738 |           30 |            3 |         tanh |            1 |      0.44522 |      0.68775 |      0.45971 |
+SL: 1 HS: 7 ME: 0.191418 MSE: 0.053461
+Saving to file: bayesopt_0.19142.mat
+|  393 | Accept |     0.19142 |       25.79 |    0.039196 |    0.050914 |           30 |            7 |         tanh |            3 |      0.12181 |      0.10328 |      0.49467 |
+SL: 1 HS: 98 ME: 0.074026 MSE: 0.008652
+Saving to file: bayesopt_0.074026.mat
+|  394 | Accept |    0.074026 |      23.382 |    0.039196 |    0.051128 |           27 |           98 |         relu |            1 |       0.3944 |      0.99119 |    0.0048304 |
+SL: 1 HS: 50 ME: 0.120720 MSE: 0.020420
+Saving to file: bayesopt_0.12072.mat
+|  395 | Accept |     0.12072 |      15.247 |    0.039196 |    0.050995 |           28 |           50 |         relu |            1 |      0.30189 |      0.11608 |     0.013298 |
+SL: 1 HS: 11 ME: 0.058988 MSE: 0.005763
+Saving to file: bayesopt_0.058988.mat
+|  396 | Accept |    0.058988 |      11.717 |    0.039196 |    0.050439 |           30 |           11 |         tanh |            1 |      0.17194 |       1.1146 |     0.010989 |
+SL: 1 HS: 59 ME: 0.045647 MSE: 0.003591
+Saving to file: bayesopt_0.045647.mat
+|  397 | Accept |    0.045647 |      16.807 |    0.039196 |    0.051572 |           25 |           59 |         relu |            1 |      0.10069 |       1.5317 |    0.0098048 |
+SL: 1 HS: 1 ME: 0.106917 MSE: 0.016491
+Saving to file: bayesopt_0.10692.mat
+|  398 | Accept |     0.10692 |      9.3496 |    0.039196 |    0.049999 |           30 |            1 |         relu |            1 |      0.34369 |       1.1247 |    0.0032043 |
+SL: 1 HS: 44 ME: 0.240325 MSE: 0.079917
+Saving to file: bayesopt_0.24032.mat
+|  399 | Accept |     0.24032 |      13.933 |    0.039196 |    0.050617 |           29 |           44 |         tanh |            1 |      0.13693 |       1.0092 |      0.86268 |
+SL: 1 HS: 92 ME: 0.063395 MSE: 0.006399
+Saving to file: bayesopt_0.063395.mat
+|  400 | Accept |    0.063395 |      24.254 |    0.039196 |    0.051842 |           24 |           92 |   leakedrelu |            1 |     0.092891 |       0.2134 |    0.0011776 |
+SL: 1 HS: 56 ME: 0.049905 MSE: 0.004214
+Saving to file: bayesopt_0.049905.mat
+|================================================================================================================================================================================|
+| Iter | Eval   | Objective   | Objective   | BestSoFar   | BestSoFar   | sequenceLeng-|   hiddenSize |      actType |    numLayers |      dropout | gradientThre-| initialLearn-|
+|      | result |             | runtime     | (observed)  | (estim.)    | th           |              |              |              |              | shold        | Rate         |
+|================================================================================================================================================================================|
+|  401 | Accept |    0.049905 |       15.52 |    0.039196 |    0.049612 |           29 |           56 |   leakedrelu |            1 |      0.11335 |      0.40474 |    0.0011904 |
+SL: 1 HS: 62 ME: 0.056191 MSE: 0.005015
+Saving to file: bayesopt_0.056191.mat
+|  402 | Accept |    0.056191 |      15.968 |    0.039196 |    0.049556 |           29 |           62 |   leakedrelu |            1 |      0.19994 |      0.32506 |    0.0011035 |
+SL: 1 HS: 77 ME: 0.063247 MSE: 0.006060
+Saving to file: bayesopt_0.063247.mat
+|  403 | Accept |    0.063247 |      18.543 |    0.039196 |    0.048345 |           30 |           77 |         relu |            1 |    0.0056392 |       2.4195 |    0.0097095 |
+SL: 1 HS: 1 ME: 0.093425 MSE: 0.014041
+Saving to file: bayesopt_0.093425.mat
+|  404 | Accept |    0.093425 |      9.8766 |    0.039196 |     0.05057 |           30 |            1 |         tanh |            1 |      0.18356 |       1.5547 |     0.010863 |
+SL: 1 HS: 9 ME: 0.082243 MSE: 0.010657
+Saving to file: bayesopt_0.082243.mat
+|  405 | Accept |    0.082243 |      11.163 |    0.039196 |    0.051763 |           30 |            9 |         relu |            1 |     0.014759 |      0.23375 |      0.10727 |
+SL: 1 HS: 64 ME: 0.104238 MSE: 0.015490
+Saving to file: bayesopt_0.10424.mat
+|  406 | Accept |     0.10424 |      32.567 |    0.039196 |    0.050389 |           25 |           64 |   leakedrelu |            2 |      0.17217 |      0.21992 |    0.0011548 |
+SL: 1 HS: 97 ME: 0.041856 MSE: 0.002498
+Saving to file: bayesopt_0.041856.mat
+|  407 | Accept |    0.041856 |      26.336 |    0.039196 |    0.050746 |           23 |           97 |         tanh |            1 |     0.065277 |       2.3867 |    0.0045753 |
+SL: 1 HS: 59 ME: 0.094025 MSE: 0.013346
+Saving to file: bayesopt_0.094025.mat
+|  408 | Accept |    0.094025 |      16.294 |    0.039196 |        0.05 |           29 |           59 |         tanh |            1 |      0.15626 |      0.53161 |     0.098514 |
+SL: 1 HS: 91 ME: 0.097260 MSE: 0.014332
+Saving to file: bayesopt_0.09726.mat
+|  409 | Accept |     0.09726 |      23.335 |    0.039196 |    0.052655 |           28 |           91 |         tanh |            1 |      0.45427 |       1.7469 |    0.0051753 |
+SL: 1 HS: 2 ME: 0.138964 MSE: 0.029458
+Saving to file: bayesopt_0.13896.mat
+|  410 | Accept |     0.13896 |      16.919 |    0.039196 |    0.051424 |           30 |            2 |         relu |            2 |      0.38244 |       4.8268 |      0.30018 |
+SL: 1 HS: 4 ME: 0.139166 MSE: 0.029549
+Saving to file: bayesopt_0.13917.mat
+|  411 | Accept |     0.13917 |        11.5 |    0.039196 |    0.051311 |           26 |            4 |         relu |            1 |      0.22675 |       1.0447 |     0.096804 |
+SL: 1 HS: 10 ME: 0.083549 MSE: 0.010479
+Saving to file: bayesopt_0.083549.mat
+|  412 | Accept |    0.083549 |      11.773 |    0.039196 |    0.050534 |           29 |           10 |         tanh |            1 |       0.4757 |      0.34355 |    0.0011374 |
+SL: 1 HS: 25 ME: 0.071809 MSE: 0.008236
+Saving to file: bayesopt_0.071809.mat
+|  413 | Accept |    0.071809 |      13.144 |    0.039196 |    0.050133 |           24 |           25 |         relu |            1 |      0.33288 |       1.8522 |     0.011332 |
+SL: 1 HS: 99 ME: 0.093868 MSE: 0.013521
+Saving to file: bayesopt_0.093868.mat
+|  414 | Accept |    0.093868 |      30.236 |    0.039196 |    0.050352 |           14 |           99 |         relu |            1 |      0.49611 |      0.46134 |    0.0012844 |
+SL: 1 HS: 3 ME: 0.087340 MSE: 0.011835
+Saving to file: bayesopt_0.08734.mat
+|  415 | Accept |     0.08734 |      10.826 |    0.039196 |    0.051632 |           28 |            3 |         relu |            1 |     0.054376 |      0.29397 |    0.0064749 |
+SL: 1 HS: 5 ME: 0.192400 MSE: 0.054067
+Saving to file: bayesopt_0.1924.mat
+|  416 | Accept |      0.1924 |      11.484 |    0.039196 |    0.052926 |           29 |            5 |         tanh |            1 |     0.078225 |      0.39609 |      0.59698 |
+SL: 1 HS: 71 ME: 0.139170 MSE: 0.029373
+Saving to file: bayesopt_0.13917.mat
+|  417 | Accept |     0.13917 |      20.994 |    0.039196 |    0.052045 |           29 |           71 |         relu |            1 |      0.45239 |        2.277 |      0.87475 |
+SL: 1 HS: 77 ME: 0.039026 MSE: 0.002226
+Saving to file: bayesopt_0.039026.mat
+|  418 | Best   |    0.039026 |      17.808 |    0.039026 |     0.05327 |           27 |           77 |         relu |            1 |      0.33023 |       2.7271 |     0.005345 |
+SL: 1 HS: 22 ME: 0.070901 MSE: 0.007479
+Saving to file: bayesopt_0.070901.mat
+|  419 | Accept |    0.070901 |      24.537 |    0.039026 |    0.051176 |           10 |           22 |         tanh |            1 |      0.44546 |       3.6745 |    0.0010126 |
+SL: 1 HS: 98 ME: 0.068807 MSE: 0.007126
+Saving to file: bayesopt_0.068807.mat
+|  420 | Accept |    0.068807 |      22.954 |    0.039026 |    0.050031 |           29 |           98 |         relu |            1 |       0.2219 |       4.6885 |     0.012737 |
+SL: 1 HS: 48 ME: 0.058842 MSE: 0.005250
+Saving to file: bayesopt_0.058842.mat
+|================================================================================================================================================================================|
+| Iter | Eval   | Objective   | Objective   | BestSoFar   | BestSoFar   | sequenceLeng-|   hiddenSize |      actType |    numLayers |      dropout | gradientThre-| initialLearn-|
+|      | result |             | runtime     | (observed)  | (estim.)    | th           |              |              |              |              | shold        | Rate         |
+|================================================================================================================================================================================|
+|  421 | Accept |    0.058842 |       27.39 |    0.039026 |    0.049406 |           29 |           48 |         tanh |            2 |     0.047013 |       2.0791 |     0.001163 |
+SL: 1 HS: 92 ME: 0.096450 MSE: 0.014105
+Saving to file: bayesopt_0.09645.mat
+|  422 | Accept |     0.09645 |      27.868 |    0.039026 |    0.047275 |           18 |           92 |         tanh |            1 |     0.060096 |      0.39724 |     0.030416 |
+SL: 1 HS: 26 ME: 0.096863 MSE: 0.013667
+Saving to file: bayesopt_0.096863.mat
+|  423 | Accept |    0.096863 |      11.962 |    0.039026 |    0.050587 |           30 |           26 |         relu |            1 |     0.014447 |      0.13557 |    0.0059472 |
+SL: 1 HS: 2 ME: 0.137339 MSE: 0.028663
+Saving to file: bayesopt_0.13734.mat
+|  424 | Accept |     0.13734 |      32.023 |    0.039026 |      0.0518 |           30 |            2 |         tanh |            4 |      0.21812 |       4.5526 |      0.35718 |
+SL: 1 HS: 70 ME: 0.073686 MSE: 0.008002
+Saving to file: bayesopt_0.073686.mat
+|  425 | Accept |    0.073686 |      17.447 |    0.039026 |    0.050006 |           26 |           70 |         relu |            1 |      0.46371 |       2.2049 |     0.012943 |
+SL: 1 HS: 73 ME: 0.064624 MSE: 0.006554
+Saving to file: bayesopt_0.064624.mat
+|  426 | Accept |    0.064624 |      29.693 |    0.039026 |     0.05017 |           11 |           73 |   leakedrelu |            1 |      0.43175 |      0.21245 |     0.002027 |
+SL: 1 HS: 2 ME: 0.137774 MSE: 0.028899
+Saving to file: bayesopt_0.13777.mat
+|  427 | Accept |     0.13777 |      31.037 |    0.039026 |    0.050037 |           29 |            2 |         tanh |            4 |      0.47285 |      0.11173 |     0.071861 |
+SL: 1 HS: 4 ME: 0.125890 MSE: 0.023913
+Saving to file: bayesopt_0.12589.mat
+|  428 | Accept |     0.12589 |      11.516 |    0.039026 |    0.047806 |           26 |            4 |         relu |            1 |      0.48693 |       3.5094 |    0.0011148 |
+SL: 1 HS: 100 ME: 0.053870 MSE: 0.004341
+Saving to file: bayesopt_0.05387.mat
+|  429 | Accept |     0.05387 |      26.927 |    0.039026 |    0.053874 |           21 |          100 |   leakedrelu |            1 |      0.46989 |       2.2732 |    0.0013764 |
+SL: 1 HS: 4 ME: 0.121075 MSE: 0.021707
+Saving to file: bayesopt_0.12108.mat
+|  430 | Accept |     0.12108 |      11.374 |    0.039026 |    0.051175 |           29 |            4 |         tanh |            1 |     0.021231 |       1.0792 |      0.14624 |
+SL: 1 HS: 80 ME: 0.077893 MSE: 0.008580
+Saving to file: bayesopt_0.077893.mat
+|  431 | Accept |    0.077893 |      26.415 |    0.039026 |    0.052076 |           14 |           80 |         relu |            1 |        0.292 |       4.8895 |     0.002961 |
+SL: 1 HS: 35 ME: 0.045260 MSE: 0.003383
+Saving to file: bayesopt_0.04526.mat
+|  432 | Accept |     0.04526 |      23.563 |    0.039026 |    0.050735 |           24 |           35 |   leakedrelu |            2 |      0.13371 |       4.9302 |    0.0017479 |
+SL: 1 HS: 6 ME: 0.142931 MSE: 0.030976
+Saving to file: bayesopt_0.14293.mat
+|  433 | Accept |     0.14293 |      37.371 |    0.039026 |    0.048037 |           30 |            6 |   leakedrelu |            5 |     0.064443 |          4.6 |      0.84423 |
+SL: 1 HS: 71 ME: 0.046845 MSE: 0.003466
+Saving to file: bayesopt_0.046845.mat
+|  434 | Accept |    0.046845 |      20.271 |    0.039026 |    0.050666 |           20 |           71 |   leakedrelu |            1 |      0.37057 |      0.49408 |    0.0033813 |
+SL: 1 HS: 2 ME: 0.077035 MSE: 0.009292
+Saving to file: bayesopt_0.077035.mat
+|  435 | Accept |    0.077035 |      11.261 |    0.039026 |    0.051052 |           29 |            2 |         tanh |            1 |      0.14564 |      0.83729 |    0.0034875 |
+SL: 1 HS: 6 ME: 0.154281 MSE: 0.035221
+Saving to file: bayesopt_0.15428.mat
+|  436 | Accept |     0.15428 |      11.755 |    0.039026 |    0.051278 |           27 |            6 |         tanh |            1 |     0.022974 |      0.10071 |      0.10744 |
+SL: 1 HS: 5 ME: 0.085825 MSE: 0.011607
+Saving to file: bayesopt_0.085825.mat
+|  437 | Accept |    0.085825 |      12.321 |    0.039026 |    0.052823 |           22 |            5 |         relu |            1 |       0.0195 |       3.1867 |      0.10539 |
+SL: 1 HS: 26 ME: 0.041065 MSE: 0.003600
+Saving to file: bayesopt_0.041065.mat
+|  438 | Accept |    0.041065 |      12.063 |    0.039026 |    0.050515 |           26 |           26 |         relu |            1 |      0.46421 |       0.5002 |     0.001089 |
+SL: 1 HS: 14 ME: 0.158122 MSE: 0.037403
+Saving to file: bayesopt_0.15812.mat
+|  439 | Accept |     0.15812 |       11.37 |    0.039026 |    0.049736 |           28 |           14 |         relu |            1 |      0.46188 |      0.12909 |      0.15983 |
+SL: 1 HS: 63 ME: 0.130833 MSE: 0.027071
+Saving to file: bayesopt_0.13083.mat
+|  440 | Accept |     0.13083 |      15.543 |    0.039026 |    0.049452 |           29 |           63 |         relu |            1 |       0.4608 |      0.10264 |     0.060951 |
+SL: 1 HS: 63 ME: 0.043927 MSE: 0.002955
+Saving to file: bayesopt_0.043927.mat
+|================================================================================================================================================================================|
+| Iter | Eval   | Objective   | Objective   | BestSoFar   | BestSoFar   | sequenceLeng-|   hiddenSize |      actType |    numLayers |      dropout | gradientThre-| initialLearn-|
+|      | result |             | runtime     | (observed)  | (estim.)    | th           |              |              |              |              | shold        | Rate         |
+|================================================================================================================================================================================|
+|  441 | Accept |    0.043927 |       21.37 |    0.039026 |    0.051449 |           16 |           63 |         relu |            1 |     0.071614 |        4.371 |    0.0055994 |
+SL: 1 HS: 15 ME: 0.061148 MSE: 0.005984
+Saving to file: bayesopt_0.061148.mat
+|  442 | Accept |    0.061148 |      11.474 |    0.039026 |    0.050584 |           28 |           15 |         relu |            1 |     0.017978 |       3.7022 |     0.046413 |
+SL: 1 HS: 87 ME: 0.137469 MSE: 0.028587
+Saving to file: bayesopt_0.13747.mat
+|  443 | Accept |     0.13747 |      28.689 |    0.039026 |    0.051324 |           27 |           87 |         relu |            1 |     0.071019 |      0.12001 |      0.90416 |
+SL: 1 HS: 9 ME: 0.136026 MSE: 0.028043
+Saving to file: bayesopt_0.13603.mat
+|  444 | Accept |     0.13603 |      14.394 |    0.039026 |    0.051191 |           18 |            9 |         relu |            1 |      0.49724 |       1.4742 |      0.61842 |
+SL: 1 HS: 73 ME: 0.086107 MSE: 0.010523
+Saving to file: bayesopt_0.086107.mat
+|  445 | Accept |    0.086107 |      19.184 |    0.039026 |    0.051032 |           22 |           73 |         relu |            1 |      0.02188 |       4.4052 |    0.0067731 |
+SL: 1 HS: 48 ME: 0.064892 MSE: 0.006661
+Saving to file: bayesopt_0.064892.mat
+|  446 | Accept |    0.064892 |      17.838 |    0.039026 |    0.052116 |           21 |           48 |         tanh |            1 |      0.35741 |       3.7532 |    0.0012286 |
+SL: 1 HS: 2 ME: 0.125781 MSE: 0.023999
+Saving to file: bayesopt_0.12578.mat
+|  447 | Accept |     0.12578 |      10.608 |    0.039026 |    0.050408 |           27 |            2 |         relu |            1 |      0.26269 |      0.10369 |     0.017331 |
+SL: 1 HS: 25 ME: 0.054321 MSE: 0.004591
+Saving to file: bayesopt_0.054321.mat
+|  448 | Accept |    0.054321 |      49.556 |    0.039026 |    0.049626 |            4 |           25 |         relu |            1 |      0.45173 |      0.29115 |    0.0010334 |
+SL: 1 HS: 24 ME: 0.068852 MSE: 0.007527
+Saving to file: bayesopt_0.068852.mat
+|  449 | Accept |    0.068852 |      19.108 |    0.039026 |    0.049718 |           13 |           24 |         relu |            1 |      0.15049 |        1.226 |     0.023934 |
+SL: 1 HS: 3 ME: 0.158409 MSE: 0.037788
+Saving to file: bayesopt_0.15841.mat
+|  450 | Accept |     0.15841 |       22.62 |    0.039026 |    0.050625 |           30 |            3 |         relu |            3 |      0.48832 |      0.18682 |     0.033401 |
+SL: 1 HS: 42 ME: 0.120023 MSE: 0.021938
+Saving to file: bayesopt_0.12002.mat
+|  451 | Accept |     0.12002 |      13.017 |    0.039026 |    0.051386 |           27 |           42 |         relu |            1 |      0.49577 |      0.20377 |     0.001171 |
+SL: 1 HS: 4 ME: 0.138292 MSE: 0.027967
+Saving to file: bayesopt_0.13829.mat
+|  452 | Accept |     0.13829 |      11.177 |    0.039026 |     0.05305 |           30 |            4 |         tanh |            1 |      0.12809 |       4.8573 |      0.18174 |
+SL: 1 HS: 5 ME: 0.066453 MSE: 0.007180
+Saving to file: bayesopt_0.066453.mat
+|  453 | Accept |    0.066453 |      25.706 |    0.039026 |    0.050903 |           28 |            5 |         tanh |            3 |     0.051674 |      0.10923 |    0.0080947 |
+SL: 1 HS: 49 ME: 0.046159 MSE: 0.003473
+Saving to file: bayesopt_0.046159.mat
+|  454 | Accept |    0.046159 |      14.979 |    0.039026 |    0.044302 |           30 |           49 |         tanh |            1 |         0.39 |       2.0028 |    0.0022463 |
+SL: 1 HS: 3 ME: 0.074490 MSE: 0.009139
+Saving to file: bayesopt_0.07449.mat
+|  455 | Accept |     0.07449 |       18.24 |    0.039026 |    0.050627 |           28 |            3 |         tanh |            2 |      0.15002 |       2.4176 |     0.013698 |
+SL: 1 HS: 49 ME: 0.060793 MSE: 0.005965
+Saving to file: bayesopt_0.060793.mat
+|  456 | Accept |    0.060793 |      19.754 |    0.039026 |    0.050358 |           16 |           49 |         relu |            1 |      0.08283 |       4.8941 |    0.0014506 |
+SL: 1 HS: 76 ME: 0.111827 MSE: 0.019376
+Saving to file: bayesopt_0.11183.mat
+|  457 | Accept |     0.11183 |      19.525 |    0.039026 |    0.051529 |           26 |           76 |         tanh |            1 |     0.022992 |       3.2218 |      0.28099 |
+SL: 1 HS: 52 ME: 0.103604 MSE: 0.017003
+Saving to file: bayesopt_0.1036.mat
+|  458 | Accept |      0.1036 |      14.712 |    0.039026 |    0.052725 |           29 |           52 |         relu |            1 |      0.13254 |        4.614 |      0.26038 |
+SL: 1 HS: 69 ME: 0.060515 MSE: 0.005652
+Saving to file: bayesopt_0.060515.mat
+|  459 | Accept |    0.060515 |      34.184 |    0.039026 |    0.050582 |           25 |           69 |         tanh |            2 |     0.042512 |       3.1653 |    0.0035701 |
+SL: 1 HS: 45 ME: 0.039530 MSE: 0.002555
+Saving to file: bayesopt_0.03953.mat
+|  460 | Accept |     0.03953 |      17.793 |    0.039026 |    0.048479 |           18 |           45 |         tanh |            1 |      0.17817 |       2.0064 |    0.0026478 |
+SL: 1 HS: 97 ME: 0.183452 MSE: 0.049635
+Saving to file: bayesopt_0.18345.mat
+|================================================================================================================================================================================|
+| Iter | Eval   | Objective   | Objective   | BestSoFar   | BestSoFar   | sequenceLeng-|   hiddenSize |      actType |    numLayers |      dropout | gradientThre-| initialLearn-|
+|      | result |             | runtime     | (observed)  | (estim.)    | th           |              |              |              |              | shold        | Rate         |
+|================================================================================================================================================================================|
+|  461 | Accept |     0.18345 |      30.689 |    0.039026 |    0.049558 |           25 |           97 |         tanh |            1 |      0.33826 |       2.9373 |      0.85695 |
+SL: 1 HS: 58 ME: 0.138841 MSE: 0.029283
+Saving to file: bayesopt_0.13884.mat
+|  462 | Accept |     0.13884 |        16.4 |    0.039026 |    0.048004 |           29 |           58 |         tanh |            1 |      0.17735 |      0.18133 |      0.92009 |
+SL: 1 HS: 46 ME: 0.053897 MSE: 0.004757
+Saving to file: bayesopt_0.053897.mat
+|  463 | Accept |    0.053897 |      13.981 |    0.039026 |    0.049251 |           29 |           46 |         relu |            1 |     0.066527 |       2.7558 |     0.011239 |
+SL: 1 HS: 6 ME: 0.138788 MSE: 0.029352
+Saving to file: bayesopt_0.13879.mat
+|  464 | Accept |     0.13879 |      35.273 |    0.039026 |    0.051942 |           29 |            6 |   leakedrelu |            5 |     0.050375 |       3.7465 |    0.0010699 |
+SL: 1 HS: 6 ME: 0.296155 MSE: 0.113685
+Saving to file: bayesopt_0.29616.mat
+|  465 | Accept |     0.29616 |      11.223 |    0.039026 |    0.045291 |           30 |            6 |         tanh |            1 |      0.44982 |       4.9547 |      0.79045 |
+SL: 1 HS: 19 ME: 0.045410 MSE: 0.003295
+Saving to file: bayesopt_0.04541.mat
+|  466 | Accept |     0.04541 |      12.609 |    0.039026 |    0.050346 |           24 |           19 |         relu |            1 |      0.36227 |      0.31707 |    0.0026878 |
+SL: 1 HS: 4 ME: 0.125954 MSE: 0.022511
+Saving to file: bayesopt_0.12595.mat
+|  467 | Accept |     0.12595 |      10.444 |    0.039026 |    0.046965 |           29 |            4 |         relu |            1 |      0.39036 |      0.13952 |    0.0010783 |
+SL: 1 HS: 47 ME: 0.047272 MSE: 0.003619
+Saving to file: bayesopt_0.047272.mat
+|  468 | Accept |    0.047272 |      14.997 |    0.039026 |    0.047738 |           30 |           47 |         tanh |            1 |      0.17634 |       1.3449 |    0.0022343 |
+SL: 1 HS: 54 ME: 0.059742 MSE: 0.005344
+Saving to file: bayesopt_0.059742.mat
+|  469 | Accept |    0.059742 |      29.233 |    0.039026 |    0.050754 |           10 |           54 |         tanh |            1 |     0.058256 |       1.8756 |    0.0024653 |
+SL: 1 HS: 20 ME: 0.052871 MSE: 0.004500
+Saving to file: bayesopt_0.052871.mat
+|  470 | Accept |    0.052871 |      20.347 |    0.039026 |    0.048159 |           28 |           20 |         tanh |            2 |     0.068522 |       4.8234 |    0.0097888 |
+SL: 1 HS: 14 ME: 0.052227 MSE: 0.004169
+Saving to file: bayesopt_0.052227.mat
+|  471 | Accept |    0.052227 |      11.602 |    0.039026 |    0.045195 |           29 |           14 |         tanh |            1 |      0.12422 |       2.8021 |    0.0097927 |
+SL: 1 HS: 13 ME: 0.076210 MSE: 0.009163
+Saving to file: bayesopt_0.07621.mat
+|  472 | Accept |     0.07621 |      11.517 |    0.039026 |    0.050405 |           26 |           13 |         relu |            1 |      0.48513 |      0.43164 |    0.0017302 |
+SL: 1 HS: 47 ME: 0.217570 MSE: 0.067143
+Saving to file: bayesopt_0.21757.mat
+|  473 | Accept |     0.21757 |       16.19 |    0.039026 |    0.050485 |           30 |           47 |   leakedrelu |            1 |      0.48845 |        2.117 |      0.84999 |
+SL: 1 HS: 38 ME: 0.074787 MSE: 0.008106
+Saving to file: bayesopt_0.074787.mat
+|  474 | Accept |    0.074787 |      23.349 |    0.039026 |    0.051684 |           28 |           38 |         tanh |            2 |      0.17866 |       1.3159 |    0.0033232 |
+SL: 1 HS: 6 ME: 0.079675 MSE: 0.009947
+Saving to file: bayesopt_0.079675.mat
+|  475 | Accept |    0.079675 |      13.225 |    0.039026 |    0.046856 |           23 |            6 |         tanh |            1 |     0.087298 |      0.67175 |      0.03737 |
+SL: 1 HS: 34 ME: 0.051780 MSE: 0.004905
+Saving to file: bayesopt_0.05178.mat
+|  476 | Accept |     0.05178 |      12.564 |    0.039026 |    0.047494 |           28 |           34 |   leakedrelu |            1 |       0.1747 |       2.4191 |    0.0069616 |
+SL: 1 HS: 19 ME: 0.052232 MSE: 0.004234
+Saving to file: bayesopt_0.052232.mat
+|  477 | Accept |    0.052232 |       11.02 |    0.039026 |    0.050407 |           29 |           19 |         relu |            1 |      0.15044 |      0.46232 |    0.0053046 |
+SL: 1 HS: 7 ME: 0.136216 MSE: 0.028027
+Saving to file: bayesopt_0.13622.mat
+|  478 | Accept |     0.13622 |      10.887 |    0.039026 |    0.051239 |           27 |            7 |   leakedrelu |            1 |       0.4961 |      0.75273 |      0.29875 |
+SL: 1 HS: 26 ME: 0.403958 MSE: 0.190976
+Saving to file: bayesopt_0.40396.mat
+|  479 | Accept |     0.40396 |      12.156 |    0.039026 |    0.050601 |           30 |           26 |         relu |            1 |      0.49687 |      0.48563 |      0.90938 |
+SL: 1 HS: 3 ME: 0.136499 MSE: 0.028286
+Saving to file: bayesopt_0.1365.mat
+|  480 | Accept |      0.1365 |      10.685 |    0.039026 |    0.050818 |           27 |            3 |   leakedrelu |            1 |     0.050603 |       1.2595 |       0.5797 |
+SL: 1 HS: 19 ME: 0.066427 MSE: 0.006771
+Saving to file: bayesopt_0.066427.mat
+|================================================================================================================================================================================|
+| Iter | Eval   | Objective   | Objective   | BestSoFar   | BestSoFar   | sequenceLeng-|   hiddenSize |      actType |    numLayers |      dropout | gradientThre-| initialLearn-|
+|      | result |             | runtime     | (observed)  | (estim.)    | th           |              |              |              |              | shold        | Rate         |
+|================================================================================================================================================================================|
+|  481 | Accept |    0.066427 |      12.152 |    0.039026 |    0.045542 |           27 |           19 |         tanh |            1 |      0.49851 |      0.61426 |     0.029924 |
+SL: 1 HS: 72 ME: 0.106274 MSE: 0.017139
+Saving to file: bayesopt_0.10627.mat
+|  482 | Accept |     0.10627 |      20.073 |    0.039026 |    0.049801 |           21 |           72 |   leakedrelu |            1 |      0.37036 |      0.14145 |      0.02368 |
+SL: 1 HS: 17 ME: 0.088877 MSE: 0.012602
+Saving to file: bayesopt_0.088877.mat
+|  483 | Accept |    0.088877 |      11.898 |    0.039026 |    0.051609 |           26 |           17 |         relu |            1 |       0.2511 |      0.61309 |    0.0095903 |
+SL: 1 HS: 76 ME: 0.062042 MSE: 0.006411
+Saving to file: bayesopt_0.062042.mat
+|  484 | Accept |    0.062042 |      20.373 |    0.039026 |    0.048402 |           24 |           76 |         tanh |            1 |      0.49512 |      0.53677 |    0.0037706 |
+SL: 1 HS: 59 ME: 0.121366 MSE: 0.021048
+Saving to file: bayesopt_0.12137.mat
+|  485 | Accept |     0.12137 |      16.196 |    0.039026 |    0.051952 |           27 |           59 |         tanh |            1 |      0.46336 |      0.87778 |    0.0010702 |
+SL: 1 HS: 62 ME: 0.137494 MSE: 0.028744
+Saving to file: bayesopt_0.13749.mat
+|  486 | Accept |     0.13749 |      19.716 |    0.039026 |    0.049272 |           26 |           62 |         tanh |            1 |      0.48327 |      0.79459 |      0.92975 |
+SL: 1 HS: 33 ME: 0.048993 MSE: 0.004227
+Saving to file: bayesopt_0.048993.mat
+|  487 | Accept |    0.048993 |      12.656 |    0.039026 |    0.047986 |           26 |           33 |         relu |            1 |    0.0073337 |       2.3783 |     0.013999 |
+SL: 1 HS: 15 ME: 0.041375 MSE: 0.002776
+Saving to file: bayesopt_0.041375.mat
+|  488 | Accept |    0.041375 |      11.829 |    0.039026 |     0.04689 |           30 |           15 |         tanh |            1 |     0.029742 |       2.8817 |     0.014577 |
+SL: 1 HS: 22 ME: 0.121204 MSE: 0.022166
+Saving to file: bayesopt_0.1212.mat
+|  489 | Accept |      0.1212 |      14.839 |    0.039026 |    0.053201 |           18 |           22 |         relu |            1 |       0.1358 |      0.33601 |    0.0016017 |
+SL: 1 HS: 24 ME: 0.253126 MSE: 0.086625
+Saving to file: bayesopt_0.25313.mat
+|  490 | Accept |     0.25313 |      12.014 |    0.039026 |    0.048347 |           29 |           24 |         tanh |            1 |      0.49995 |      0.37118 |      0.29491 |
+SL: 1 HS: 88 ME: 0.087463 MSE: 0.011567
+Saving to file: bayesopt_0.087463.mat
+|  491 | Accept |    0.087463 |      21.412 |    0.039026 |     0.04511 |           29 |           88 |         tanh |            1 |      0.49411 |       3.3894 |      0.05963 |
+SL: 1 HS: 55 ME: 0.093328 MSE: 0.013294
+Saving to file: bayesopt_0.093328.mat
+|  492 | Accept |    0.093328 |      15.554 |    0.039026 |    0.048856 |           29 |           55 |         tanh |            1 |      0.34034 |      0.47707 |     0.018179 |
+SL: 1 HS: 21 ME: 0.059213 MSE: 0.005622
+Saving to file: bayesopt_0.059213.mat
+|  493 | Accept |    0.059213 |      14.735 |    0.039026 |    0.048371 |           21 |           21 |         tanh |            1 |      0.25108 |       3.1922 |     0.014105 |
+SL: 1 HS: 46 ME: 0.112648 MSE: 0.019608
+Saving to file: bayesopt_0.11265.mat
+|  494 | Accept |     0.11265 |      14.963 |    0.039026 |     0.04944 |           27 |           46 |         tanh |            1 |       0.0787 |      0.10144 |    0.0049728 |
+SL: 1 HS: 36 ME: 0.047944 MSE: 0.003805
+Saving to file: bayesopt_0.047944.mat
+|  495 | Accept |    0.047944 |      16.844 |    0.039026 |    0.052372 |           17 |           36 |   leakedrelu |            1 |      0.43433 |      0.86244 |    0.0086225 |
+SL: 1 HS: 21 ME: 0.161801 MSE: 0.038228
+Saving to file: bayesopt_0.1618.mat
+|  496 | Accept |      0.1618 |      11.527 |    0.039026 |    0.048403 |           27 |           21 |         relu |            1 |     0.057996 |      0.77673 |      0.32777 |
+SL: 1 HS: 28 ME: 0.069600 MSE: 0.008613
+Saving to file: bayesopt_0.0696.mat
+|  497 | Accept |      0.0696 |      12.603 |    0.039026 |     0.04847 |           27 |           28 |         tanh |            1 |       0.0939 |      0.19634 |    0.0011754 |
+SL: 1 HS: 87 ME: 0.055259 MSE: 0.004865
+Saving to file: bayesopt_0.055259.mat
+|  498 | Accept |    0.055259 |      21.577 |    0.039026 |    0.050348 |           29 |           87 |         tanh |            1 |      0.08409 |       0.7269 |    0.0049323 |
+SL: 1 HS: 60 ME: 0.054727 MSE: 0.004612
+Saving to file: bayesopt_0.054727.mat
+|  499 | Accept |    0.054727 |      29.865 |    0.039026 |     0.04372 |            9 |           60 |   leakedrelu |            1 |      0.23282 |      0.77862 |    0.0039122 |
+SL: 1 HS: 51 ME: 0.051382 MSE: 0.004888
+Saving to file: bayesopt_0.051382.mat
+|  500 | Accept |    0.051382 |        14.5 |    0.039026 |    0.051525 |           30 |           51 |   leakedrelu |            1 |      0.34367 |      0.54017 |    0.0014853 |
+
+__________________________________________________________
+Optimization completed.
+MaxObjectiveEvaluations of 500 reached.
+Total function evaluations: 500
+Total elapsed time: 12305.42 seconds
+Total objective function evaluation time: 9792.4253
+
+Best observed feasible point:
+    sequenceLength    hiddenSize    actType    numLayers    dropout    gradientThreshold    initialLearnRate
+    ______________    __________    _______    _________    _______    _________________    ________________
+
+          27              77         relu          1        0.33023         2.7271              0.005345    
+
+Observed objective function value = 0.039026
+Estimated objective function value = 0.052326
+Function evaluation time = 17.8079
+
+Best estimated feasible point (according to models):
+    sequenceLength    hiddenSize     actType      numLayers    dropout     gradientThreshold    initialLearnRate
+    ______________    __________    __________    _________    ________    _________________    ________________
+
+          24              46        leakedrelu        1        0.086716         3.8586              0.001407    
+
+Estimated objective function value = 0.051525
+Estimated function evaluation time = 15.714
+
+Loading file: bayesopt_0.039026.mat
+  SeriesNetwork with properties:
+
+         Layers: [6×1 nnet.cnn.layer.Layer]
+     InputNames: {'sequenceinput'}
+    OutputNames: {'regressionoutput'}
+
+    sequenceLength    hiddenSize    actType    numLayers    dropout    gradientThreshold    initialLearnRate
+    ______________    __________    _______    _________    _______    _________________    ________________
+
+          27              77         relu          1        0.33023         2.7271              0.005345    
+
+SL: 27 HS: 77 ME: 0.039026 MSE: 0.002226
+Best NN configuration
+Mean error: 0.039026
+Max error:  0.134486
+MSE:        0.002226
+RMSE:       0.047180
+>> 

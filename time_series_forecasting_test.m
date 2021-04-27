@@ -68,7 +68,7 @@ sample_length = 5;
 result_length = 1;
 samples_div = 1.5;
 
-hiddenSize = 5;
+hiddenSize = 10;
 maxEpochs = 100;
 
 snr_array = [snr snr snr];
@@ -80,9 +80,9 @@ save_figure = 0;
 en_nn_ff_ns = 0;
 en_nn_ff_ts = 0;
 
-en_nn_lstm_ns = 0;
+en_nn_lstm_ns = 1;
 en_nn_lstm_ts = 0;
-en_nn_lstm_dl = 1;
+en_nn_lstm_dl = 0;
 
 en_nn_gru_ns = 0;
 en_nn_gru_ts = 0;
