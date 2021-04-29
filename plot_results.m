@@ -1,4 +1,4 @@
-function plot_results(name, t, xt, xr, xn, X, save_figure, t_skip, samples_div)
+function plot_results(name, t, xt, xr, xn, X, save_figure, samples_div, t_skip)
     if ~exist('save_figure', 'var')
         save_figure = false;
     end

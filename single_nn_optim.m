@@ -20,7 +20,7 @@ A = 0.5 + floor(t);
 
 global xr;
 global xn_train;
-global xn_test; 
+global xn_test;
 
 [xr, xn_train] = gen_sin(t, A, w, phi, r, snr);
 xn_test = xn_train;
@@ -32,6 +32,8 @@ samples_div = 1.5;
 
 global snr_array;
 snr_array = [snr snr snr];
+
+save_figure = false;
 
 % Define variables to optimize:
 %
@@ -78,47 +80,7 @@ X = test_network(net, test_samples, result_length, "lstm");
 [error, abs_error, mse_array, rmse_array, max_error, mean_error, mse, rmse] = calc_errors(xrs, X);
 
 fprintf("SL: %u HS: %u ME: %f MSE: %f\n", opt.sequenceLength, opt.hiddenSize, mean_error, mse);
-plot_results("Best NN configuration", t, xr, xr, xn_test, X, false, 0, samples_div);
-
-function layers = rnnBlock(hiddenSize, hiddenType, activation, numLayers, dropout)
-    assert(hiddenType == "lstm" || hiddenType == "gru");
-    assert(activation == "relu" || activation == "tanh" || activation == "none" || activation == "leakedrelu");
-
-    if ~exist('hiddenType', 'var')
-        hiddenType = "lstm";
-    end
-
-    if ~exist('numLayers', 'var')
-        numLayers = 1;
-    end
-
-    if ~exist('dropout', 'var')
-        dropout = 0;
-    end
-
-    % Determine main working layer type
-    layer = [lstmLayer(hiddenSize)];
-
-    if hiddenType == "gru"
-        layer(end,:) = gruLayer(hiddenSize);
-    end
-
-    % Determine activation type
-    if activation == "relu"
-        layer(end + 1,:) = reluLayer;
-    elseif activation == "leakedrelu"
-        layer(end + 1,:) = leakyReluLayer;
-    elseif activation == "tanh"
-        layer(end + 1,:) = tanhLayer;
-    end
-
-    if (dropout > 0)
-        layer(end + 1,:) = dropoutLayer(dropout);
-    end
-
-    % Copy layers 'numLayers' time
-    layers = repmat(layer, numLayers, 1);
-end
+plot_results("Best NN configuration", t, xr, xr, xn_test, X, save_figure, samples_div);
 
 function ObjFcn = make_validation_fcn()
 ObjFcn = @validation_fcn;
