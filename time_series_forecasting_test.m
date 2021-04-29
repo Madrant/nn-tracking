@@ -4,7 +4,7 @@ clc;       % Clear command window
 
 % Model options
 start_time = 1;
-time_step = 0.1;
+time_step = 0.01;
 end_time = 10;
 
 % Initialize random number generator
@@ -64,11 +64,12 @@ fprintf("Time: [%f:%f:%f] SNR: %f\n", start_time, time_step, end_time, snr);
 print_data_stats(xr, xn);
 
 % NN options
-sample_length = 5;
+sample_length = 10;
 result_length = 1;
 samples_div = 1.5;
+predict_offset = 1;
 
-hiddenSize = 10;
+hiddenSize = 88;
 maxEpochs = 100;
 
 snr_array = [snr snr snr];
@@ -80,14 +81,12 @@ save_figure = 0;
 en_nn_ff_ns = 0;
 en_nn_ff_ts = 0;
 
-en_nn_lstm_ns = 1;
+en_nn_lstm_ns = 0;
 en_nn_lstm_ts = 0;
 en_nn_lstm_dl = 0;
 
 en_nn_gru_ns = 0;
 en_nn_gru_ts = 0;
-
-en_nn_hybrid = 0;
 
 for sample_length = [sample_length] %[1 3 5]
 for hiddenSize = [hiddenSize] %[4, 5, 7, 10]
@@ -156,40 +155,23 @@ if en_nn_gru_ts
     res_nn_gru_ts = nn_outputs;
 end
 
-if en_nn_hybrid
-    sl_array = [sample_length 5];
-    rl_array = [result_length 1];
-    hs_array = [hiddenSize 11];
-    snr_array = [snr snr snr];
-    % samples_div = 1.5;
-
-    name = sprintf("Hybrid LSTM NN - Noise Hs %u Samples %u Div %.2f", hiddenSize, sample_length, samples_div);
-
-    [net1_outputs, net2_outputs] = hybrid_lstm_nn(...
-        t, xr_train, xn_train, xn_test, ...
-        sl_array, rl_array, samples_div, ...
-        hs_array, maxEpochs, "lstm", snr_array);
-
-    %plot_results(name, t, xr_train, xr_test, xn_test, net1_outputs, save_figure, 0);
-    plot_results(name, t, xr_train, xr_test, xn_test, net2_outputs, save_figure, 0, samples_div);
-end
-
 end % hiddenSize
 end % sample_length
 
 % Kalman filter
-% kf_outputs = ts_kf(t, xr_train, xn_test);
-% plot_results("KF", t, xr_train, xr_test, xn_test, kf_outputs, save_figure, 0);
+kf_outputs = ts_kf(t, xr_train, xn_test);
+plot_results("KF", t, xr_train, xr_test, xn_test, kf_outputs, save_figure, 0);
 
-% Extrapolation
-% outputs = ts_extrap(t, xr, xn, 'linear', 3);
-% plot_results("Extrapolation: Linear Points: 3", t, xt, xr, xn, outputs, save_figure, 3);
+% Extrapolate KF output
+if predict_offset > 0
+    method = 'nearest'; % linear, nearest, previous, pchip, cubic, v5cubic, makima, spline
+    points = 2;
 
-% outputs = ts_extrap(t, xr, xn, 'spline', 3);
-% plot_results("Extrapolation: Spline Points: 3", t, xt, xr, xn, outputs, save_figure, 3);
+    name = sprintf("KF Extrapolation: Method: %s Points: %u", method, points);
 
-% outputs = ts_extrap(t, xr, xn, 'spline', 5);
-% plot_results("Extrapolation: Spline Points: 5", t, xt, xr, xn, outputs, save_figure, 5);
+    outputs = ts_extrap(t, kf_outputs, method, points, predict_offset);
+    plot_results(name, t, xr_train, xr_test, xn_test, outputs, save_figure);
+end
 
 % Compare filter outputs
 
