@@ -45,6 +45,7 @@ function plot_results(name, t, xt, xr, xn, X, save_figure, samples_div, t_skip)
     plot(t, xr);
     plot(t, xn, '-x'); % Plot measurements
     plot([t_div t_div], [0 1]);
+    grid on;
     title('Model and Measurements');
     xlabel('Time');
     ylabel('Data');
@@ -59,6 +60,7 @@ function plot_results(name, t, xt, xr, xn, X, save_figure, samples_div, t_skip)
     plot(t, xn, '-x');
     plot(ts, X, '-o');
     plot([t_div t_div], [0 1]);
+    grid on;
     title('Filter output');
     xlabel('Time');
     ylabel('Data');
@@ -78,19 +80,22 @@ function plot_results(name, t, xt, xr, xn, X, save_figure, samples_div, t_skip)
     % Plot absolute error
     nexttile;
     plot(ts, abs_error);
+    grid on;
     title(sprintf('Absolute error, mean: %.2f, max: %.2f', mean_error, max_error));
     xlabel('Time');
-    ylabel('Absolute error');
+    ylabel('Absolute error, value');
     ylim([0 1]);
+    yticks([0 0.1 0.2 0.3 0.5 0.75 1]);
 
     % Plot MSE and RMSE on a single plot
     nexttile;
     hold on;
     plot(ts, mse_array);
     plot(ts, rmse_array);
+    grid on;
     title(sprintf('Final MSE: %f RMSE: %f', mse, rmse));
     xlabel('Time');
-    ylabel('MSE/RMSE');
+    ylabel('MSE / RMSE');
     hold off;
 
     % Save plot image
