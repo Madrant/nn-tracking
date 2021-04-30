@@ -24,7 +24,7 @@ A = 5;
 [xr1, xn1] = gen_sin(t, A, w, phi, r, snr);
 
 % Data set 2 (xr2, xn2)
-w = 2 * pi;
+w = 3 * pi;
 phi = 0;
 %A = 5 * floor(t);
 A = normpdf(t, t(round(end/2)), 3);
@@ -63,6 +63,16 @@ xn_test = xn2;
 
 fprintf("Time: [%f:%f:%f] SNR: %f\n", start_time, time_step, end_time, snr);
 print_data_stats(xr, xn);
+
+speed_array = zeros(1, length(xr));
+
+for n = 2:length(xr)
+    dx = xr(n) - xr(n - 1);
+    dt = t(n) - t (n - 1);
+
+    speed = dx/dt;
+    speed_array(1,n) = abs(speed);
+end
 
 % NN options
 sample_length = 10;
