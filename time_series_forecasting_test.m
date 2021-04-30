@@ -12,21 +12,22 @@ rng(12345, 'combRecursive');
 
 % Generate test data (real target position)
 r = 0.01;
-snr = 5;
+snr = 10;
 
 t = start_time:time_step:end_time;
 
 % Data set 1 (xr1, xr2)
 w = 3 * pi;
 phi = 0;
-A = 0.5 + floor(t);
+A = 5;
 
 [xr1, xn1] = gen_sin(t, A, w, phi, r, snr);
 
 % Data set 2 (xr2, xn2)
-w = 1 * pi;
+w = 2 * pi;
 phi = 0;
-A = 1;
+%A = 5 * floor(t);
+A = normpdf(t, t(round(end/2)), 3);
 
 [xr2, xn2] = gen_sin(t, A, w, phi, r, snr);
 
@@ -57,8 +58,8 @@ xn = xn1;
 xr_train = xr1;
 xn_train = xn1;
 
-xr_test = xr1;
-xn_test = xn1;
+xr_test = xr2;
+xn_test = xn2;
 
 fprintf("Time: [%f:%f:%f] SNR: %f\n", start_time, time_step, end_time, snr);
 print_data_stats(xr, xn);
@@ -67,21 +68,21 @@ print_data_stats(xr, xn);
 sample_length = 10;
 result_length = 1;
 samples_div = 1.5;
-predict_offset = 1;
+predict_offset = 0;
 
 hiddenSize = 88;
 maxEpochs = 100;
 
-snr_array = [snr snr snr];
+snr_array = [snr];
 
 % Plot options
 save_figure = 0;
 
 % Enable/disable some various networks in test
-en_nn_ff_ns = 1;
-en_nn_lstm_ns = 1;
+en_nn_ff_ns = 0;
+en_nn_lstm_ns = 0;
 en_nn_lstm_dl = 1;
-en_nn_gru_ns = 1;
+en_nn_gru_ns = 0;
 
 for sample_length = [sample_length] %[1 3 5]
 for hiddenSize = [hiddenSize] %[4, 5, 7, 10]
@@ -134,13 +135,13 @@ plot_results("KF", t, xr_train, xr_test, xn_test, kf_outputs, save_figure);
 
 % Extrapolate KF output
 if predict_offset > 0
-    method = 'nearest'; % linear, nearest, previous, pchip, cubic, v5cubic, makima, spline
+    method = 'linear'; % linear, nearest, previous, pchip, cubic, v5cubic, makima, spline
     points = 2;
 
     name = sprintf("KF Extrapolation: Method: %s Points: %u", method, points);
 
     extrap_kf_outputs = ts_extrap(t, kf_outputs, method, points, predict_offset);
-    plot_results(name, t, xr_train, xr_test, xn_test, extrap_kf_outputs, save_figure);
+    plot_results(name, t, xr_train, xr_test, xn_test, extrap_kf_outputs, save_figure, 1, 3);
 end
 
 % Compare filter outputs
