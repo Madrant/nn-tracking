@@ -1,68 +1,69 @@
 % Source:
 % https://stackoverflow.com/questions/61958087/designing-kalman-filter
+%
+% See also:
+% https://en.wikipedia.org/wiki/Kalman_filter
 function outputs = ts_kf(t, x, Y)
-    A = 0.01;
-    C = 1;
+    assert(length(t) == length(x));
+    assert(length(x) == length(Y));
+
+    % Process descritption
+    F = 0.1; % Process state transition model (How much xpri depends of previous xpost)
+    B = 1; % Process control model (How much target controls affects measurements model)
+
+    % Measurements description
+    H = 1; % Observation model (Coefficient to innovation - a difference between observed and predicted state)
 
     % Covariance matrices
-    % Processing noise
-    W = 0.01;
-    Q = 0.5; % A degree of trust to measurements
+    Q = 0.8; % Process noise covariance (A degree of trust to measurements)
+    R = 1;   % Measurements (observations) noise covariance
 
-    % Measurement noise
-    V = 1;
-    R = 1;
-
-    % Initial conditions
-    x0 = x(1);
-    P0 = 0;
-
-    xpri = x0;
-    Ppri = P0;
-
-    xpost = x0;
-    Ppost = P0;
-
-    % State
+    % Define state arrays
     X = zeros(1, length(t));
     Xpri = zeros(1, length(t));
-    
-    X(1) = x0;
-    Xpri(1) = x0;
 
-    % xpri - x priori
-    % xpost - x posteriori
-    % Ppri - P priori
-    % Ppost - P posteriori
+    % For each measurement
+    for n = 1:length(t)
+        % Start filtering after receiving the first measurement
+        if n <= 1
+            xpost = x(n);
+            Ppost = 0;
 
-    for i = 1:length(t)
-        % Generate real data
-        %x(i) = C*sin((i-1) * 0.1);
-        %x(i) = Amp(i) * (1 + normrnd(0, 0.01)) * sin(w * (1 + normrnd(0, 0.01)) * t(i) + phi * (1 + normrnd(0, 0.01)));
+            X(n) = x(n);
+            Xpri(n) = x(n);
 
-        % Noise measurements
-        %Y(i) = x(i) + normrnd(0, sqrt(V));
-        %Y = awgn(x, snr);
-
-        if i > 1
-            % Prediction
-            % xpri = A*xpost + Amp(i)*sin((i-1)*0.1);
-            %xpri = A*xpost + Amp(i) * sin(w * t(i) + phi);
-            xpri = A * xpost + x(i);
-            Ppri = A * Ppost * A' + Q;
-
-            eps = Y(i) - C * xpri;
-            S = C * Ppri * C' + R;
-            K = Ppri * C' * S^(-1);
-
-            xpost = xpri + K * eps;
-            Ppost = Ppri - K * S * K';
-
-            Xpri(i) = xpri;
-            X(i) = xpost;
+            continue;
         end
+
+        % Prediction
+        %
+        % Predict state
+        xpri = F * xpost + B * x(n);
+
+        % Predict estimate covariance
+        Ppri = F * Ppost * F' + Q;
+
+        % Innovation (pre-fit residual): a difference between observed and predicted state
+        eps = Y(n) - H * xpri;
+
+        % Calculate innovation (pre-fit residual) covariance
+        S = H * Ppri * H' + R;
+
+        % Calculate Kalman gain
+        K = Ppri * H' * S^(-1);
+
+        % Update
+        %
+        % Update state
+        xpost = xpri + K * eps;
+
+        % Update estimate covariance
+        Ppost = Ppri - K * S * K';
+
+        % Save prior and a posterior state to arrays
+        Xpri(n) = xpri;
+        X(n) = xpost;
     end
 
     outputs = X;
 end
-
