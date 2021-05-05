@@ -54,15 +54,35 @@ save_figure = false;
 %
 % See also:
 % https://www.mathworks.com/help/deeplearning/ref/trainingoptions.html
+maxLayers = 3;
+
 optimVars = [
-    optimizableVariable('sequenceLength', [1 30], 'Type', 'integer')
-    optimizableVariable('hiddenSize', [1 100], 'Type', 'integer')
-    %optimizableVariable('type', ["lstm" "gru"]) % "lstm" "gru"
-    optimizableVariable('actType', ["relu" "tanh" "leakedrelu"]) % "leakyrelu" "clippedrelu" "elu" "swish"
-    optimizableVariable('numLayers', [1 5], 'Type', 'integer')
-    optimizableVariable('dropout', [0 0.5])
-    optimizableVariable('gradientThreshold', [0.1 5], 'Transform', 'log')
-    optimizableVariable('initialLearnRate', [0.001 1], 'Transform', 'log')];
+    optimizableVariable('sequenceLength', [1 30], 'Type', 'integer', 'Optimize', true)
+
+    optimizableVariable('numLayers', [1 maxLayers], 'Type', 'integer', 'Optimize', true)
+
+    optimizableVariable('gradientThreshold', [0.1 5], 'Transform', 'log', 'Optimize', true)
+    optimizableVariable('initialLearnRate', [0.001 1], 'Transform', 'log', 'Optimize', true)
+];
+
+% Optimize layers structure cccording to maxLayers
+for n = 1:maxLayers
+    typeName = sprintf("ht%u", n);
+    % "lstm" "gru"
+    optimVars(end + 1,:) = optimizableVariable(typeName, ["lstm" "gru"], 'Optimize', true);
+
+    hsName = sprintf("hs%u", n);
+    optimVars(end + 1,:) = optimizableVariable(hsName, [1 100], 'Type', 'integer', 'Optimize', true);
+
+    actName = sprintf("act%u", n);
+    % "none" "relu" "tanh" "leakyrelu" "clippedrelu" "elu" "swish"
+    optimVars(end + 1,:) = optimizableVariable(actName, ["none" "relu" "tanh"], 'Optimize', true);
+
+    dropName = sprintf("drop%u", n);
+    optimVars(end + 1,:) = optimizableVariable(dropName, [0 0.5], 'Optimize', true);
+end
+
+disp(optimVars);
 
 BayesObject = bayesopt(make_validation_fcn, optimVars,  ...
     'MaxObjectiveEvaluations', 1, ...
@@ -94,25 +114,40 @@ X = test_network(net, test_samples, result_length, "lstm");
 
 [error, abs_error, mse_array, rmse_array, max_error, mean_error, mse, rmse] = calc_errors(xrs, X);
 
-fprintf("SL: %u HS: %u ME: %f MSE: %f\n", opt.sequenceLength, opt.hiddenSize, mean_error, mse);
+fprintf("SL: %u HS: %u ME: %f MSE: %f\n", opt.sequenceLength, opt.hs1, mean_error, mse);
 plot_results("Best NN configuration", t, xr_test, xr_test, xn_test, X, save_figure, samples_div);
 
 function ObjFcn = make_validation_fcn()
 ObjFcn = @validation_fcn;
     function [mean_error, cons, filename] = validation_fcn(optimVars)
+        disp(optimVars);
+
         % Define input data
         sample_length = optimVars.sequenceLength;
 
         % Create neural network
         maxEpochs = 100;
 
+        % Generate layers parameters
+        ht_array = string.empty;
+        hs_array = [];
+        act_array = string.empty;
+        drop_array = [];
+
+        for n = 1:optimVars.numLayers
+            ht_array(1, end + 1) = eval(sprintf("optimVars.ht%u", n));
+            hs_array(1, end + 1) = eval(sprintf("optimVars.hs%u", n));
+            act_array(1, end + 1) = eval(sprintf("optimVars.act%u", n));
+            drop_array(1, end + 1) = eval(sprintf("optimVars.drop%u", n));
+        end
+
         layers = [ ...
             sequenceInputLayer(1)
-            rnnBlock(optimVars.hiddenSize, "lstm", optimVars.actType, optimVars.numLayers, optimVars.dropout)
+            rnnBlock(hs_array, ht_array, act_array, drop_array, optimVars.numLayers)
             fullyConnectedLayer(1)
             regressionLayer
         ];
-        %disp(layers);
+        disp(layers);
 
         options = trainingOptions('adam', ... % sgdm, rmsprop, adam
             'MaxEpochs', maxEpochs, ...
@@ -174,7 +209,7 @@ ObjFcn = @validation_fcn;
 
         [error, abs_error, mse_array, rmse_array, max_error, mean_error, mse, rmse] = calc_errors(xrs, X);
 
-        fprintf("SL: %u HS: %u ME: %f MSE: %f\n", sample_length, optimVars.hiddenSize, mean_error, mse);
+        fprintf("SL: %u HS: %u ME: %f MSE: %f\n", sample_length, hs_array, mean_error, mse);
 
         % Save trained network to file
         filename = "bayesopt/bayesopt_" + num2str(mean_error) + ".mat";
