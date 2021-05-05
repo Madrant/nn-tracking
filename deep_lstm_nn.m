@@ -27,7 +27,7 @@ function [net_outputs, train_samples] = deep_lstm_nn(t, x, xn_train, xn_test, sa
 
     layers = [ ...
         sequenceInputLayer(1)
-        rnnBlock(numHiddenUnits, hiddenType, "tanh", 2, 0.43)
+        rnnBlock(numHiddenUnits, hiddenType, "tanh", 0.43, 2)
         fullyConnectedLayer(1)
         regressionLayer
     ];

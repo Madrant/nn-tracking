@@ -6,24 +6,39 @@ clc;       % Clear command window
 rng(12345, 'combRecursive');
 
 % Define input data
-t = 1:0.05:10;
+t = 1:0.1:10;
 
 % Generate test data (real target position)
 r = 0.01;
 global snr;
-snr = 5;
+snr = 10;
 
 % Data set 1 (xr1, xr2)
 w = 3 * pi;
 phi = 0;
-A = 0.5 + floor(t);
+A = 5;
 
-global xr;
+[xr1, xn1] = gen_sin(t, A, w, phi, r, snr);
+
+% Data set 2 (xr2, xn2)
+w = 3 * pi;
+phi = 0;
+%A = 5 * floor(t);
+A = normpdf(t, t(round(end/2)), 3);
+
+[xr2, xn2] = gen_sin(t, A, w, phi, r, snr);
+
+% Select input data
+global xr_train;
 global xn_train;
+global xr_test;
 global xn_test;
 
-[xr, xn_train] = gen_sin(t, A, w, phi, r, snr);
-xn_test = xn_train;
+xr_train = xr1;
+xn_train = xn1;
+
+xr_test = xr2;
+xn_test = xn2;
 
 global result_length;
 global samples_div;
@@ -50,7 +65,7 @@ optimVars = [
     optimizableVariable('initialLearnRate', [0.001 1], 'Transform', 'log')];
 
 BayesObject = bayesopt(make_validation_fcn, optimVars,  ...
-    'MaxObjectiveEvaluations', 500, ...
+    'MaxObjectiveEvaluations', 1, ...
     'MaxTime', 14*60*60, ...
     'IsObjectiveDeterministic', false, ...
     'UseParallel', false);
@@ -72,15 +87,15 @@ disp(opt);
 
 sample_length = 1;
 
-[test_samples, test_results] = prepare_train_data(xr, xn_test, sample_length, result_length, 0);
+[test_samples, test_results] = prepare_train_data(xr_test, xn_test, sample_length, result_length, 0);
 X = test_network(net, test_samples, result_length, "lstm");
 
-[xrs, X] = align_data(xr, X);
+[xrs, X] = align_data(xr_test, X);
 
 [error, abs_error, mse_array, rmse_array, max_error, mean_error, mse, rmse] = calc_errors(xrs, X);
 
 fprintf("SL: %u HS: %u ME: %f MSE: %f\n", opt.sequenceLength, opt.hiddenSize, mean_error, mse);
-plot_results("Best NN configuration", t, xr, xr, xn_test, X, save_figure, samples_div);
+plot_results("Best NN configuration", t, xr_test, xr_test, xn_test, X, save_figure, samples_div);
 
 function ObjFcn = make_validation_fcn()
 ObjFcn = @validation_fcn;
@@ -129,13 +144,14 @@ ObjFcn = @validation_fcn;
 
         % train_samples = samples; train_results = results;
         sample_length = 1;
-        global xr;
+        global xr_train;
         global xn_train;
+        global xr_test;
         global xn_test;
         global result_length;
         global samples_div;
         global snr_array;
-        [samples, results] = prepare_train_data(xr, xn_train, sample_length, result_length, 0, samples_div, snr_array);
+        [samples, results] = prepare_train_data(xr_train, xn_train, sample_length, result_length, 0, samples_div, snr_array);
 
         % Convert arrays to fit network inputs
         train_samples = samples.';
@@ -151,17 +167,17 @@ ObjFcn = @validation_fcn;
         net = trainNetwork(train_samples, train_results, layers, options);
 
         % Test network
-        [test_samples, test_results] = prepare_train_data(xr, xn_test, sample_length, result_length, 0);
+        [test_samples, test_results] = prepare_train_data(xr_test, xn_test, sample_length, result_length, 0);
         X = test_network(net, test_samples, result_length, "lstm");
 
-        [xrs, X]= align_data(xr, X);
+        [xrs, X]= align_data(xr_test, X);
 
         [error, abs_error, mse_array, rmse_array, max_error, mean_error, mse, rmse] = calc_errors(xrs, X);
 
         fprintf("SL: %u HS: %u ME: %f MSE: %f\n", sample_length, optimVars.hiddenSize, mean_error, mse);
 
         % Save trained network to file
-        filename = "bayesopt_" + num2str(mean_error) + ".mat";
+        filename = "bayesopt/bayesopt_" + num2str(mean_error) + ".mat";
         fprintf("Saving to file: %s\n", filename);
         save(filename, 'net', 'mean_error', 'optimVars');
 
