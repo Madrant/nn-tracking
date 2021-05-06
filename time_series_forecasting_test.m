@@ -78,7 +78,7 @@ end
 sample_length = 10;
 result_length = 1;
 samples_div = 1.5;
-predict_offset = 0;
+predict_offset = 1;
 
 hiddenSize = 88;
 maxEpochs = 100;
@@ -140,17 +140,18 @@ end % hiddenSize
 end % sample_length
 
 % Kalman filter
-kf_outputs = ts_kf(t, xr_train, xn_test);
+kf_outputs = ts_kf(t, xr_train, xn_test, predict_offset);
 plot_results("KF", t, xr_train, xr_test, xn_test, kf_outputs, save_figure);
 
 % Extrapolate KF output
-if predict_offset > 0
-    method = 'linear'; % linear, nearest, previous, pchip, cubic, v5cubic, makima, spline
-    points = 2;
+if false && predict_offset > 0
+    method = 'spline'; % linear, nearest, previous, pchip, cubic, v5cubic, makima, spline
+    points = 5;
 
     name = sprintf("KF Extrapolation: Method: %s Points: %u", method, points);
 
-    extrap_kf_outputs = ts_extrap(t, kf_outputs, method, points, predict_offset);
+    ex_kf_outputs = ts_kf(t, xr_train, xn_test);
+    extrap_kf_outputs = ts_extrap(t, ex_kf_outputs, method, points, predict_offset);
     plot_results(name, t, xr_train, xr_test, xn_test, extrap_kf_outputs, save_figure, 1, 3);
 end
 
