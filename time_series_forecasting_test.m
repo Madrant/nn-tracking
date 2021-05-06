@@ -32,7 +32,7 @@ A = normpdf(t, t(round(end/2)), 3);
 [xr2, xn2] = gen_sin(t, A, w, phi, r, snr);
 
 % Plot input data:
-if false
+if true
     fig_input = figure('Name', "Input data");
     tiledlayout(2, 1);
 
@@ -40,14 +40,14 @@ if false
     hold on;
     plot(t, xr1, '-');
     plot(t, xn1, '-x');
-    legend("Data 1", "Measurements 1");
+    legend("Train Data", "Train Measurements");
     hold off;
 
     nexttile;
     hold on;
     plot(t, xr2, '-');
     plot(t, xn2, '-x');
-    legend("Data 2", "Measurements 2");
+    legend("Test Data", "Test Measurements");
     hold off;
 end
 
@@ -90,9 +90,9 @@ save_figure = 0;
 
 % Enable/disable some various networks in test
 en_nn_ff_ns = 0;
-en_nn_lstm_ns = 0;
+en_nn_lstm_ns = 1;
 en_nn_lstm_dl = 1;
-en_nn_gru_ns = 0;
+en_nn_gru_ns = 1;
 
 for sample_length = [sample_length] %[1 3 5]
 for hiddenSize = [hiddenSize] %[4, 5, 7, 10]
@@ -158,16 +158,18 @@ end
 % Compare filter outputs
 
 % Plot input data:
-if false
+if true
     fig_outputs = figure('Name', "Filter outputs");
     hold on;
     plot(t, xr_test, '-');
     plot(t, xn_test, '-x');
 
-    if en_nn_ff_ts,   plot(t(sample_length + 1:length(t)), res_nn_ff_ts), end
-    if en_nn_lstm_ts, plot(t(sample_length + 1:length(t)), res_nn_lstm_ts), end
-    if en_nn_gru_ts,  plot(t(sample_length + 1:length(t)), res_nn_gru_ts), end
+    plot(t, kf_outputs, '-d');
 
-    legend("Data", "Measurements", "FF NN", "LSTM", "GRU");
+    if en_nn_lstm_ns, plot(t(predict_offset + 1:length(t)), res_nn_lstm_ns, '-*'), end
+    if en_nn_lstm_ns, plot(t(predict_offset + 1:length(t)), res_nn_gru_ns, '-+'), end
+    if en_nn_lstm_dl, plot(t(predict_offset + 1:length(t)), res_nn_lstm_dl, '-o'), end
+
+    legend("Data", "Measurements", "KF", "LSTM", "GRU", "Deep LSTM");
     hold off;
 end
