@@ -3,10 +3,14 @@
 %
 % See also:
 % https://en.wikipedia.org/wiki/Kalman_filter
-function outputs = ts_kf(t, x, Y)
+function outputs = ts_kf(t, x, Y, predict_offset)
     assert(length(t) == length(x));
     assert(length(x) == length(Y));
 
+    if ~exist('predict_offset', 'var')
+        predict_offset = 0;
+    end
+    
     % Process descritption
     F = 0.1; % Process state transition model (How much xpri depends of previous xpost)
     B = 1; % Process control model (How much target controls affects measurements model)
@@ -38,7 +42,11 @@ function outputs = ts_kf(t, x, Y)
         % Prediction
         %
         % Predict state
-        xpri = F * xpost + B * x(n);
+        if predict_offset >= 1
+            xpri = F * xpost + B * x(n + predict_offset - 1);
+        else
+            xpri = F * xpost + B * x(n);
+        end
 
         % Predict estimate covariance
         Ppri = F * Ppost * F' + Q;
@@ -65,5 +73,10 @@ function outputs = ts_kf(t, x, Y)
         X(n) = xpost;
     end
 
-    outputs = X;
+    % Return predicted or filtered values based on 'predict_offset' value
+    if predict_offset >= 1
+        outputs = Xpri;
+    else
+        outputs = X;
+    end
 end
