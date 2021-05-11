@@ -46,7 +46,7 @@ result_length = 1;
 samples_div = 1.5;
 
 global snr_array;
-snr_array = [snr snr snr];
+snr_array = [snr snr snr snr snr];
 
 save_figure = false;
 
@@ -54,38 +54,43 @@ save_figure = false;
 %
 % See also:
 % https://www.mathworks.com/help/deeplearning/ref/trainingoptions.html
-maxLayers = 3;
+maxLayers = 5;
 
 optimVars = [
-    optimizableVariable('sequenceLength', [1 30], 'Type', 'integer', 'Optimize', true)
+    optimizableVariable('sequenceLength', [1 100], 'Type', 'integer', 'Optimize', true)
 
-    optimizableVariable('numLayers', [1 maxLayers], 'Type', 'integer', 'Optimize', true)
+    optimizableVariable('numLayers', [2 maxLayers], 'Type', 'integer', 'Optimize', true)
 
-    optimizableVariable('gradientThreshold', [0.1 5], 'Transform', 'log', 'Optimize', true)
-    optimizableVariable('initialLearnRate', [0.001 1], 'Transform', 'log', 'Optimize', true)
+    optimizableVariable('gradientThreshold', [0.01 10], 'Transform', 'log', 'Optimize', true)
+    optimizableVariable('initialLearnRate', [0.0001 1], 'Transform', 'log', 'Optimize', true)
 ];
+
+global optimize_type; optimize_type = false; % LSTM by default
+global optimize_size; optimize_size = true;
+global optimize_act; optimize_act = true;
+global optimize_drop; optimize_drop = true;
 
 % Optimize layers structure cccording to maxLayers
 for n = 1:maxLayers
     typeName = sprintf("ht%u", n);
     % "lstm" "gru"
-    optimVars(end + 1,:) = optimizableVariable(typeName, ["lstm" "gru"], 'Optimize', true);
+    optimVars(end + 1,:) = optimizableVariable(typeName, ["lstm" "gru"], 'Optimize', optimize_type);
 
     hsName = sprintf("hs%u", n);
-    optimVars(end + 1,:) = optimizableVariable(hsName, [1 100], 'Type', 'integer', 'Optimize', true);
+    optimVars(end + 1,:) = optimizableVariable(hsName, [1 100], 'Type', 'integer', 'Optimize', optimize_size);
 
     actName = sprintf("act%u", n);
     % "none" "relu" "tanh" "leakyrelu" "clippedrelu" "elu" "swish"
-    optimVars(end + 1,:) = optimizableVariable(actName, ["none" "relu" "tanh"], 'Optimize', true);
+    optimVars(end + 1,:) = optimizableVariable(actName, ["none" "relu" "tanh"], 'Optimize', optimize_act);
 
     dropName = sprintf("drop%u", n);
-    optimVars(end + 1,:) = optimizableVariable(dropName, [0 0.5], 'Optimize', true);
+    optimVars(end + 1,:) = optimizableVariable(dropName, [0 0.5], 'Optimize', optimize_drop);
 end
 
 disp(optimVars);
 
 BayesObject = bayesopt(make_validation_fcn, optimVars,  ...
-    'MaxObjectiveEvaluations', 1, ...
+    'MaxObjectiveEvaluations', 100, ...
     'MaxTime', 14*60*60, ...
     'IsObjectiveDeterministic', false, ...
     'UseParallel', false);
@@ -103,6 +108,7 @@ net = savedStruct.net;
 opt = savedStruct.optimVars;
 
 disp(net);
+disp(net.Layers);
 disp(opt);
 
 sample_length = 1;
@@ -134,11 +140,27 @@ ObjFcn = @validation_fcn;
         act_array = string.empty;
         drop_array = [];
 
+        global optimize_type;
+        global optimize_size;
+        global optimize_act;
+        global optimize_drop;
+        
         for n = 1:optimVars.numLayers
-            ht_array(1, end + 1) = eval(sprintf("optimVars.ht%u", n));
-            hs_array(1, end + 1) = eval(sprintf("optimVars.hs%u", n));
-            act_array(1, end + 1) = eval(sprintf("optimVars.act%u", n));
-            drop_array(1, end + 1) = eval(sprintf("optimVars.drop%u", n));
+            if optimize_type
+                ht_array(1, end + 1) = eval(sprintf("optimVars.ht%u", n));
+            end
+
+            if optimize_size
+                hs_array(1, end + 1) = eval(sprintf("optimVars.hs%u", n));
+            end
+
+            if optimize_act
+                act_array(1, end + 1) = eval(sprintf("optimVars.act%u", n));
+            end
+
+            if optimize_drop
+                drop_array(1, end + 1) = eval(sprintf("optimVars.drop%u", n));
+            end
         end
 
         layers = [ ...

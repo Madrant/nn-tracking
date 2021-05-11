@@ -1,9 +1,9 @@
 function layers = rnnBlock(hs_array, ht_array, act_array, dropout_array, numLayers)
-    if ~exist('ht_array', 'var')
+    if ~exist('ht_array', 'var') || isempty(ht_array)
         ht_array = "lstm";
     end
 
-    if ~exist('act_array', 'var')
+    if ~exist('act_array', 'var') || isempty(act_array)
         act_array = "none";
     end
 
@@ -11,7 +11,7 @@ function layers = rnnBlock(hs_array, ht_array, act_array, dropout_array, numLaye
         numLayers = 1;
     end
 
-    if ~exist('dropout_array', 'var')
+    if ~exist('dropout_array', 'var' )|| isempty(dropout_array)
         dropout_array = 0;
     end
 
