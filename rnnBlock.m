@@ -35,11 +35,6 @@ function layers = rnnBlock(hs_array, ht_array, act_array, dropout_array, numLaye
         dropout_array = [dropout_array repmat(dropout_array(1, end), 1, numLayers - length(dropout_array))];
     end
 
-    disp(hs_array);
-    disp(ht_array);
-    disp(act_array);
-    disp(dropout_array);
-
     for layer = 1:numLayers
         hiddenSize = hs_array(1,layer);
         hiddenType = ht_array(1,layer);
@@ -47,7 +42,7 @@ function layers = rnnBlock(hs_array, ht_array, act_array, dropout_array, numLaye
         dropout = dropout_array(1, layer);
 
         fprintf("Type: %s Hidden size: %u Activation: %s Dropout: %f\n", hiddenType, hiddenSize, activation, dropout);
-        
+
         assert(hiddenSize > 0);
         assert(hiddenType == "lstm" || hiddenType == "gru");
         assert(activation == "relu" || activation == "tanh" || activation == "none" || activation == "leakedrelu");
