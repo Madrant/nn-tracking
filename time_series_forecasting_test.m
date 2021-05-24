@@ -38,7 +38,8 @@ if true
 
     nexttile;
     hold on;
-    plot(t, xr1, '-');
+    grid on;
+    plot(t, xr1, '-d');
     plot(t, xn1, '-x');
     legend("Train Data", "Train Measurements");
     hold off;
@@ -75,24 +76,24 @@ for n = 2:length(xr)
 end
 
 % NN options
-sample_length = 10;
+sample_length = 7;
 result_length = 1;
 samples_div = 1.5;
 predict_offset = 1;
 
-hiddenSize = 88;
+hiddenSize = 10;
 maxEpochs = 100;
 
-snr_array = [snr];
+snr_array = [snr snr snr];
 
 % Plot options
 save_figure = 0;
 
 % Enable/disable some various networks in test
-en_nn_ff_ns = 0;
+en_nn_ff_ns = 1;
 en_nn_lstm_ns = 1;
-en_nn_lstm_dl = 1;
 en_nn_gru_ns = 1;
+en_nn_lstm_dl = 0;
 
 for sample_length = [sample_length] %[1 3 5]
 for hiddenSize = [hiddenSize] %[4, 5, 7, 10]
@@ -166,10 +167,11 @@ if true
 
     plot(t, kf_outputs, '-d');
 
+    if en_nn_ff_ns, plot(t(predict_offset + sample_length:length(t)), res_nn_ff_ns, '-*'), end
     if en_nn_lstm_ns, plot(t(predict_offset + 1:length(t)), res_nn_lstm_ns, '-*'), end
-    if en_nn_lstm_ns, plot(t(predict_offset + 1:length(t)), res_nn_gru_ns, '-+'), end
+    if en_nn_gru_ns, plot(t(predict_offset + 1:length(t)), res_nn_gru_ns, '-+'), end
     if en_nn_lstm_dl, plot(t(predict_offset + 1:length(t)), res_nn_lstm_dl, '-o'), end
 
-    legend("Data", "Measurements", "KF", "LSTM", "GRU", "Deep LSTM");
+    legend("Data", "Measurements", "KF", "FF", "LSTM", "GRU");
     hold off;
 end
