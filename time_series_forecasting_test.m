@@ -76,7 +76,7 @@ for n = 2:length(xr)
 end
 
 % NN options
-sample_length = 7;
+sample_length = 50;
 result_length = 1;
 samples_div = 1.5;
 predict_offset = 1;
@@ -90,10 +90,10 @@ snr_array = [snr snr snr];
 save_figure = 0;
 
 % Enable/disable some various networks in test
-en_nn_ff_ns = 1;
+en_nn_ff_ns = 0;
 en_nn_lstm_ns = 1;
-en_nn_gru_ns = 1;
-en_nn_lstm_dl = 0;
+en_nn_gru_ns = 0;
+en_nn_lstm_dl = 1;
 
 for sample_length = [sample_length] %[1 3 5]
 for hiddenSize = [hiddenSize] %[4, 5, 7, 10]
@@ -166,12 +166,14 @@ if true
     plot(t, xn_test, '-x');
 
     plot(t, kf_outputs, '-d');
+    
+    legend_array = ["Data", "Measurements", "KF"];
 
-    if en_nn_ff_ns, plot(t(predict_offset + sample_length:length(t)), res_nn_ff_ns, '-*'), end
-    if en_nn_lstm_ns, plot(t(predict_offset + 1:length(t)), res_nn_lstm_ns, '-*'), end
-    if en_nn_gru_ns, plot(t(predict_offset + 1:length(t)), res_nn_gru_ns, '-+'), end
-    if en_nn_lstm_dl, plot(t(predict_offset + 1:length(t)), res_nn_lstm_dl, '-o'), end
+    if en_nn_ff_ns, plot(t(predict_offset + sample_length:length(t)), res_nn_ff_ns, '-*'), legend_array(:,end + 1) = "FF", end
+    if en_nn_lstm_ns, plot(t(predict_offset + 1:length(t)), res_nn_lstm_ns, '-*'), legend_array(:,end + 1) = "LSTM", end
+    if en_nn_gru_ns, plot(t(predict_offset + 1:length(t)), res_nn_gru_ns, '-+'), legend_array(:,end + 1) = "GRU", end
+    if en_nn_lstm_dl, plot(t(predict_offset + 1:length(t)), res_nn_lstm_dl, '-o'), legend_array(:,end + 1) = "Deep LSTM", end
 
-    legend("Data", "Measurements", "KF", "FF", "LSTM", "GRU");
+    legend(legend_array);
     hold off;
 end
