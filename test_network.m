@@ -26,7 +26,7 @@ function net_outputs = test_network(net, input_cell_array, num_outputs, nn_type)
         if nn_type == "ff"
             output = net(input.');
         elseif nn_type == "lstm" || nn_type == "gru"
-            [net, output] = predictAndUpdateState(net, input);
+            [net, output] = predictAndUpdateState(net, input, 'ExecutionEnvironment', 'cpu');
         end
 
         fprintf("output"); disp(output);

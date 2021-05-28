@@ -45,12 +45,13 @@ if false
     plot_input_data(t, xr_train, xn_train, xr_test, xn_test);
 end
 
-data = struct('t', num2cell(t), 'xr', num2cell(xr), 'xn', num2cell(xn));
+train_data = struct('t', num2cell(t), 'xr', num2cell(xr), 'xn', num2cell(xn));
+test_data = struct('t', num2cell(t), 'xr', num2cell(xr), 'xn', num2cell(xn));
 
 % https://www.mathworks.com/help/deeplearning/ref/trainingoptions.html
 options = trainingOptions('adam', ... % sgdm, rmsprop, adam
-    'MaxEpochs', 50, ...
-    'SequenceLength', 10, ...
+    'MaxEpochs', 100, ...
+    'SequenceLength', 30, ...
     'GradientThreshold', 1, ...
     'Verbose', 0, ...
     'Plots', 'none', ... % 'training-progress', 'none'
@@ -58,7 +59,8 @@ options = trainingOptions('adam', ... % sgdm, rmsprop, adam
     'LearnRateSchedule','piecewise', ...
     'LearnRateDropPeriod',125, ...
     'LearnRateDropFactor',0.2, ...
-    'Shuffle', 'once');
+    'Shuffle', 'once', ...
+    'ExecutionEnvironment', 'cpu');
 
 layers = [ ...
         sequenceInputLayer(2)
@@ -67,15 +69,18 @@ layers = [ ...
         regressionLayer
     ];
 
-c_train = struct_fields_to_cell_array(data, ["t" "xn"]).';
-c_test = struct_fields_to_cell_array(data, ["xr"]).';
+train_input = struct_fields_to_cell_array(train_data, ["t" "xn"]).';
+train_output = struct_fields_to_cell_array(train_data, ["xr"]).';
+
+test_input = struct_fields_to_cell_array(test_data, ["t" "xn"]).';
+test_output = struct_fields_to_cell_array(test_data, ["xr"]).';
 
 fprintf("Train start");
-%net = trainNetwork(c_train, c_test, layers, options);
+net = trainNetwork(train_input, train_output, layers, options);
 fprintf("Train end");
 
 % Get network output
-net_outputs = test_network(net, c_train, 1, "lstm");
+net_outputs = test_network(net, train_input, 1, "lstm");
 disp(net_outputs);
 
 % Plot network output in comparison with inputs
