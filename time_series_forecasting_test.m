@@ -8,7 +8,7 @@ time_step = 0.1;
 end_time = 10;
 
 % Initialize random number generator
-rng(12345, 'combRecursive');
+%rng(12345, 'combRecursive');
 
 % Generate test data (real target position)
 r = 0.01;
@@ -31,27 +31,6 @@ A = normpdf(t, t(round(end/2)), 3);
 
 [xr2, xn2] = gen_sin(t, A, w, phi, r, snr);
 
-% Plot input data:
-if true
-    fig_input = figure('Name', "Input data");
-    tiledlayout(2, 1);
-
-    nexttile;
-    hold on;
-    grid on;
-    plot(t, xr1, '-d');
-    plot(t, xn1, '-x');
-    legend("Train Data", "Train Measurements");
-    hold off;
-
-    nexttile;
-    hold on;
-    plot(t, xr2, '-');
-    plot(t, xn2, '-x');
-    legend("Test Data", "Test Measurements");
-    hold off;
-end
-
 % Select input data
 xr = xr1;
 xn = xn1;
@@ -62,21 +41,20 @@ xn_train = xn1;
 xr_test = xr2;
 xn_test = xn2;
 
+% Plot input data:
+if true
+    plot_input_data(t, xr_train, xn_train, xr_test, xn_test);
+end
+
 fprintf("Time: [%f:%f:%f] SNR: %f\n", start_time, time_step, end_time, snr);
 print_data_stats(xr, xn);
 
-speed_array = zeros(1, length(xr));
-
-for n = 2:length(xr)
-    dx = xr(n) - xr(n - 1);
-    dt = t(n) - t (n - 1);
-
-    speed = dx/dt;
-    speed_array(1,n) = abs(speed);
-end
+% Prepare test data set
+train_data = struct('t', num2cell(t), 'xr', num2cell(xr_train), 'xn', num2cell(xn_train));
+test_data  = struct('t', num2cell(t), 'xr', num2cell(xr_test), 'xn', num2cell(xn_test));
 
 % NN options
-sample_length = 50;
+sample_length = 10;
 result_length = 1;
 samples_div = 1.5;
 predict_offset = 1;
@@ -84,7 +62,7 @@ predict_offset = 1;
 hiddenSize = 10;
 maxEpochs = 100;
 
-snr_array = [snr snr snr];
+snr_array = [snr];
 
 % Plot options
 save_figure = 0;
@@ -93,7 +71,7 @@ save_figure = 0;
 en_nn_ff_ns = 0;
 en_nn_lstm_ns = 1;
 en_nn_gru_ns = 0;
-en_nn_lstm_dl = 1;
+en_nn_lstm_dl = 0;
 
 for sample_length = [sample_length] %[1 3 5]
 for hiddenSize = [hiddenSize] %[4, 5, 7, 10]
@@ -102,7 +80,7 @@ for hiddenSize = [hiddenSize] %[4, 5, 7, 10]
 if en_nn_ff_ns
     name = sprintf("FF NN - Noise Hs %u Samples %u Div %.2f", hiddenSize, sample_length, samples_div);
 
-    nn_outputs = noise_ff_nn(t, xr_train, xn_train, xn_test, sample_length, result_length, predict_offset, samples_div, hiddenSize, maxEpochs, 'trainrp', snr_array);
+    nn_outputs = noise_ff_nn(train_data, test_data, sample_length, result_length, predict_offset, samples_div, hiddenSize, maxEpochs, 'trainrp', snr_array);
     plot_results(name, t, xr_train, xr_test, xn_test, nn_outputs, save_figure, samples_div);
 
     res_nn_ff_ns = nn_outputs;
@@ -112,7 +90,7 @@ end
 if en_nn_lstm_ns
     name = sprintf("LSTM NN - Noise Hs %u Samples %u Div %.2f", hiddenSize, sample_length, samples_div);
 
-    [nn_outputs, train_samples] = noise_lstm_nn(t, xr_train, xn_train, xn_test, sample_length, result_length, predict_offset, samples_div, hiddenSize, maxEpochs, "lstm", snr_array);
+    [nn_outputs, train_samples] = noise_lstm_nn(train_data, test_data, sample_length, result_length, predict_offset, samples_div, hiddenSize, maxEpochs, "lstm", snr_array);
     plot_results(name, t, xr_train, xr_test, xn_test, nn_outputs, save_figure, samples_div);
 
     res_nn_lstm_ns = nn_outputs;
