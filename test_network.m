@@ -1,35 +1,37 @@
 % Get network output on test data set
-function net_outputs = test_network(net, inputs, result_length, nn_type)
-    if ~exist('result_length', 'var')
-        result_length = 1;
-    end
-
+function net_outputs = test_network(net, input_cell_array, num_outputs, nn_type)
     if ~exist('nn_type', 'var')
         nn_type = 'ff';
     end
 
-    assert(~isempty(inputs))
-    
     % Check input data
-    assert(~isempty(inputs));
-    assert(result_length > 0);
+    assert(~isempty(input_cell_array));
 
-    samples_num = length(inputs);
+    inputs = input_cell_array{1}();
 
-    net_outputs = zeros(samples_num, result_length);
+    disp(size(inputs));
+
+    num_features = size(inputs, 1);
+    samples_num = size(inputs, 2);
+
+    fprintf("num_features: %u\n", num_features);
+    fprintf("samples_num: %u\n", samples_num);
+
+    net_outputs = zeros(samples_num, num_outputs);
 
     for n = 1: samples_num
-        input = inputs(n,:);
+        input = inputs(1:end, n);
+        fprintf("input"); disp(input);
 
         if nn_type == "ff"
             output = net(input.');
         elseif nn_type == "lstm" || nn_type == "gru"
-            [net, output] = predictAndUpdateState(net, input.');
+            [net, output] = predictAndUpdateState(net, input);
         end
 
+        fprintf("output"); disp(output);
         net_outputs(n,:) = output;
     end
 
     net_outputs = net_outputs.';
 end
-
