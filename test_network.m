@@ -21,7 +21,6 @@ function net_outputs = test_network(net, input_cell_array, num_outputs, nn_type)
 
     for n = 1: samples_num
         input = inputs(1:end, n);
-        fprintf("input"); disp(input);
 
         if nn_type == "ff"
             output = net(input.');
@@ -29,7 +28,6 @@ function net_outputs = test_network(net, input_cell_array, num_outputs, nn_type)
             [net, output] = predictAndUpdateState(net, input, 'ExecutionEnvironment', 'cpu');
         end
 
-        fprintf("output"); disp(output);
         net_outputs(n,:) = output;
     end
 

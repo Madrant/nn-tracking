@@ -38,15 +38,15 @@ xn = xn1;
 xr_train = xr1;
 xn_train = xn1;
 
-xr_test = xr2;
-xn_test = xn2;
+xr_test = xr1;
+xn_test = xn1;
 
 if false
     plot_input_data(t, xr_train, xn_train, xr_test, xn_test);
 end
 
-train_data = struct('t', num2cell(t), 'xr', num2cell(xr), 'xn', num2cell(xn));
-test_data = struct('t', num2cell(t), 'xr', num2cell(xr), 'xn', num2cell(xn));
+train_data = struct('t', num2cell(t), 'xn', num2cell(xn), 'xr', num2cell(xr));
+test_data = struct('t', num2cell(t), 'xn', num2cell(xn), 'xr', num2cell(xr));
 
 % https://www.mathworks.com/help/deeplearning/ref/trainingoptions.html
 options = trainingOptions('adam', ... % sgdm, rmsprop, adam
@@ -69,10 +69,18 @@ layers = [ ...
         regressionLayer
     ];
 
-train_input = struct_fields_to_cell_array(train_data, ["t" "xn"]).';
+predict_offset = 1;
+samples_div = 1.5;
+loss_prob = 0.00;
+snr = 5;
+
+train_data = prepare_train_data(train_data, predict_offset, samples_div, 5, 5, 0, loss_prob, snr);
+test_data = prepare_train_data(test_data, predict_offset, 1, 5, 5, 0, loss_prob, snr);
+
+train_input = struct_fields_to_cell_array(train_data, ["dt" "xn"]).';
 train_output = struct_fields_to_cell_array(train_data, ["xr"]).';
 
-test_input = struct_fields_to_cell_array(test_data, ["t" "xn"]).';
+test_input = struct_fields_to_cell_array(test_data, ["dt" "xn"]).';
 test_output = struct_fields_to_cell_array(test_data, ["xr"]).';
 
 fprintf("Train start");
@@ -80,8 +88,8 @@ net = trainNetwork(train_input, train_output, layers, options);
 fprintf("Train end");
 
 % Get network output
-net_outputs = test_network(net, train_input, 1, "lstm");
-disp(net_outputs);
+num_outputs = 1;
+net_outputs = test_network(net, test_input, num_outputs, "lstm");
 
 % Plot network output in comparison with inputs
-plot_results("Test", t, xr_train, xr_test, xn_test, net_outputs);
+plot_results("Test", t, xr_train, xr_test, xn_test, net_outputs, false, samples_div);
