@@ -12,7 +12,7 @@ end_time = 10;
 
 % Generate test data (real target position)
 r = 0.01;
-snr = 10;
+snr = 20;
 
 t = start_time:time_step:end_time;
 
@@ -38,10 +38,10 @@ xn = xn1;
 xr_train = xr1;
 xn_train = xn1;
 
-xr_test = xr1;
-xn_test = xn1;
+xr_test = xr2;
+xn_test = xn2;
 
-if false
+if true
     plot_input_data(t, xr_train, xn_train, xr_test, xn_test);
 end
 
@@ -51,31 +51,32 @@ test_data = struct('t', num2cell(t), 'xr', num2cell(xr_test));
 % https://www.mathworks.com/help/deeplearning/ref/trainingoptions.html
 options = trainingOptions('adam', ... % sgdm, rmsprop, adam
     'MaxEpochs', 100, ...
-    'SequenceLength', 10, ...
-    'GradientThreshold', 1, ...
+    'SequenceLength', 60, ...
+    'GradientThreshold', 0.01, ...
     'Verbose', 0, ...
     'Plots', 'none', ... % 'training-progress', 'none'
     'InitialLearnRate',0.005, ...
     'LearnRateSchedule','piecewise', ...
-    'LearnRateDropPeriod',125, ...
+    'LearnRateDropPeriod', 125, ...
     'LearnRateDropFactor',0.2, ...
     'Shuffle', 'once', ...
     'ExecutionEnvironment', 'cpu');
 
 layers = [ ...
         sequenceInputLayer(2)
-        lstmLayer(10)
-        %fullyConnectedLayer(2)
-        %lstmLayer(10)
+        lstmLayer(30)
+        dropoutLayer(0.1)
+        fullyConnectedLayer(2)
+        lstmLayer(30)
+        dropoutLayer(0.2)
         fullyConnectedLayer(1)
-        %reluLayer
-        %dropoutLayer(0.05)
+        reluLayer
         regressionLayer
     ];
 
 predict_offset = 0;
 samples_div = 1;
-test_loss_prob = 0.1;
+test_loss_prob = 0.0;
 
 perf_data = [];
 loops = 1;
@@ -84,7 +85,7 @@ for loop = 1:loops
     % Create train data set
     [train_input, train_output] = create_train_data_set(...
         train_data, predict_offset, samples_div, ...
-        5, 5, 0, [0 0 0 0.05 0.05 0.05 0.1 0.1 0.1], [snr snr snr snr snr snr snr snr snr]);
+        5, 5, 0, [0 0 0 ], [snr snr snr]);
 
     % Create test data set
     test_data = prepare_train_data(...

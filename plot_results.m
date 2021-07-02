@@ -1,4 +1,4 @@
-function plot_results(name, t, xt, xr, xn, X, save_figure, samples_div, t_skip)
+function plot_results(name, t, xt, xr, xn, t_test, xr_test, xn_test, X, save_figure, samples_div, t_skip)
     if ~exist('save_figure', 'var')
         save_figure = false;
     end
@@ -12,10 +12,6 @@ function plot_results(name, t, xt, xr, xn, X, save_figure, samples_div, t_skip)
     end
 
     assert(samples_div ~= 0);
-
-    %fprintf("plot_results: t_skip: %u\n", t_skip);
-    %fprintf("t: "); disp(size(t));
-    %fprintf("X: "); disp(size(X));
 
     ts = t;
     xrs = xr;
@@ -56,9 +52,9 @@ function plot_results(name, t, xt, xr, xn, X, save_figure, samples_div, t_skip)
     % Plot network output
     nexttile;
     hold on;
-    plot(t, xr);
-    plot(t, xn, '-x');
-    plot(ts, X, '-o');
+    plot(t_test, xr_test);
+    plot(t_test, xn_test, '-x');
+    plot(t_test, X, '-o');
     plot([t_div t_div], [0 1]);
     grid on;
     title('Filter output');
@@ -69,7 +65,7 @@ function plot_results(name, t, xt, xr, xn, X, save_figure, samples_div, t_skip)
     hold off;
 
     % Calculate error for each time step
-    [error, abs_error, mse_array, rmse_array, max_error, mean_error, mse, rmse] = calc_errors(xrs, X);
+    [error, abs_error, mse_array, rmse_array, max_error, mean_error, mse, rmse] = calc_errors(xr_test, X);
 
     fprintf("%s\n", name);
     fprintf("Mean error: %f\n", mean_error);
@@ -79,7 +75,7 @@ function plot_results(name, t, xt, xr, xn, X, save_figure, samples_div, t_skip)
     
     % Plot absolute error
     nexttile;
-    plot(ts, abs_error);
+    plot(t_test, abs_error);
     grid on;
     title(sprintf('Absolute error, mean: %.2f, max: %.2f', mean_error, max_error));
     xlabel('Time');
@@ -90,8 +86,8 @@ function plot_results(name, t, xt, xr, xn, X, save_figure, samples_div, t_skip)
     % Plot MSE and RMSE on a single plot
     nexttile;
     hold on;
-    plot(ts, mse_array);
-    plot(ts, rmse_array);
+    plot(t_test, mse_array);
+    plot(t_test, rmse_array);
     grid on;
     title(sprintf('Final MSE: %f RMSE: %f', mse, rmse));
     xlabel('Time');
