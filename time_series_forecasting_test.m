@@ -27,7 +27,7 @@ A = 5;
 w = 3 * pi;
 phi = 0;
 %A = 5 * floor(t);
-A = normpdf(t, t(round(end/2)), 3);
+A = normpdf(t, t(round(end/2)), 2);
 
 [xr2, xn2] = gen_sin(t, A, w, phi, r, snr);
 
@@ -46,7 +46,7 @@ if true
 
     nexttile;
     hold on;
-    plot(t, xr2, '-');
+    plot(t, xr2, '-d');
     plot(t, xn2, '-x');
     legend("Test Data", "Test Measurements");
     hold off;
@@ -76,9 +76,9 @@ for n = 2:length(xr)
 end
 
 % NN options
-sample_length = 50;
+sample_length = 60;
 result_length = 1;
-samples_div = 1.5;
+samples_div = 1;
 predict_offset = 1;
 
 hiddenSize = 10;
@@ -91,7 +91,7 @@ save_figure = 0;
 
 % Enable/disable some various networks in test
 en_nn_ff_ns = 0;
-en_nn_lstm_ns = 1;
+en_nn_lstm_ns = 0;
 en_nn_gru_ns = 0;
 en_nn_lstm_dl = 1;
 
@@ -166,7 +166,7 @@ if true
     plot(t, xn_test, '-x');
 
     plot(t, kf_outputs, '-d');
-    
+
     legend_array = ["Data", "Measurements", "KF"];
 
     if en_nn_ff_ns, plot(t(predict_offset + sample_length:length(t)), res_nn_ff_ns, '-*'), legend_array(:,end + 1) = "FF", end

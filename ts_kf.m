@@ -12,8 +12,8 @@ function outputs = ts_kf(t, x, Y, predict_offset)
     end
     
     % Process descritption
-    F = 0.1; % Process state transition model (How much xpri depends of previous xpost)
-    B = 1; % Process control model (How much target controls affects measurements model)
+    F = 0.2; % Process state transition model (How much xpri depends of previous xpost)
+    B = 0.8; % Process control model (How much target controls affects measurements model)
 
     % Measurements description
     H = 1; % Observation model (Coefficient to innovation - a difference between observed and predicted state)
